@@ -55,26 +55,24 @@
             await this.db.SaveChangesAsync();
         }
 
-        public List<EventViewModel> GetAllEvents(string path)
+        public IEnumerable<EventViewModel> GetAllEvents(int pageNumber, int itemsPerPage = 12)
         {
-            var models = new List<EventViewModel>();
-            var events = this.db.Events.ToList();
-            foreach (var currEvent in events)
+            var events = this.db.Events.OrderByDescending(x => x.Id).Skip((pageNumber - 1) * 12).Take(itemsPerPage).Select(x => new EventViewModel()
             {
-                var extension = this.db.Images.Where(x => x.Id == currEvent.ImageId).Select(x => x.Extension).FirstOrDefault();
-                var imageUrl ="/images/Events/" + currEvent.ImageId + "." + extension;
-                var viewModel = new EventViewModel()
-                {
-                    Name = currEvent.Name,
-                    Description = currEvent.Description,
-                    Category = currEvent.Type.ToString(),
-                    City = currEvent.City.ToString(),
-                    ImageUrl = imageUrl,
-                };
-                models.Add(viewModel);
-            }
+                Id = x.Id,
+                Name = x.Name,
+                Category = x.Type.ToString(),
+                City = x.City.ToString(),
+                Description = x.Description,
+                ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension,
+            }).ToList();
 
-            return models;
+            return events;
+        }
+
+        public int GetCount()
+        {
+            return this.db.Events.Count();
         }
     }
 }

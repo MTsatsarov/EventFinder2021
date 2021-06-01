@@ -4,6 +4,7 @@
 
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Web.ViewModels;
+    using EventFinder2021.Web.ViewModels.EventViewModels;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
 
@@ -18,11 +19,18 @@
             this.eventService = eventService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id = 1)
         {
-            var path = this.hostEnvironment.WebRootPath;
-            var models = this.eventService.GetAllEvents(path);
-            return this.View(models);
+            const int numbersPerPage = 12;
+            var viewModel = new ListEventViewModel()
+            {
+                ItemsPerPage=numbersPerPage,
+                PageNumber = id,
+                Events = this.eventService.GetAllEvents(id, numbersPerPage),
+                RecipeCount = this.eventService.GetCount(),
+            };
+
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()

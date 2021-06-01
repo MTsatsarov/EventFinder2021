@@ -9,6 +9,8 @@
     {
         Task CreateEventAsync(CreateEventInputModel model, string imagePath);
 
-        List<EventViewModel> GetAllEvents(string path);
+        IEnumerable<EventViewModel> GetAllEvents(int pageNumber, int itemsPerPage = 12);
+
+        int GetCount();
     }
 }

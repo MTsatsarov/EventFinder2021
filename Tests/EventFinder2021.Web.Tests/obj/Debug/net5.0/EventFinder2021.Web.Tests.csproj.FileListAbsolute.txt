@@ -14,7 +14,6 @@ C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\De
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\appsettings.json
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\bundleconfig.json
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\libman.json
-C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\EventFinder2021.Web.StaticWebAssets.xml
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\EventFinder2021.Web.exe
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\testhost.exe
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
@@ -537,3 +536,4 @@ C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\obj\De
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\obj\Debug\net5.0\EventFinder2021.Web.Tests.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\EventFinder2021.Web.StaticWebAssets.xml
