@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.312" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\EventFinder2021.Data.Common\EventFinder2021.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\EventFinder2021.Data.Models\EventFinder2021.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\EventFinder2021.Data\EventFinder2021.Data.csproj" />
+    <ProjectReference Include="..\..\Web\EventFinder2021.Web.ViewModels\EventFinder2021.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\EventFinder2021.Services.Mapping\EventFinder2021.Services.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>

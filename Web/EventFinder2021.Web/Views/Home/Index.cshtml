@@ -1,0 +1,20 @@
+﻿@using EventFinder2021.Web.ViewModels.EventViewModels
+@using EventFinder2021.Common
+@model List<EventViewModel>
+<div class="text-center row">
+    <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
+    <div class="col-md-8">
+        <div class="row">
+            @foreach (var currEvent in this.Model)
+            {
+                <div class="card col-md-3">
+                    <img src="@currEvent.ImageUrl" class="mr-3" >
+                    <div class="card-body">
+                        <h5 class="card-title">@currEvent.Name</h5>
+                        <p class="card-text">@currEvent.Category</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+ 

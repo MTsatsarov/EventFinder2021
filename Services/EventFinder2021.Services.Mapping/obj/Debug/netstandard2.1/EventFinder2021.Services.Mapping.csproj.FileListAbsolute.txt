@@ -1,0 +1,9 @@
+C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Mapping\bin\Debug\netstandard2.1\EventFinder2021.Services.Mapping.deps.json
+C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Mapping\bin\Debug\netstandard2.1\EventFinder2021.Services.Mapping.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Mapping\bin\Debug\netstandard2.1\EventFinder2021.Services.Mapping.pdb
+C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Mapping\obj\Debug\netstandard2.1\EventFinder2021.Services.Mapping.csprojAssemblyReference.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Mapping\obj\Debug\netstandard2.1\EventFinder2021.Services.Mapping.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Mapping\obj\Debug\netstandard2.1\EventFinder2021.Services.Mapping.AssemblyInfo.cs
+C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Mapping\obj\Debug\netstandard2.1\EventFinder2021.Services.Mapping.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Mapping\obj\Debug\netstandard2.1\EventFinder2021.Services.Mapping.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Mapping\obj\Debug\netstandard2.1\EventFinder2021.Services.Mapping.pdb
