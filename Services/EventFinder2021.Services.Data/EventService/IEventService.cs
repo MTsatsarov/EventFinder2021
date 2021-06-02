@@ -11,6 +11,7 @@
 
         IEnumerable<EventViewModel> GetAllEvents(int pageNumber, int itemsPerPage = 12);
 
+        EventViewModel GetEventById(int id);
         int GetCount();
     }
 }

@@ -24,7 +24,7 @@
             const int numbersPerPage = 12;
             var viewModel = new ListEventViewModel()
             {
-                ItemsPerPage=numbersPerPage,
+                ItemsPerPage = numbersPerPage,
                 PageNumber = id,
                 Events = this.eventService.GetAllEvents(id, numbersPerPage),
                 RecipeCount = this.eventService.GetCount(),

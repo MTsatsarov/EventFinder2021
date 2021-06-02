@@ -465,3 +465,4 @@ C:\Users\User\Desktop\SoftUniFinalProject\Web\EventFinder2021.Web\bin\Debug\net5
 C:\Users\User\Desktop\SoftUniFinalProject\Web\EventFinder2021.Web\bin\Debug\net5.0\System.IO.Pipelines.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Web\EventFinder2021.Web\obj\Debug\net5.0\EventFinder2021.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\User\Desktop\SoftUniFinalProject\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Event\CreateEvent.cshtml.g.cs
+C:\Users\User\Desktop\SoftUniFinalProject\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Event\EventView.cshtml.g.cs

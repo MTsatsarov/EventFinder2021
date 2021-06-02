@@ -15,7 +15,7 @@
 
         public string ImageId { get; set; }
 
-        public Image Image { get; set; }
+        public virtual Image Image { get; set; }
 
         public Category Type { get; set; }
 

@@ -29,7 +29,7 @@
                 Description = model.Description,
                 Date = model.Date,
                 Type = model.Category,
-                City = model.City
+                City = model.City,
             };
 
             currEvent.User = this.db.Users.Where(x => x.UserName == model.CreatedByuser).FirstOrDefault();
@@ -73,6 +73,29 @@
         public int GetCount()
         {
             return this.db.Events.Count();
+        }
+
+        public EventViewModel GetEventById(int id)
+        {
+            var currentEvent = this.db.Events.Where(x => x.Id == id).FirstOrDefault();
+            if (currentEvent == null)
+            {
+                throw new ArgumentException($"No event with Id:{id} was found");
+            }
+            var currImage = this.db.Images.Where(x => x.Id == currentEvent.ImageId).FirstOrDefault();
+
+            var viewModel = new EventViewModel()
+            {
+                Id = currentEvent.Id,
+                Name = currentEvent.Name,
+                Category = currentEvent.Type.ToString(),
+                City = currentEvent.City.ToString(),
+                Description = currentEvent.Description,
+                ImageUrl = "/images/Events/" + currentEvent.ImageId + "." + currImage.Extension,
+                Date = currentEvent.Date.ToString(),
+            };
+
+            return viewModel;
         }
     }
 }

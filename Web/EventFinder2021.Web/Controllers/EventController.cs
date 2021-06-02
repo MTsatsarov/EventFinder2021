@@ -38,5 +38,11 @@
             await this.eventService.CreateEventAsync(model, imagePath);
             return this.Redirect("/");
         }
+
+        public IActionResult EventView(int id)
+        {
+            var model = this.eventService.GetEventById(id);
+            return this.View(model);
+        }
     }
 }
