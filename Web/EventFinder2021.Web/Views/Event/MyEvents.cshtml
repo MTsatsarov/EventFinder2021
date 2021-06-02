@@ -2,29 +2,34 @@
 @model ListEventViewModel
 
 <head>
-</head> 
+    @this.ViewData["Title"]
+</head>
 
 <body>
+    <h1 class="text-lg-center text-black-50">My Events</h1>
+    <hr />
     <div>
         <div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <table>
                 <tbody>
                     @foreach (var currEvent in Model.Events)
                     {
-                        <tr>
+                        <tr class="border-bottom">
                             <td>
                                 <div>
-                                    <img src="@currEvent.ImageUrl" class="mr-3" width="100">
+                                    <img src="@currEvent.ImageUrl" class="mr-4" width="130">
                                 </div>
+
                                 <div>
                                     <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
                                     <p>@currEvent.Category</p>
                                 </div>
                             </td>
-                            <td>
-                                @currEvent.Description
+                            <td class="col">
+                                <p>  @currEvent.Description</p>
+
                             </td>
                         </tr>
                     }
