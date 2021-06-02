@@ -7,3 +7,12 @@ C:\Users\User\Desktop\SoftUniFinalProject\Data\EventFinder2021.Data.Common\obj\D
 C:\Users\User\Desktop\SoftUniFinalProject\Data\EventFinder2021.Data.Common\obj\Debug\netstandard2.1\EventFinder2021.Data.Common.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\SoftUniFinalProject\Data\EventFinder2021.Data.Common\obj\Debug\netstandard2.1\EventFinder2021.Data.Common.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Data\EventFinder2021.Data.Common\obj\Debug\netstandard2.1\EventFinder2021.Data.Common.pdb
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Common\bin\Debug\netstandard2.1\EventFinder2021.Data.Common.deps.json
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Common\bin\Debug\netstandard2.1\EventFinder2021.Data.Common.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Common\bin\Debug\netstandard2.1\EventFinder2021.Data.Common.pdb
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Common\obj\Debug\netstandard2.1\EventFinder2021.Data.Common.csprojAssemblyReference.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Common\obj\Debug\netstandard2.1\EventFinder2021.Data.Common.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Common\obj\Debug\netstandard2.1\EventFinder2021.Data.Common.AssemblyInfo.cs
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Common\obj\Debug\netstandard2.1\EventFinder2021.Data.Common.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Common\obj\Debug\netstandard2.1\EventFinder2021.Data.Common.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Common\obj\Debug\netstandard2.1\EventFinder2021.Data.Common.pdb

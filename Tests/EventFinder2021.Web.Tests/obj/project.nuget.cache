@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Qp6pxnITJLUP8Q1J4ZuPc6TGyefOuJas8EZNiWKjNho9Etsy7PEVQzicD6VkFhUqOwBG/Y0U2eeH9GGOVvr4Zw==",
+  "dgSpecHash": "qi3M+0Gx4SymA3rt5YEUQpY5zCsSk5ILhQwtbOmcG7a8I5t6oJvMWb3VeskRVgpYWJAUWzqN7+qUs7Q7Xz5ZJA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Tests\\EventFinder2021.Web.Tests\\EventFinder2021.Web.Tests.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Tests\\EventFinder2021.Web.Tests\\EventFinder2021.Web.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",

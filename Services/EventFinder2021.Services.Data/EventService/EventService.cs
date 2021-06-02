@@ -44,7 +44,7 @@
             await this.db.Images.AddAsync(image);
             var physicalPath = $"{imagePath}/images/Events/{image.Id}.{extension}";
             currEvent.ImageId = image.Id;
-
+            currEvent.Image = image;
             using (FileStream fileStream = new FileStream(physicalPath, FileMode.Create))
             {
                 await model.Image.CopyToAsync(fileStream);
@@ -82,6 +82,7 @@
             {
                 throw new ArgumentException($"No event with Id:{id} was found");
             }
+
             var currImage = this.db.Images.Where(x => x.Id == currentEvent.ImageId).FirstOrDefault();
 
             var viewModel = new EventViewModel()
@@ -91,11 +92,25 @@
                 Category = currentEvent.Type.ToString(),
                 City = currentEvent.City.ToString(),
                 Description = currentEvent.Description,
-                ImageUrl = "/images/Events/" + currentEvent.ImageId + "." + currImage.Extension,
+                ImageUrl = "/images/Events/" + currentEvent.ImageId + "." + currentEvent.Image.Extension,
                 Date = currentEvent.Date.ToString(),
             };
 
             return viewModel;
+        }
+
+        public IEnumerable<EventViewModel> GetEventsByUser(string userId)
+        {
+            return this.db.Events.Where(x => x.UserId == userId).Select(x => new EventViewModel()
+            {
+                Name = x.Name,
+                Description = x.Description,
+                Id = x.Id,
+                Date = x.Date.ToString(),
+                ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension,
+                City = x.City.ToString(),
+                Category = x.Type.ToString(),
+            }).OrderByDescending(x => x.Date).ToList();
         }
     }
 }

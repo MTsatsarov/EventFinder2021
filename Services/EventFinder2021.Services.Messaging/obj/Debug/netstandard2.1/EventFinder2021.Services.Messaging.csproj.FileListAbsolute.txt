@@ -7,3 +7,12 @@ C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Mess
 C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Messaging\obj\Debug\netstandard2.1\EventFinder2021.Services.Messaging.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Messaging\obj\Debug\netstandard2.1\EventFinder2021.Services.Messaging.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Services\EventFinder2021.Services.Messaging\obj\Debug\netstandard2.1\EventFinder2021.Services.Messaging.pdb
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Services\EventFinder2021.Services.Messaging\bin\Debug\netstandard2.1\EventFinder2021.Services.Messaging.deps.json
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Services\EventFinder2021.Services.Messaging\bin\Debug\netstandard2.1\EventFinder2021.Services.Messaging.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Services\EventFinder2021.Services.Messaging\bin\Debug\netstandard2.1\EventFinder2021.Services.Messaging.pdb
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Services\EventFinder2021.Services.Messaging\obj\Debug\netstandard2.1\EventFinder2021.Services.Messaging.csprojAssemblyReference.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Services\EventFinder2021.Services.Messaging\obj\Debug\netstandard2.1\EventFinder2021.Services.Messaging.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Services\EventFinder2021.Services.Messaging\obj\Debug\netstandard2.1\EventFinder2021.Services.Messaging.AssemblyInfo.cs
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Services\EventFinder2021.Services.Messaging\obj\Debug\netstandard2.1\EventFinder2021.Services.Messaging.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Services\EventFinder2021.Services.Messaging\obj\Debug\netstandard2.1\EventFinder2021.Services.Messaging.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Services\EventFinder2021.Services.Messaging\obj\Debug\netstandard2.1\EventFinder2021.Services.Messaging.pdb

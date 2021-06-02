@@ -14,7 +14,8 @@
                         <img src="@currEvent.ImageUrl" class="mr-3" width="100">
                         <div class="card-body">
                             <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
-                            <p class="card-text">@currEvent.Category</p>
+                            <p class="card-text">Category: @currEvent.Category</p>
+                            <p>City: @currEvent.City</p>
                         </div>
                     </div>
                 }

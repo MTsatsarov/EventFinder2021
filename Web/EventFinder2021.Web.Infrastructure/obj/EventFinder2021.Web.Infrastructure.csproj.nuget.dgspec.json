@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Web\\EventFinder2021.Web.Infrastructure\\EventFinder2021.Web.Infrastructure.csproj": {}
+    "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Web\\EventFinder2021.Web.Infrastructure\\EventFinder2021.Web.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Web\\EventFinder2021.Web.Infrastructure\\EventFinder2021.Web.Infrastructure.csproj": {
+    "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Web\\EventFinder2021.Web.Infrastructure\\EventFinder2021.Web.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Web\\EventFinder2021.Web.Infrastructure\\EventFinder2021.Web.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Web\\EventFinder2021.Web.Infrastructure\\EventFinder2021.Web.Infrastructure.csproj",
         "projectName": "EventFinder2021.Web.Infrastructure",
-        "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Web\\EventFinder2021.Web.Infrastructure\\EventFinder2021.Web.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Web\\EventFinder2021.Web.Infrastructure\\EventFinder2021.Web.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Web\\EventFinder2021.Web.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Web\\EventFinder2021.Web.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

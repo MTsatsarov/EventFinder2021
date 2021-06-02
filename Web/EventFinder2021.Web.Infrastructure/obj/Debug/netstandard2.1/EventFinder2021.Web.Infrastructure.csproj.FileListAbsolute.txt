@@ -7,3 +7,12 @@ C:\Users\User\Desktop\SoftUniFinalProject\Web\EventFinder2021.Web.Infrastructure
 C:\Users\User\Desktop\SoftUniFinalProject\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\SoftUniFinalProject\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.pdb
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\bin\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.deps.json
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\bin\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\bin\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.pdb
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.csprojAssemblyReference.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.AssemblyInfo.cs
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.pdb

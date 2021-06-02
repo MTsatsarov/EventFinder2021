@@ -2,21 +2,26 @@
 {
     using System.Threading.Tasks;
 
+    using EventFinder2021.Common;
+    using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Web.ViewModels.EventViewModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     public class EventController : Controller
     {
         private readonly IWebHostEnvironment environment;
         private readonly IEventService eventService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public EventController(IWebHostEnvironment environment, IEventService eventService)
+        public EventController(IWebHostEnvironment environment, IEventService eventService, UserManager<ApplicationUser> userManager)
         {
             this.environment = environment;
             this.eventService = eventService;
+            this.userManager = userManager;
         }
 
         [Authorize]
@@ -43,6 +48,20 @@
         {
             var model = this.eventService.GetEventById(id);
             return this.View(model);
+        }
+
+        public async Task<IActionResult> MyEvents(int id = 1)
+        {
+            var user = await this.userManager.GetUserAsync(this.User);
+            var userId = user.Id.ToString();
+            var viewModel = new ListEventViewModel()
+            {
+                ItemsPerPage = GlobalConstants.ItemsPerPage,
+                PageNumber = id,
+                Events = this.eventService.GetEventsByUser(userId),
+                EventsCount = this.eventService.GetCount(),               
+            };
+            return this.View(viewModel);
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace EventFinder2021.Data.Migrations
+﻿namespace EventFinder2021.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class NullbableCIty : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

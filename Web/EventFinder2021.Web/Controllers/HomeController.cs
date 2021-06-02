@@ -2,6 +2,7 @@
 {
     using System.Diagnostics;
 
+    using EventFinder2021.Common;
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Web.ViewModels;
     using EventFinder2021.Web.ViewModels.EventViewModels;
@@ -10,24 +11,21 @@
 
     public class HomeController : BaseController
     {
-        private readonly IWebHostEnvironment hostEnvironment;
         private readonly IEventService eventService;
 
-        public HomeController(IWebHostEnvironment hostEnvironment, IEventService eventService)
+        public HomeController(IEventService eventService)
         {
-            this.hostEnvironment = hostEnvironment;
             this.eventService = eventService;
         }
 
         public IActionResult Index(int id = 1)
         {
-            const int numbersPerPage = 12;
             var viewModel = new ListEventViewModel()
             {
-                ItemsPerPage = numbersPerPage,
+                ItemsPerPage = GlobalConstants.ItemsPerPage,
                 PageNumber = id,
-                Events = this.eventService.GetAllEvents(id, numbersPerPage),
-                RecipeCount = this.eventService.GetCount(),
+                Events = this.eventService.GetAllEvents(id, GlobalConstants.ItemsPerPage),
+                EventsCount = this.eventService.GetCount(),
             };
 
             return this.View(viewModel);

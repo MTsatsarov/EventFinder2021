@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xx30fraPJ8dLy7bFweVepbuD6gIjHQKPMiy/rKdfCUwsO+Tr9yPScPdySI4EkAryi+tIiYt1VqHwycy6g4b1NA==",
+  "dgSpecHash": "e4mkw9V/gAcDY6Qu9O0flZJ5v6KgF4l1g6WTGtwdWZkaToPixlWcjWu7Oz83p1LDAo+dkfUqNPHwQ7pMFFgQNQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Tests\\Sandbox\\Sandbox.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Tests\\Sandbox\\Sandbox.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\commandlineparser\\2.8.0\\commandlineparser.2.8.0.nupkg.sha512",
