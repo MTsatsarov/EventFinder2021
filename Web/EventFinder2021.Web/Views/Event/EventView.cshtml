@@ -1,0 +1,24 @@
+﻿@using EventFinder2021.Web.ViewModels.EventViewModels
+@model EventViewModel
+
+<div class="justify-content-xl-center">
+    <h2 class="text-center">@Model.Name</h2>
+    <hr />
+    <a class="event-image image-lightbox " data-imagelightbox="image"  title="The games of our grandparents in the museum">
+        <img src="@Model.ImageUrl" title="@Model.Name"  class="img-fluid mx-auto">
+    </a>
+    <div>
+        <p>Category: @Model.Category</p>
+        <p>City: @Model.City</p>
+        <p>Date: @Model.Date</p>
+    </div>
+    <div id="contentpics">
+        <h3></h3>
+        <div class="post-gallery">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+    <hr />
+    @Model.Description
+</div>

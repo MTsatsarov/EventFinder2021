@@ -6,18 +6,21 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
+    using EventFinder2021.Common;
     using EventFinder2021.Data;
+    using EventFinder2021.Data.Common.Repositories;
     using EventFinder2021.Data.Models;
     using EventFinder2021.Web.ViewModels.EventViewModels;
 
     public class EventService : IEventService
     {
         private readonly ApplicationDbContext db;
+        private readonly EventFinder2021.Data.Common.Repositories.IDeletableEntityRepository<Image> imageRepository;
 
-        public EventService(ApplicationDbContext db)
+        public EventService(ApplicationDbContext db, IDeletableEntityRepository<Image> imageRepository)
         {
             this.db = db;
+            this.imageRepository = imageRepository;
         }
 
         public async Task CreateEventAsync(CreateEventInputModel model, string imagePath)
@@ -64,9 +67,9 @@
                 Category = x.Type.ToString(),
                 City = x.City.ToString(),
                 Description = x.Description,
-                ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension,
+                ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension ?? GlobalConstants.DefaultImageLocation,
+                Date = x.Date.ToString(),
             }).ToList();
-
             return events;
         }
 
@@ -92,7 +95,7 @@
                 Category = currentEvent.Type.ToString(),
                 City = currentEvent.City.ToString(),
                 Description = currentEvent.Description,
-                ImageUrl = "/images/Events/" + currentEvent.ImageId + "." + currentEvent.Image.Extension,
+                ImageUrl = "/images/Events/" + currentEvent.ImageId + "." + currentEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
                 Date = currentEvent.Date.ToString(),
             };
 
@@ -107,7 +110,7 @@
                 Description = x.Description,
                 Id = x.Id,
                 Date = x.Date.ToString(),
-                ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension,
+                ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension ?? GlobalConstants.DefaultImageLocation,
                 City = x.City.ToString(),
                 Category = x.Type.ToString(),
             }).OrderByDescending(x => x.Date).ToList();
