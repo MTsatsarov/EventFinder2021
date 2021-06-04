@@ -40,14 +40,22 @@
             </div>
         </nav>
     </header>
-    
+    <div style="float: left;  width: 15%; height: 280px;" class="border-right-5 rounded-right col-sm-2">
+        <a class="weatherwidget-io" href="https://forecast7.com/bg/42d5027d46/burgas/" data-label_1="BURGAS" data-label_2="Bulgaria" data-icons="Climacons Animated" data-theme="weather_one">BURGAS Bulgaria</a>
+        <script>
+            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+        </script>
+    </div>
+    <hr />
     <div class="container">
         <partial name="_CookieConsentPartial" />
+
         <main role="main" class="pb-3">
+
             @this.RenderBody()
+
         </main>
     </div>
-    
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
