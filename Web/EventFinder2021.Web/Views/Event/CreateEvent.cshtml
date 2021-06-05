@@ -2,33 +2,45 @@
 @using EventFinder2021.Data.Models.Enums
 @model CreateEventInputModel
 
-<form method="post" enctype="multipart/form-data">
-    <div>
-        <label asp-for="Name"></label>
-        <input asp-for="@Model.Name" />
-    </div>
-    <div>
-        <label asp-for="Description"></label>
-        <textarea asp-for="Description"></textarea>
-    </div>
-    <div>
-        <label asp-for="City"></label>
-        <select asp-for="@Model.City" asp-items="@Html.GetEnumSelectList<City>()"></select>
-    </div>
-    <div>
-        <label asp-for="Category"></label>
-        <select asp-for="@Model.Category" asp-items="@Html.GetEnumSelectList<Category>()"></select>
-    </div>
-    <div>
-        <label asp-for="Date"></label>
-        <input asp-for="@Model.Date" />
-    </div>
-    <div>
-        <label asp-for="Image"></label>
-        <input asp-for="@Model.Image" />
-    </div>
-    <div>
-        
-        <button type="submit" class="btn btn-success" />
-    </div>
-</form>
+    <body>
+        <div class="col-md-10">
+            <h2 class="text-center">You can create your event here !</h2>
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input class="form-control" asp-for="@Model.Name" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea class="form-control" asp-for="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City"></label>
+                    <select class="form-control" asp-for="@Model.City" asp-items="@Html.GetEnumSelectList<City>()"></select>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Category"></label>
+                    <select class="form-control" asp-for="@Model.Category" asp-items="@Html.GetEnumSelectList<Category>()"></select>
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Date"></label>
+                    <input class="form-control" asp-for="@Model.Date" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input class="form-control-file" asp-for="@Model.Image" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div>
+
+                    <button type="submit" class="btn btn-success form-control">Submit</button>
+                </div>
+            </form>
+        </div>
+    </body>

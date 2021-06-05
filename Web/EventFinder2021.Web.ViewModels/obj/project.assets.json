@@ -263,6 +263,15 @@
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "StyleCop.Analyzers/1.2.0-beta.312": {
         "type": "package",
         "dependencies": {
@@ -868,6 +877,33 @@
         "version.txt"
       ]
     },
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "StyleCop.Analyzers/1.2.0-beta.312": {
       "sha512": "SQCTxlYm6+d4rJ1/hNVLNryOZx6y23Z0JYp9WmUu6YtCApNMyUNJ//4yucqP7al2Jv0kwBuTRyK/4qWmGmIA/A==",
       "type": "package",
@@ -1318,6 +1354,7 @@
       "EventFinder2021.Data.Models >= 1.0.0",
       "EventFinder2021.Services.Mapping >= 1.0.0",
       "Microsoft.AspNetCore.Http.Features >= 5.0.6",
+      "Newtonsoft.Json >= 13.0.1",
       "StyleCop.Analyzers >= 1.2.0-beta.312"
     ]
   },
@@ -1328,11 +1365,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Web\\EventFinder2021.Web.ViewModels\\EventFinder2021.Web.ViewModels.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Web\\EventFinder2021.Web.ViewModels\\EventFinder2021.Web.ViewModels.csproj",
       "projectName": "EventFinder2021.Web.ViewModels",
-      "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Web\\EventFinder2021.Web.ViewModels\\EventFinder2021.Web.ViewModels.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Web\\EventFinder2021.Web.ViewModels\\EventFinder2021.Web.ViewModels.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Web\\EventFinder2021.Web.ViewModels\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Web\\EventFinder2021.Web.ViewModels\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -1353,11 +1390,11 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Data\\EventFinder2021.Data.Models\\EventFinder2021.Data.Models.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Data\\EventFinder2021.Data.Models\\EventFinder2021.Data.Models.csproj"
+            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Models\\EventFinder2021.Data.Models.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Models\\EventFinder2021.Data.Models.csproj"
             },
-            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj"
+            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj"
             }
           }
         }
@@ -1375,6 +1412,10 @@
           "Microsoft.AspNetCore.Http.Features": {
             "target": "Package",
             "version": "[5.0.6, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
           },
           "StyleCop.Analyzers": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers",

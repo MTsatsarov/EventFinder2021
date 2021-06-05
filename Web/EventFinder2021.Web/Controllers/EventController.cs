@@ -59,9 +59,30 @@
                 ItemsPerPage = GlobalConstants.ItemsPerPage,
                 PageNumber = id,
                 Events = this.eventService.GetEventsByUser(userId),
-                EventsCount = this.eventService.GetCount(),               
+                EventsCount = this.eventService.GetCount(),
             };
             return this.View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult GoingToEvent([FromBody] GoingUsers model)
+        {
+
+            var userId = model.UserId;
+            var eventId = model.EventId;
+            var goingUsersCount = this.eventService.AddGoingUser(userId, eventId).ToString();
+            return this.Json(new { count = $"{goingUsersCount}" });
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult NotGoingToEvent([FromBody] GoingUsers model)
+        {
+            var userId = model.UserId;
+            var eventId = model.EventId;
+            var notGoingUsersCount = this.eventService.AddNotGoingUserAsync(userId, eventId);
+            return this.Json(new { count = $"{notGoingUsersCount}" });
         }
     }
 }

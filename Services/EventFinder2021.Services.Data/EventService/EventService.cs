@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
+
     using EventFinder2021.Common;
     using EventFinder2021.Data;
     using EventFinder2021.Data.Common.Repositories;
@@ -16,11 +16,74 @@
     {
         private readonly ApplicationDbContext db;
         private readonly EventFinder2021.Data.Common.Repositories.IDeletableEntityRepository<Image> imageRepository;
+        private readonly IDeletableEntityRepository<Event> eventRepository;
 
-        public EventService(ApplicationDbContext db, IDeletableEntityRepository<Image> imageRepository)
+        public EventService(ApplicationDbContext db, IDeletableEntityRepository<Image> imageRepository, IDeletableEntityRepository<Event> eventRepository)
         {
             this.db = db;
             this.imageRepository = imageRepository;
+            this.eventRepository = eventRepository;
+        }
+
+        public int AddGoingUser(string userId, int eventId)
+        {
+            var currEvent = this.db.Events.Where(x => x.Id == eventId).FirstOrDefault();
+            var user = this.db.Users.Where(x => x.Id == userId).FirstOrDefault();
+            if (user == null)
+            {
+                throw new ArgumentNullException("User not found");
+            }
+
+            if (currEvent == null)
+            {
+                throw new InvalidOperationException("Event not found");
+            }
+
+            if (currEvent.GoingUsers.Contains(user))
+            {
+                throw new InvalidOperationException($"This user is already going to {currEvent.Name}");
+            }
+
+            if (currEvent.NotGoingUsers.Contains(user))
+            {
+                currEvent.NotGoingUsers.Remove(user);
+            }
+
+            this.db.Events.Where(x => x.Id == currEvent.Id).FirstOrDefault().GoingUsers.Add(user);
+            this.db.SaveChanges();
+
+            return currEvent.GoingUsers.Count();
+        }
+
+        public int AddNotGoingUserAsync(string userId, int eventId)
+        {
+            var currEvent = this.db.Events.Where(x => x.Id == eventId).FirstOrDefault();
+            var user = this.db.Users.Where(x => x.Id == userId).FirstOrDefault();
+            if (user == null)
+            {
+                throw new ArgumentNullException("User not found");
+            }
+
+            if (currEvent == null)
+            {
+                throw new InvalidOperationException("Event not found");
+            }
+
+            if (currEvent.NotGoingUsers.Contains(user))
+            {
+                throw new InvalidOperationException($"This user is already missing {currEvent.Name}");
+            }
+
+            if (currEvent.GoingUsers.Contains(user))
+            {
+                currEvent.GoingUsers.Remove(user);
+            }
+
+            currEvent.NotGoingUsers.Add(user);
+            this.db.Events.Where(x => x.Id == currEvent.Id).FirstOrDefault().NotGoingUsers.Add(user);
+            this.db.SaveChanges();
+
+            return currEvent.NotGoingUsers.Count();
         }
 
         public async Task CreateEventAsync(CreateEventInputModel model, string imagePath)
@@ -97,6 +160,7 @@
                 Description = currentEvent.Description,
                 ImageUrl = "/images/Events/" + currentEvent.ImageId + "." + currentEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
                 Date = currentEvent.Date.ToString(),
+                CreatorId = currentEvent.UserId,
             };
 
             return viewModel;

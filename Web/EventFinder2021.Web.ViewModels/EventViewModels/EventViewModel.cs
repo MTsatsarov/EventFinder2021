@@ -15,5 +15,7 @@
         public string ImageUrl { get; set; }
 
         public string Date { get; set; }
+
+        public string CreatorId { get; set; }
     }
 }

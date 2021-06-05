@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "82d3psFDcExa4D1YszVNPTT+nMnx/3FS6FUi5ghhnuaIP0Gl2Ig+LTZfy7Ee9eowRgSl0YCQyihVzth0JBBPZA==",
+  "dgSpecHash": "6OJCVaTW3kmEcbsxVksB8USE0ha7rfeyAG03DUGdABKunAiFjOxSYk8hkNTc2C7aWlMPZOYsxI5n0vI5B4z9sA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Web\\EventFinder2021.Web\\EventFinder2021.Web.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Web\\EventFinder2021.Web\\EventFinder2021.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
@@ -75,7 +75,7 @@
     "C:\\Users\\User\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
