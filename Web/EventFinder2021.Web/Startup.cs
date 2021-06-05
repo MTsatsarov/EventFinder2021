@@ -9,6 +9,7 @@
     using EventFinder2021.Data.Repositories;
     using EventFinder2021.Data.Seeding;
     using EventFinder2021.Services.Data;
+    using EventFinder2021.Services.Data.ComentaryService;
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Services.Mapping;
     using EventFinder2021.Services.Messaging;
@@ -36,7 +37,7 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseLazyLoadingProxies().UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -67,6 +68,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IEventService, EventService>();
+            services.AddTransient<IComentaryService, ComentaryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -19,6 +19,36 @@ namespace EventFinder2021.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ApplicationUserGoingUsers", b =>
+                {
+                    b.Property<int>("GoingUsersId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("GoingUsersId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("ApplicationUserGoingUsers");
+                });
+
+            modelBuilder.Entity("ApplicationUserNotGoingUsers", b =>
+                {
+                    b.Property<int>("NotGoingUsersId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("NotGoingUsersId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("ApplicationUserNotGoingUsers");
+                });
+
             modelBuilder.Entity("EventFinder2021.Data.Models.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
@@ -85,12 +115,6 @@ namespace EventFinder2021.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("EventId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("EventId1")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -132,10 +156,6 @@ namespace EventFinder2021.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId");
-
-                    b.HasIndex("EventId1");
-
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("NormalizedEmail")
@@ -149,6 +169,45 @@ namespace EventFinder2021.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("EventFinder2021.Data.Models.Comentary", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Comentaries");
+                });
+
             modelBuilder.Entity("EventFinder2021.Data.Models.Event", b =>
                 {
                     b.Property<int>("Id")
@@ -157,6 +216,9 @@ namespace EventFinder2021.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("City")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ComentaryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
@@ -171,6 +233,9 @@ namespace EventFinder2021.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("GoingUsersId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ImageId")
                         .HasColumnType("nvarchar(max)");
 
@@ -182,6 +247,9 @@ namespace EventFinder2021.Data.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NotGoingUsersId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
@@ -196,6 +264,38 @@ namespace EventFinder2021.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.GoingUsers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId")
+                        .IsUnique();
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("GoingUsers");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Image", b =>
@@ -237,6 +337,77 @@ namespace EventFinder2021.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.NotGoingUsers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId")
+                        .IsUnique();
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("NotGoingUsers");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.Reply", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ComentaryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ComentaryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Replies");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Setting", b =>
@@ -375,24 +546,71 @@ namespace EventFinder2021.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("EventFinder2021.Data.Models.ApplicationUser", b =>
+            modelBuilder.Entity("ApplicationUserGoingUsers", b =>
                 {
-                    b.HasOne("EventFinder2021.Data.Models.Event", null)
-                        .WithMany("GoingUsers")
-                        .HasForeignKey("EventId");
+                    b.HasOne("EventFinder2021.Data.Models.GoingUsers", null)
+                        .WithMany()
+                        .HasForeignKey("GoingUsersId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
-                    b.HasOne("EventFinder2021.Data.Models.Event", null)
-                        .WithMany("NotGoingUsers")
-                        .HasForeignKey("EventId1");
+                    b.HasOne("EventFinder2021.Data.Models.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ApplicationUserNotGoingUsers", b =>
+                {
+                    b.HasOne("EventFinder2021.Data.Models.NotGoingUsers", null)
+                        .WithMany()
+                        .HasForeignKey("NotGoingUsersId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EventFinder2021.Data.Models.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.Comentary", b =>
+                {
+                    b.HasOne("EventFinder2021.Data.Models.Event", "Event")
+                        .WithMany("Comentaries")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EventFinder2021.Data.Models.ApplicationUser", "User")
+                        .WithMany("Comentaries")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Event");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Event", b =>
                 {
                     b.HasOne("EventFinder2021.Data.Models.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("Events")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.GoingUsers", b =>
+                {
+                    b.HasOne("EventFinder2021.Data.Models.Event", "Event")
+                        .WithOne("GoingUsers")
+                        .HasForeignKey("EventFinder2021.Data.Models.GoingUsers", "EventId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Event");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Image", b =>
@@ -410,6 +628,34 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("AddedByUser");
 
                     b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.NotGoingUsers", b =>
+                {
+                    b.HasOne("EventFinder2021.Data.Models.Event", "Event")
+                        .WithOne("NotGoingUsers")
+                        .HasForeignKey("EventFinder2021.Data.Models.NotGoingUsers", "EventId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.Reply", b =>
+                {
+                    b.HasOne("EventFinder2021.Data.Models.Comentary", "Comentary")
+                        .WithMany("Replies")
+                        .HasForeignKey("ComentaryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EventFinder2021.Data.Models.ApplicationUser", "User")
+                        .WithMany("Replies")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Comentary");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -467,13 +713,26 @@ namespace EventFinder2021.Data.Migrations
                 {
                     b.Navigation("Claims");
 
+                    b.Navigation("Comentaries");
+
+                    b.Navigation("Events");
+
                     b.Navigation("Logins");
+
+                    b.Navigation("Replies");
 
                     b.Navigation("Roles");
                 });
 
+            modelBuilder.Entity("EventFinder2021.Data.Models.Comentary", b =>
+                {
+                    b.Navigation("Replies");
+                });
+
             modelBuilder.Entity("EventFinder2021.Data.Models.Event", b =>
                 {
+                    b.Navigation("Comentaries");
+
                     b.Navigation("GoingUsers");
 
                     b.Navigation("Image");

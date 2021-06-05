@@ -1,0 +1,13 @@
+﻿@using EventFinder2021.Web.ViewModels.ComentaryModels
+@model List<ComentaryViewModel>
+
+<body>
+
+    @foreach (var comentary in @Model)
+    {
+        <div class="_2b05">@comentary.UserName</div>
+        <div>@comentary.Content</div>
+    }
+
+
+</body>

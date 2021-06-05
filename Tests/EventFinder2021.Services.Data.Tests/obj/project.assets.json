@@ -15,7 +15,7 @@
           "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
-      "Castle.Core/4.4.0": {
+      "Castle.Core/4.4.1": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -220,6 +220,19 @@
         },
         "runtime": {
           "lib/netstandard2.1/Microsoft.EntityFrameworkCore.InMemory.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Proxies/5.0.6": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "4.4.1",
+          "Microsoft.EntityFrameworkCore": "5.0.6"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Proxies.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Proxies.dll": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Relational/5.0.6": {
@@ -2703,6 +2716,7 @@
           "EventFinder2021.Data.Common": "1.0.0",
           "EventFinder2021.Data.Models": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.6",
+          "Microsoft.EntityFrameworkCore.Proxies": "5.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.6",
           "Microsoft.Extensions.Configuration.UserSecrets": "5.0.0"
         },
@@ -2740,6 +2754,16 @@
           "bin/placeholder/EventFinder2021.Data.Models.dll": {}
         }
       },
+      "EventFinder2021.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/EventFinder2021.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EventFinder2021.Services.dll": {}
+        }
+      },
       "EventFinder2021.Services.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -2747,6 +2771,7 @@
           "EventFinder2021.Data": "1.0.0",
           "EventFinder2021.Data.Common": "1.0.0",
           "EventFinder2021.Data.Models": "1.0.0",
+          "EventFinder2021.Services": "1.0.0",
           "EventFinder2021.Services.Mapping": "1.0.0",
           "EventFinder2021.Web.ViewModels": "1.0.0"
         },
@@ -2805,17 +2830,17 @@
         "lib/netstandard2.0/AutoMapper.xml"
       ]
     },
-    "Castle.Core/4.4.0": {
-      "sha512": "b5rRL5zeaau1y/5hIbI+6mGw3cwun16YjkHZnV9RRT5UyUIFsgLmNXJ0YnIN9p8Hw7K7AbG1q1UclQVU3DinAQ==",
+    "Castle.Core/4.4.1": {
+      "sha512": "zanbjWC0Y05gbx4eGXkzVycOQqVOFVeCjVsDSyuao9P4mtN1w3WxxTo193NGC7j3o2u3AJRswaoC6hEbnGACnQ==",
       "type": "package",
-      "path": "castle.core/4.4.0",
+      "path": "castle.core/4.4.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "ASL - Apache Software Foundation License.txt",
         "CHANGELOG.md",
         "LICENSE",
-        "castle.core.4.4.0.nupkg.sha512",
+        "castle.core.4.4.1.nupkg.sha512",
         "castle.core.nuspec",
         "lib/net35/Castle.Core.dll",
         "lib/net35/Castle.Core.xml",
@@ -3176,6 +3201,20 @@
         "lib/netstandard2.1/Microsoft.EntityFrameworkCore.InMemory.xml",
         "microsoft.entityframeworkcore.inmemory.5.0.6.nupkg.sha512",
         "microsoft.entityframeworkcore.inmemory.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.Proxies/5.0.6": {
+      "sha512": "u8dxttcpn7kY4OHQ5Ak0VAzSvTB0lYnKHcmjTSAkUw/Pfjp6+3HiVsvnTWx0wl2hps/fmqG5r7x6acZ9kveTkg==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.proxies/5.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Proxies.dll",
+        "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Proxies.xml",
+        "microsoft.entityframeworkcore.proxies.5.0.6.nupkg.sha512",
+        "microsoft.entityframeworkcore.proxies.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/5.0.6": {
@@ -9087,6 +9126,11 @@
       "type": "project",
       "path": "../../Data/EventFinder2021.Data.Models/EventFinder2021.Data.Models.csproj",
       "msbuildProject": "../../Data/EventFinder2021.Data.Models/EventFinder2021.Data.Models.csproj"
+    },
+    "EventFinder2021.Services/1.0.0": {
+      "type": "project",
+      "path": "../../Services/EventFinder2021.Services/EventFinder2021.Services.csproj",
+      "msbuildProject": "../../Services/EventFinder2021.Services/EventFinder2021.Services.csproj"
     },
     "EventFinder2021.Services.Data/1.0.0": {
       "type": "project",

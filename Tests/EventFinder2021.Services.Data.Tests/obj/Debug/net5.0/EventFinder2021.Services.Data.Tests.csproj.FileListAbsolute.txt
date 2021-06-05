@@ -354,3 +354,6 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\obj\Debug\net5.0\ref\EventFinder2021.Services.Data.Tests.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\obj\Debug\net5.0\EventFinder2021.Services.Data.Tests.pdb
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\obj\Debug\net5.0\EventFinder2021.Services.Data.Tests.genruntimeconfig.cache
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.dll
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.pdb
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll

@@ -1,6 +1,6 @@
 ﻿namespace EventFinder2021.Web.ViewModels.EventViewModels
 {
-   public class EventViewModel
+    public class EventViewModel
     {
         public int Id { get; set; }
 

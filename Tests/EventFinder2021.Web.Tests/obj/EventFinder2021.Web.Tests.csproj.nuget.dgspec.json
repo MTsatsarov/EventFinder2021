@@ -208,6 +208,10 @@
               "target": "Package",
               "version": "[5.0.6, )"
             },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.6, )"
@@ -353,6 +357,9 @@
               },
               "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj": {
                 "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj"
+              },
+              "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services\\EventFinder2021.Services.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services\\EventFinder2021.Services.csproj"
               },
               "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Web\\EventFinder2021.Web.ViewModels\\EventFinder2021.Web.ViewModels.csproj": {
                 "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Web\\EventFinder2021.Web.ViewModels\\EventFinder2021.Web.ViewModels.csproj"
@@ -945,6 +952,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[1.2.0-beta.312, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.6.0, )"
             }
           },
           "imports": [

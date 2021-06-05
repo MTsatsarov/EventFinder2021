@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     using EventFinder2021.Data.Common.Models;
     using EventFinder2021.Data.Models.Enums;
 
@@ -10,8 +10,7 @@
     {
         public Event()
         {
-            this.GoingUsers = new HashSet<ApplicationUser>();
-            this.NotGoingUsers = new HashSet<ApplicationUser>();
+            this.Comentaries = new HashSet<Comentary>();
         }
 
         public string Name { get; set; }
@@ -30,10 +29,19 @@
 
         public string UserId { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
-        public ICollection<ApplicationUser> GoingUsers { get; set; }
+        public int GoingUsersId { get; set; }
 
-        public ICollection<ApplicationUser> NotGoingUsers { get; set; }
+        public virtual GoingUsers GoingUsers { get; set; }
+
+        public int NotGoingUsersId { get; set; }
+
+        public virtual NotGoingUsers NotGoingUsers { get; set; }
+
+        public int ComentaryId { get; set; }
+
+        [InverseProperty("Event")]
+        public virtual ICollection<Comentary> Comentaries { get; set; }
     }
 }

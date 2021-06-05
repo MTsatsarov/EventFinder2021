@@ -30,6 +30,14 @@
 
         public DbSet<Image> Images { get; set; }
 
+        public DbSet<Comentary> Comentaries { get; set; }
+
+        public DbSet<Reply> Replies { get; set; }
+
+        public DbSet<GoingUsers> GoingUsers { get; set; }
+
+        public DbSet<NotGoingUsers> NotGoingUsers { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -64,6 +72,14 @@
                .HasOne(i => i.Image)
                .WithOne(e => e.Event)
                .HasForeignKey<Image>(x => x.EventId);
+            builder.Entity<Event>()
+               .HasOne(i => i.GoingUsers)
+               .WithOne(e => e.Event)
+               .HasForeignKey<GoingUsers>(x => x.EventId);
+            builder.Entity<Event>()
+               .HasOne(i => i.NotGoingUsers)
+               .WithOne(e => e.Event)
+               .HasForeignKey<NotGoingUsers>(x => x.EventId);
 
             // Set global query filter for not deleted entities only
             var deletableEntityTypes = entityTypes

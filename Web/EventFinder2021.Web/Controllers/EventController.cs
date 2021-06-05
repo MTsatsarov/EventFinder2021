@@ -66,9 +66,8 @@
 
         [HttpPost]
         [Authorize]
-        public IActionResult GoingToEvent([FromBody] GoingUsers model)
+        public IActionResult GoingToEvent([FromBody] GoingUsersModel model)
         {
-
             var userId = model.UserId;
             var eventId = model.EventId;
             var goingUsersCount = this.eventService.AddGoingUser(userId, eventId).ToString();
@@ -77,7 +76,7 @@
 
         [HttpPost]
         [Authorize]
-        public IActionResult NotGoingToEvent([FromBody] GoingUsers model)
+        public IActionResult NotGoingToEvent([FromBody] GoingUsersModel model)
         {
             var userId = model.UserId;
             var eventId = model.EventId;

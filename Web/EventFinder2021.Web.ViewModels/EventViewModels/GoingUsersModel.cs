@@ -2,7 +2,7 @@
 {
     using Newtonsoft.Json;
 
-    public class GoingUsers
+    public class GoingUsersModel
     {
         [JsonProperty(PropertyName = "userid")]
         public string UserId { get; set; }

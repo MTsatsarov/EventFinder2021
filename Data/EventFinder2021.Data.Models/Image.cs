@@ -15,12 +15,12 @@
 
         public int EventId { get; set; }
 
-        public Event Event { get; set; }
+        public virtual Event Event { get; set; }
 
         public string RemoteUrl { get; set; }
 
         public string AddedByUserId { get; set; }
 
-        public ApplicationUser AddedByUser { get; set; }
+        public virtual ApplicationUser AddedByUser { get; set; }
     }
 }

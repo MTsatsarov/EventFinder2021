@@ -39,20 +39,20 @@
                 throw new InvalidOperationException("Event not found");
             }
 
-            if (currEvent.GoingUsers.Contains(user))
+            if (currEvent.GoingUsers.Users.Any(x => x.Id == user.Id))
             {
                 throw new InvalidOperationException($"This user is already going to {currEvent.Name}");
             }
 
-            if (currEvent.NotGoingUsers.Contains(user))
+            if (currEvent.NotGoingUsers.Users.Any(x => x.Id == user.Id))
             {
-                currEvent.NotGoingUsers.Remove(user);
+                currEvent.NotGoingUsers.Users.Remove(user);
             }
 
-            this.db.Events.Where(x => x.Id == currEvent.Id).FirstOrDefault().GoingUsers.Add(user);
+            this.db.Events.Where(x => x.Id == currEvent.Id).FirstOrDefault().GoingUsers.Users.Add(user);
             this.db.SaveChanges();
 
-            return currEvent.GoingUsers.Count();
+            return currEvent.GoingUsers.Users.Count();
         }
 
         public int AddNotGoingUserAsync(string userId, int eventId)
@@ -69,21 +69,21 @@
                 throw new InvalidOperationException("Event not found");
             }
 
-            if (currEvent.NotGoingUsers.Contains(user))
+            if (!currEvent.NotGoingUsers.Users.Any(x => x.Id == user.Id))
             {
                 throw new InvalidOperationException($"This user is already missing {currEvent.Name}");
             }
 
-            if (currEvent.GoingUsers.Contains(user))
+            if (currEvent.GoingUsers.Users.Contains(user))
             {
-                currEvent.GoingUsers.Remove(user);
+                currEvent.GoingUsers.Users.Remove(user);
             }
 
-            currEvent.NotGoingUsers.Add(user);
-            this.db.Events.Where(x => x.Id == currEvent.Id).FirstOrDefault().NotGoingUsers.Add(user);
+            currEvent.NotGoingUsers.Users.Add(user);
+            this.db.Events.Where(x => x.Id == currEvent.Id).FirstOrDefault().NotGoingUsers.Users.Add(user);
             this.db.SaveChanges();
 
-            return currEvent.NotGoingUsers.Count();
+            return currEvent.NotGoingUsers.Users.Count();
         }
 
         public async Task CreateEventAsync(CreateEventInputModel model, string imagePath)
