@@ -1,12 +1,13 @@
 ﻿namespace EventFinder2021.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Data.ReplyService;
     using EventFinder2021.Services.Models;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     public class ReplyController : Controller
     {
