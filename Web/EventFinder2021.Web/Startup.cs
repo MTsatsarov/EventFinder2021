@@ -11,6 +11,7 @@
     using EventFinder2021.Services.Data;
     using EventFinder2021.Services.Data.ComentaryService;
     using EventFinder2021.Services.Data.EventService;
+    using EventFinder2021.Services.Data.ReplyService;
     using EventFinder2021.Services.Mapping;
     using EventFinder2021.Services.Messaging;
     using EventFinder2021.Web.ViewModels;
@@ -69,6 +70,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IEventService, EventService>();
             services.AddTransient<IComentaryService, ComentaryService>();
+            services.AddTransient<IReplyService, ReplyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

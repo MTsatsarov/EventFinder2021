@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
+
     using EventFinder2021.Data.Common.Models;
 
     public class Comentary : BaseDeletableModel<int>
@@ -21,6 +22,7 @@
 
         [ForeignKey("EventId")]
         public virtual Event Event { get; set; }
+
         [InverseProperty("Comentary")]
         public virtual ICollection<Reply> Replies { get; set; }
     }

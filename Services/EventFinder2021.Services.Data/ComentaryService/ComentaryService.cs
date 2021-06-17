@@ -6,23 +6,26 @@
     using System.Threading.Tasks;
 
     using EventFinder2021.Data;
+    using EventFinder2021.Data.Common.Repositories;
     using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Models;
     using EventFinder2021.Web.ViewModels.ComentaryModels;
 
     public class ComentaryService : IComentaryService
     {
-        private readonly ApplicationDbContext db;
+        private readonly IDeletableEntityRepository<Comentary> comentaryRepository;
+        private readonly IDeletableEntityRepository<Event> eventRepostiroy;
 
-        public ComentaryService(ApplicationDbContext db)
+        public ComentaryService(IDeletableEntityRepository<Comentary> comentaryRepository, IDeletableEntityRepository<Event> eventRepostiroy)
         {
-            this.db = db;
+            this.comentaryRepository = comentaryRepository;
+            this.eventRepostiroy = eventRepostiroy;
         }
 
         public IEnumerable<ComentaryViewModel> GetAllEventComentaries(int eventId)
         {
             List<ComentaryViewModel> comentaries = new List<ComentaryViewModel>();
-            var currComentaries = this.db.Comentaries.Where(x => x.EventId == eventId).ToList();
+            var currComentaries = this.comentaryRepository.All().Where(x => x.EventId == eventId).ToList();
             foreach (var comentary in currComentaries)
             {
                 var currComentary = new ComentaryViewModel()
@@ -30,6 +33,7 @@
                     UserName = comentary.User.UserName,
                     Content = comentary.Content,
                     EventName = comentary.Event.Name,
+                    ComentaryId = comentary.Id,
                 };
 
                 foreach (var reply in comentary.Replies)
@@ -50,7 +54,7 @@
 
         public int GetComentaryCount(int eventId)
         {
-            var currEvent = this.db.Events.Where(x => x.Id == eventId).FirstOrDefault();
+            var currEvent = this.eventRepostiroy.All().Where(x => x.Id == eventId).FirstOrDefault();
 
             if (currEvent == null)
             {
@@ -68,20 +72,8 @@
                 EventId = model.EventId,
                 UserId = model.UserId,
             };
-            await this.db.Comentaries.AddAsync(currComentary);
-            await this.db.SaveChangesAsync();
-        }
-
-        public async Task WriteReply(PostReplyModel model)
-        {
-            var currReply = new Reply()
-            {
-                ComentaryId = model.ComentaryId,
-                Content = model.Content,
-                UserId = model.UserId,
-            };
-            await this.db.Replies.AddAsync(currReply);
-            await this.db.SaveChangesAsync();
+            await this.comentaryRepository.AddAsync(currComentary);
+            await this.comentaryRepository.SaveChangesAsync();
         }
     }
 }

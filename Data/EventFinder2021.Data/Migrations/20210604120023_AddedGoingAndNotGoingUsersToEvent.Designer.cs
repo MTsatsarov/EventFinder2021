@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventFinder2021.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(IDeletableRepository))]
     [Migration("20210604120023_AddedGoingAndNotGoingUsersToEvent")]
     partial class AddedGoingAndNotGoingUsersToEvent
     {

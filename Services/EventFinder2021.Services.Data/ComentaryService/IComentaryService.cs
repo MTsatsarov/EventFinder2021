@@ -12,8 +12,6 @@
 
         public IEnumerable<ComentaryViewModel> GetAllEventComentaries(int eventId);
 
-        Task WriteReply(PostReplyModel model);
-
         public int GetComentaryCount(int eventId);
     }
 }

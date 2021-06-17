@@ -11,7 +11,10 @@
                 @foreach (var currEvent in this.Model.Events)
                 {
                     <div class="card col-md-3">
-                        <img src="@currEvent.ImageUrl" class="mr-3" width="100">
+                        <div>
+                            <img src="@currEvent.ImageUrl" class="mr-3" width="100">
+                        </div>
+                       
                         <div class="card-body">
                             <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
                             <p class="card-text">Category: @currEvent.Category</p>

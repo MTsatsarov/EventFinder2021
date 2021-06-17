@@ -2,6 +2,8 @@
 {
     public class ReplyViewModel
     {
+        public int ComentaryId { get; set; }
+
         public string Content { get; set; }
 
         public string UserName { get; set; }

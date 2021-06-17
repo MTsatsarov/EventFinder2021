@@ -2,12 +2,45 @@
 @model List<ComentaryViewModel>
 
 <body>
+    <table class="col-md-8  justify-content-md-center border-info">
+        <tbody>
+            @foreach (var comentary in @Model)
+            {
+                <tr class="bg-primary ">
+                    <td>
+                        <div class="_2b05">@comentary.UserName</div>
+                    </td>
+                </tr>
+                <tr class="bg-success flex-md-fill">
+                    <td class=" table-bordered">
+                        <div>@comentary.Content</div>
+                    </td>
+                </tr>
 
-    @foreach (var comentary in @Model)
-    {
-        <div class="_2b05">@comentary.UserName</div>
-        <div>@comentary.Content</div>
-    }
+                @foreach (var reply in comentary.Replies)
+                {
+                    <tr>
+                        <td>
+                            <div> @reply.UserName</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>@reply.Content</div>
+                        </td>
+                    </tr>
+
+
+                }
+                <tr>
+                    <td>
+                        <a class="btn" asp-controller="Reply" asp-action="WriteReply" asp-route-id="@comentary.ComentaryId">Reply</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 
 
 </body>
