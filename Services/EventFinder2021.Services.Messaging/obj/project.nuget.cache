@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zbbYsKsFgzOibroBE8sWHPUcOOccqEiLIC3gwSS7sdapFsMj2UR/BSGdBXomF7RDRNiyUSS1UbJ6RvaoEtLAMw==",
+  "dgSpecHash": "sCqQ70ZygzH+RMT3UzPWQiGaix2FtqyRcDLQBCILRosiGCa2Kf9Fk5M54ynX0Xn/STPOGYNLAnZdbjoQF2pqmg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Services\\EventFinder2021.Services.Messaging\\EventFinder2021.Services.Messaging.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Messaging\\EventFinder2021.Services.Messaging.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",

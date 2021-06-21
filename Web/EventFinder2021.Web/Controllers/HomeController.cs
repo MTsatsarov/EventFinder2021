@@ -6,7 +6,6 @@
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Web.ViewModels;
     using EventFinder2021.Web.ViewModels.EventViewModels;
-    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController

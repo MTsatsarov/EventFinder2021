@@ -108,6 +108,9 @@ namespace EventFinder2021.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("DislikeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -117,6 +120,9 @@ namespace EventFinder2021.Data.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("LikeId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -156,7 +162,11 @@ namespace EventFinder2021.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DislikeId");
+
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("LikeId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -206,6 +216,42 @@ namespace EventFinder2021.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comentaries");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.Dislike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ComentaryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ReplyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ComentaryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ReplyId");
+
+                    b.ToTable("Dislikes");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Event", b =>
@@ -337,6 +383,42 @@ namespace EventFinder2021.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ComentaryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ReplyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ComentaryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ReplyId");
+
+                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.NotGoingUsers", b =>
@@ -576,6 +658,17 @@ namespace EventFinder2021.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("EventFinder2021.Data.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("EventFinder2021.Data.Models.Dislike", null)
+                        .WithMany("Users")
+                        .HasForeignKey("DislikeId");
+
+                    b.HasOne("EventFinder2021.Data.Models.Like", null)
+                        .WithMany("Users")
+                        .HasForeignKey("LikeId");
+                });
+
             modelBuilder.Entity("EventFinder2021.Data.Models.Comentary", b =>
                 {
                     b.HasOne("EventFinder2021.Data.Models.Event", "Event")
@@ -591,6 +684,21 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("Event");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.Dislike", b =>
+                {
+                    b.HasOne("EventFinder2021.Data.Models.Comentary", "Comentary")
+                        .WithMany("Dislikes")
+                        .HasForeignKey("ComentaryId");
+
+                    b.HasOne("EventFinder2021.Data.Models.Reply", "Reply")
+                        .WithMany("Dislikes")
+                        .HasForeignKey("ReplyId");
+
+                    b.Navigation("Comentary");
+
+                    b.Navigation("Reply");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Event", b =>
@@ -628,6 +736,21 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("AddedByUser");
 
                     b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.Like", b =>
+                {
+                    b.HasOne("EventFinder2021.Data.Models.Comentary", "Comentary")
+                        .WithMany("Likes")
+                        .HasForeignKey("ComentaryId");
+
+                    b.HasOne("EventFinder2021.Data.Models.Reply", "Reply")
+                        .WithMany("Likes")
+                        .HasForeignKey("ReplyId");
+
+                    b.Navigation("Comentary");
+
+                    b.Navigation("Reply");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.NotGoingUsers", b =>
@@ -726,7 +849,16 @@ namespace EventFinder2021.Data.Migrations
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Comentary", b =>
                 {
+                    b.Navigation("Dislikes");
+
+                    b.Navigation("Likes");
+
                     b.Navigation("Replies");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.Dislike", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Event", b =>
@@ -738,6 +870,18 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("Image");
 
                     b.Navigation("NotGoingUsers");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.Like", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("EventFinder2021.Data.Models.Reply", b =>
+                {
+                    b.Navigation("Dislikes");
+
+                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }

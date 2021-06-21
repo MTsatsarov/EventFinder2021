@@ -4,7 +4,9 @@
 
     using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Data.ComentaryService;
+    using EventFinder2021.Services.Data.LikeService;
     using EventFinder2021.Services.Models;
+    using EventFinder2021.Web.ViewModels.ComentaryModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -13,11 +15,14 @@
     {
         private readonly IComentaryService comentaryService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly ILikeService likeService;
 
-        public ComentaryController(IComentaryService comentaryService, UserManager<ApplicationUser> userManager)
+        public ComentaryController(IComentaryService comentaryService, UserManager<ApplicationUser> userManager,
+            ILikeService likeService)
         {
             this.comentaryService = comentaryService;
             this.userManager = userManager;
+            this.likeService = likeService;
         }
 
         [Authorize]
@@ -46,6 +51,17 @@
         {
             await this.comentaryService.WriteComentary(model);
             return this.RedirectToAction("AllComentaries", new { id = $"{model.EventId}" });
+        }
+
+        //TODO LIKE AND DISLIKE
+        [HttpPost]
+        [Authorize]
+        public IActionResult LikeComentary([FromBody] LikeInputModel model)
+        {
+            int comentaryId = int.Parse(model.ComentaryId);
+            this.likeService.AddComentaryLike(model.UserId, comentaryId);
+            var comentaryLikesCount = this.likeService.GetComentaryLikes(comentaryId);
+            return this.Json(new { count = $"{comentaryLikesCount}" });
         }
     }
 }

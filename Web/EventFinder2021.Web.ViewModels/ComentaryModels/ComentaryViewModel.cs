@@ -8,6 +8,7 @@
         {
             this.Replies = new List<ReplyViewModel>();
         }
+
         public int ComentaryId { get; set; }
 
         public string Content { get; set; }

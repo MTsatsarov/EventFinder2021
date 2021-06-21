@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
+
     using EventFinder2021.Data.Common.Models;
     using EventFinder2021.Data.Models.Enums;
 

@@ -1,11 +1,28 @@
 ﻿@using EventFinder2021.Web.ViewModels.ComentaryModels
+@using Microsoft.AspNetCore.Identity
+@using EventFinder2021.Data.Models
+@inject UserManager<ApplicationUser> UserManager
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
+@{
+    var currentUserId = this.UserManager.GetUserId(this.User);
+    var comentary = new ComentaryViewModel();
+}
+@functions
+{
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Context).RequestToken;
+    }
+}
 @model List<ComentaryViewModel>
 
 <body>
     <table class="col-md-8  justify-content-md-center border-info">
         <tbody>
-            @foreach (var comentary in @Model)
+            @for (int i = 0; i < Model.Count; i++)
             {
+                comentary = Model[i];
                 <tr class="bg-primary ">
                     <td>
                         <div class="_2b05">@comentary.UserName</div>
@@ -16,7 +33,11 @@
                         <div>@comentary.Content</div>
                     </td>
                 </tr>
-
+                <tr>
+                    <td>
+                        <button id="@comentary.ComentaryId" type="submit" class="btn-success" onclick=Like() value="@comentary.ComentaryId">Like</button>
+                    </td>
+                </tr>
                 @foreach (var reply in comentary.Replies)
                 {
                     <tr>
@@ -29,6 +50,8 @@
                             <div>@reply.Content</div>
                         </td>
                     </tr>
+
+
 
 
                 }
@@ -44,3 +67,29 @@
 
 
 </body>
+<script>
+
+  
+</script>
+<script>
+        function Like() {
+            var id = $(this).attr('id');
+
+      var xhttp = new XMLHttpRequest();
+            xhttp.open('POST', "/Comentary/LikeComentary", true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.setRequestHeader("RequestVerificationToken", "@GetAntiXsrfRequestToken()");
+            xhttp.onreadystatechange = function ()
+            {
+                     if (this.readyState == 4 && this.status == 200) {
+                         // Response
+                         var responseText = JSON.parse(this.responseText);
+                         var count = responseText.count
+                         document.getElementById("btn-danger").innerText = count;
+
+                     }
+            };
+            var data = { userId: '@currentUserId', eventId: id };
+            xhttp.send(JSON.stringify(data));
+        }
+</script>

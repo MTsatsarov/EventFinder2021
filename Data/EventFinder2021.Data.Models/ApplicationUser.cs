@@ -4,6 +4,7 @@ namespace EventFinder2021.Data.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
+
     using EventFinder2021.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -19,6 +20,8 @@ namespace EventFinder2021.Data.Models
             this.Events = new HashSet<Event>();
             this.GoingUsers = new HashSet<GoingUsers>();
             this.NotGoingUsers = new HashSet<NotGoingUsers>();
+            this.Likes = new HashSet<Like>();
+            this.Dislikes = new HashSet<Dislike>();
         }
 
         public virtual ICollection<GoingUsers> GoingUsers { get; set; }
@@ -27,10 +30,16 @@ namespace EventFinder2021.Data.Models
 
         [InverseProperty("User")]
         public virtual ICollection<Comentary> Comentaries { get; set; }
+
         [InverseProperty("User")]
         public virtual ICollection<Event> Events { get; set; }
+
         [InverseProperty("User")]
         public virtual ICollection<Reply> Replies { get; set; }
+
+        public virtual ICollection<Like> Likes { get; set; }
+
+        public virtual ICollection<Dislike> Dislikes { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

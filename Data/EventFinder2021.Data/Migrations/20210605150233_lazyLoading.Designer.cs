@@ -11,7 +11,7 @@ namespace EventFinder2021.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210605150233_lazyLoading")]
-    partial class lazyLoading
+    partial class LazyLoading
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

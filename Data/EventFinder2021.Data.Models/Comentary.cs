@@ -10,6 +10,8 @@
         public Comentary()
         {
             this.Replies = new HashSet<Reply>();
+            this.Likes = new List<Like>();
+            this.Dislikes = new List<Dislike>();
         }
 
         public string Content { get; set; }
@@ -25,5 +27,11 @@
 
         [InverseProperty("Comentary")]
         public virtual ICollection<Reply> Replies { get; set; }
+
+        [InverseProperty("Comentary")]
+        public virtual ICollection<Like> Likes { get; set; }
+
+        [InverseProperty("Comentary")]
+        public virtual ICollection<Dislike> Dislikes { get; set; }
     }
 }
