@@ -3,8 +3,10 @@
     using System.Threading.Tasks;
 
     using EventFinder2021.Data.Models;
+    using EventFinder2021.Services.Data.LikeService;
     using EventFinder2021.Services.Data.ReplyService;
     using EventFinder2021.Services.Models;
+    using EventFinder2021.Web.ViewModels.ComentaryModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -13,11 +15,13 @@
     {
         private readonly IReplyService replyService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly ILikeService likeService;
 
-        public ReplyController(IReplyService replyService, UserManager<ApplicationUser> userManager)
+        public ReplyController(IReplyService replyService, UserManager<ApplicationUser> userManager, ILikeService likeService)
         {
             this.replyService = replyService;
             this.userManager = userManager;
+            this.likeService = likeService;
         }
 
         [Authorize]
@@ -37,6 +41,16 @@
         {
             await this.replyService.WriteReply(reply);
             return this.Redirect("/");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult LikeReply([FromBody] LikeReplyInputModel model)
+        {
+            int replyId = int.Parse(model.ReplyId);
+            this.likeService.AddReplyLike(model.UserId, replyId);
+            var comentaryLikesCount = this.likeService.GetReplyLikes(replyId);
+            return this.Json(new { count = $"{comentaryLikesCount}" });
         }
     }
 }

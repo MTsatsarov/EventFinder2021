@@ -17,6 +17,8 @@
 
         public string EventName { get; set; }
 
+        public int LikesCount { get; set; }
+
         public ICollection<ReplyViewModel> Replies { get; set; }
     }
 }

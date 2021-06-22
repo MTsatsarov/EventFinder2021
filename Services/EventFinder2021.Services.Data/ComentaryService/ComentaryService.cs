@@ -8,6 +8,7 @@
     using EventFinder2021.Data;
     using EventFinder2021.Data.Common.Repositories;
     using EventFinder2021.Data.Models;
+    using EventFinder2021.Services.Data.LikeService;
     using EventFinder2021.Services.Models;
     using EventFinder2021.Web.ViewModels.ComentaryModels;
 
@@ -15,11 +16,13 @@
     {
         private readonly IDeletableEntityRepository<Comentary> comentaryRepository;
         private readonly IDeletableEntityRepository<Event> eventRepostiroy;
+        private readonly ILikeService likeService;
 
-        public ComentaryService(IDeletableEntityRepository<Comentary> comentaryRepository, IDeletableEntityRepository<Event> eventRepostiroy)
+        public ComentaryService(IDeletableEntityRepository<Comentary> comentaryRepository, IDeletableEntityRepository<Event> eventRepostiroy, ILikeService likeService)
         {
             this.comentaryRepository = comentaryRepository;
             this.eventRepostiroy = eventRepostiroy;
+            this.likeService = likeService;
         }
 
         public IEnumerable<ComentaryViewModel> GetAllEventComentaries(int eventId)
@@ -34,6 +37,7 @@
                     Content = comentary.Content,
                     EventName = comentary.Event.Name,
                     ComentaryId = comentary.Id,
+                    LikesCount = this.likeService.GetComentaryLikes(comentary.Id),
                 };
 
                 foreach (var reply in comentary.Replies)
@@ -42,6 +46,7 @@
                     {
                         Content = reply.Content,
                         UserName = reply.User.UserName,
+                        ReplyId = reply.Id,
                     };
                     currComentary.Replies.Add(currReply);
                 }

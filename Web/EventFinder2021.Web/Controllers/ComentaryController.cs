@@ -55,7 +55,7 @@
 
         [HttpPost]
         [Authorize]
-        public IActionResult LikeComentary([FromBody] LikeInputModel model)
+        public IActionResult LikeComentary([FromBody] LikeComentaryInputModel model)
         {
             int comentaryId = int.Parse(model.ComentaryId);
             this.likeService.AddComentaryLike(model.UserId, comentaryId);
