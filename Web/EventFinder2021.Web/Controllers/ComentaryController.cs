@@ -17,8 +17,8 @@
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ILikeService likeService;
 
-        public ComentaryController(IComentaryService comentaryService, UserManager<ApplicationUser> userManager,
-            ILikeService likeService)
+        public ComentaryController(
+            IComentaryService comentaryService, UserManager<ApplicationUser> userManager, ILikeService likeService)
         {
             this.comentaryService = comentaryService;
             this.userManager = userManager;
@@ -53,7 +53,6 @@
             return this.RedirectToAction("AllComentaries", new { id = $"{model.EventId}" });
         }
 
-        //TODO LIKE AND DISLIKE
         [HttpPost]
         [Authorize]
         public IActionResult LikeComentary([FromBody] LikeInputModel model)

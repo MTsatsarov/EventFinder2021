@@ -8,8 +8,8 @@
 
         int GetReplyLikes(int replyId);
 
-        Task AddComentaryLike(string userId, int comentaryId);
+        void AddComentaryLike(string userId, int comentaryId);
 
-        Task AddReplyLike(string userId, int replyId);
+        void AddReplyLike(string userId, int replyId);
     }
 }

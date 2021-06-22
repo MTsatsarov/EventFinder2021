@@ -37,6 +37,7 @@ namespace EventFinder2021.Data.Models
         [InverseProperty("User")]
         public virtual ICollection<Reply> Replies { get; set; }
 
+        [InverseProperty("Users")]
         public virtual ICollection<Like> Likes { get; set; }
 
         public virtual ICollection<Dislike> Dislikes { get; set; }

@@ -1,6 +1,7 @@
 ﻿namespace EventFinder2021.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using EventFinder2021.Data.Common.Models;
 
@@ -19,6 +20,7 @@
 
         public virtual Reply Reply { get; set; }
 
+        [InverseProperty("Likes")]
         public virtual ICollection<ApplicationUser> Users { get; set; }
     }
 }
