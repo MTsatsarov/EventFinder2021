@@ -2,7 +2,6 @@
 {
     using System;
     using System.Linq;
-    using System.Threading.Tasks;
 
     using EventFinder2021.Data;
     using EventFinder2021.Data.Common.Repositories;
@@ -47,6 +46,12 @@
                 };
 
                 var currUser = this.userRepository.All().Where(x => x.Id == userId).First();
+                var dislike = this.db.Dislikes.Where(x => x.ComentaryId == comentaryId && x.Users.Contains(currUser)).FirstOrDefault();
+                if (dislike != null)
+                {
+                    return;
+                }
+
                 like.Users.Add(currUser);
                 comentary.Likes.Add(like);
                 this.db.Likes.Add(like);
@@ -80,6 +85,13 @@
                 };
 
                 var currUser = this.userRepository.All().Where(x => x.Id == userId).First();
+
+                var currLike = this.db.Dislikes.Where(x => x.ReplyId == replyId && x.Users.Contains(currUser)).FirstOrDefault();
+                if (currLike != null)
+                {
+                    return;
+                }
+
                 like.Users.Add(currUser);
                 reply.Likes.Add(like);
                 this.db.Likes.Add(like);

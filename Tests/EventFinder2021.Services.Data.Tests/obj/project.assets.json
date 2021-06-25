@@ -9167,11 +9167,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Tests\\EventFinder2021.Services.Data.Tests\\EventFinder2021.Services.Data.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Tests\\EventFinder2021.Services.Data.Tests\\EventFinder2021.Services.Data.Tests.csproj",
       "projectName": "EventFinder2021.Services.Data.Tests",
-      "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Tests\\EventFinder2021.Services.Data.Tests\\EventFinder2021.Services.Data.Tests.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Tests\\EventFinder2021.Services.Data.Tests\\EventFinder2021.Services.Data.Tests.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Tests\\EventFinder2021.Services.Data.Tests\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Tests\\EventFinder2021.Services.Data.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -9192,11 +9192,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Data\\EventFinder2021.Data\\EventFinder2021.Data.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Data\\EventFinder2021.Data\\EventFinder2021.Data.csproj"
+            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data\\EventFinder2021.Data.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data\\EventFinder2021.Data.csproj"
             },
-            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Services\\EventFinder2021.Services.Data\\EventFinder2021.Services.Data.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Services\\EventFinder2021.Services.Data\\EventFinder2021.Services.Data.csproj"
+            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Data\\EventFinder2021.Services.Data.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Data\\EventFinder2021.Services.Data.csproj"
             }
           }
         }

@@ -27,8 +27,4 @@
     <ProjectReference Include="..\EventFinder2021.Services\EventFinder2021.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DislikeService\" />
-  </ItemGroup>
-
 </Project>

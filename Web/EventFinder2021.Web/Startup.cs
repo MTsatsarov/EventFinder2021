@@ -10,6 +10,7 @@
     using EventFinder2021.Data.Seeding;
     using EventFinder2021.Services.Data;
     using EventFinder2021.Services.Data.ComentaryService;
+    using EventFinder2021.Services.Data.DislikeService;
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Services.Data.LikeService;
     using EventFinder2021.Services.Data.ReplyService;
@@ -73,6 +74,7 @@
             services.AddTransient<IComentaryService, ComentaryService>();
             services.AddTransient<IReplyService, ReplyService>();
             services.AddTransient<ILikeService, LikeService>();
+            services.AddTransient<IDislikeService, DislikeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

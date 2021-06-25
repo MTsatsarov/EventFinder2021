@@ -4,6 +4,7 @@
 
     using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Data.ComentaryService;
+    using EventFinder2021.Services.Data.DislikeService;
     using EventFinder2021.Services.Data.LikeService;
     using EventFinder2021.Services.Models;
     using EventFinder2021.Web.ViewModels.ComentaryModels;
@@ -16,13 +17,15 @@
         private readonly IComentaryService comentaryService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ILikeService likeService;
+        private readonly IDislikeService dislikeService;
 
         public ComentaryController(
-            IComentaryService comentaryService, UserManager<ApplicationUser> userManager, ILikeService likeService)
+            IComentaryService comentaryService, UserManager<ApplicationUser> userManager, ILikeService likeService, IDislikeService dislikeService)
         {
             this.comentaryService = comentaryService;
             this.userManager = userManager;
             this.likeService = likeService;
+            this.dislikeService = dislikeService;
         }
 
         [Authorize]
@@ -60,6 +63,17 @@
             int comentaryId = int.Parse(model.ComentaryId);
             this.likeService.AddComentaryLike(model.UserId, comentaryId);
             var comentaryLikesCount = this.likeService.GetComentaryLikes(comentaryId);
+            return this.Json(new { count = $"{comentaryLikesCount}" });
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult DislikeComentary([FromBody] LikeComentaryInputModel model)
+        {
+            var id = model.ComentaryId.Remove(model.ComentaryId.Length - 1);
+            int comentaryId = int.Parse(id);
+            this.dislikeService.AddComentaryDislike(model.UserId, comentaryId);
+            var comentaryLikesCount = this.dislikeService.GetComentaryDislikes(comentaryId);
             return this.Json(new { count = $"{comentaryLikesCount}" });
         }
     }

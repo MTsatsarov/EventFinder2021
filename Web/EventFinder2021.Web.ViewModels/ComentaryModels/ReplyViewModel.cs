@@ -9,5 +9,9 @@
         public string Content { get; set; }
 
         public string UserName { get; set; }
+
+        public int ReplyLikesCount { get; set; }
+
+        public int ReplyDislikesCount { get; set; }
     }
 }
