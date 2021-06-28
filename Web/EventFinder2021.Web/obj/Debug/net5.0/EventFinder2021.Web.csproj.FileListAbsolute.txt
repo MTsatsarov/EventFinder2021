@@ -940,4 +940,6 @@ C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.We
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\bin\Debug\net5.0\Castle.Core.dll
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Reply\WriteReply.cshtml.g.cs
-C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Search\GetEventByCityAndCategory.cshtml.g.cs
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Search\GetEventByCityAndCategoryAndName.cshtml.g.cs
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Search\GetSearchedEvents.cshtml.g.cs
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Shared\_EventsViewPartial.cshtml.g.cs

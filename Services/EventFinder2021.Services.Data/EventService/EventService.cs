@@ -39,12 +39,14 @@
                 throw new InvalidOperationException("Event not found");
             }
 
-            if (currEvent.GoingUsers.Users.Any(x => x.Id == user.Id))
+            var goingUser = currEvent.GoingUsers.Users.Where(x => x.Id == user.Id).FirstOrDefault();
+            if (goingUser != null)
             {
                 throw new InvalidOperationException($"This user is already going to {currEvent.Name}");
             }
 
-            if (currEvent.NotGoingUsers.Users.Any(x => x.Id == user.Id))
+            var notGoingUser = currEvent.NotGoingUsers.Users.Where(x => x.Id == user.Id).FirstOrDefault();
+            if (notGoingUser != null)
             {
                 currEvent.NotGoingUsers.Users.Remove(user);
             }
@@ -94,12 +96,13 @@
                 Name = model.Name,
                 Description = model.Description,
                 Date = model.Date,
-                Type = model.Category,
+                Category = model.Category,
                 City = model.City,
+                GoingUsers = new GoingUsers(),
+                NotGoingUsers = new NotGoingUsers(),
             };
 
             currEvent.User = this.db.Users.Where(x => x.UserName == model.CreatedByuser).FirstOrDefault();
-
             var extension = Path.GetExtension(model.Image.FileName).TrimStart('.');
             var image = new Image()
             {
@@ -127,7 +130,7 @@
             {
                 Id = x.Id,
                 Name = x.Name,
-                Category = x.Type.ToString(),
+                Category = x.Category.ToString(),
                 City = x.City.ToString(),
                 Description = x.Description,
                 ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension ?? GlobalConstants.DefaultImageLocation,
@@ -155,7 +158,7 @@
             {
                 Id = currentEvent.Id,
                 Name = currentEvent.Name,
-                Category = currentEvent.Type.ToString(),
+                Category = currentEvent.Category.ToString(),
                 City = currentEvent.City.ToString(),
                 Description = currentEvent.Description,
                 ImageUrl = "/images/Events/" + currentEvent.ImageId + "." + currentEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
@@ -176,8 +179,60 @@
                 Date = x.Date.ToString(),
                 ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension ?? GlobalConstants.DefaultImageLocation,
                 City = x.City.ToString(),
-                Category = x.Type.ToString(),
+                Category = x.Category.ToString(),
             }).OrderByDescending(x => x.Date).ToList();
+        }
+
+        public IEnumerable<EventViewModel> GetSearchedEvents(EventSearchModel model)
+        {
+            var searchedCity = model.City;
+            var searchedCategory = model.Category;
+            var searchedName = model.Name;
+            List<EventViewModel> eventViewModels = new List<EventViewModel>();
+            if (model.Name == null)
+            {
+                var events = this.db.Events.Where(x => x.City == searchedCity).Where(x => x.Category == searchedCategory).ToList();
+
+                foreach (var currEvent in events)
+                {
+                    var eventViewModel = new EventViewModel()
+                    {
+                        Category = currEvent.Category.ToString(),
+                        City = currEvent.City.ToString(),
+                        Description = currEvent.Description,
+                        ImageUrl = "/images/Events/" + currEvent.ImageId + "." + currEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
+                        CreatorId = currEvent.UserId,
+                        Date = currEvent.Date.ToString(),
+                        Name = currEvent.Name,
+                        Id = currEvent.Id,
+                    };
+
+                    eventViewModels.Add(eventViewModel);
+                }
+
+                return eventViewModels;
+            }
+
+            var searchedEvents = this.db.Events.Where(x => x.City == searchedCity && x.Name == searchedName).Where(x => x.Category == searchedCategory).ToList();
+
+            foreach (var currEvent in searchedEvents)
+            {
+                var eventViewModel = new EventViewModel()
+                {
+                    Category = currEvent.Category.ToString(),
+                    City = currEvent.City.ToString(),
+                    Description = currEvent.Description,
+                    ImageUrl = "/images/Events/" + currEvent.ImageId + "." + currEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
+                    CreatorId = currEvent.UserId,
+                    Date = currEvent.Date.ToString(),
+                    Name = currEvent.Name,
+                    Id = currEvent.Id,
+                };
+
+                eventViewModels.Add(eventViewModel);
+            }
+
+            return eventViewModels;
         }
     }
 }

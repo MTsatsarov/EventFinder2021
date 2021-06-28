@@ -281,6 +281,9 @@ namespace EventFinder2021.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Category")
+                        .HasColumnType("int");
+
                     b.Property<int?>("City")
                         .HasColumnType("int");
 
@@ -299,7 +302,7 @@ namespace EventFinder2021.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GoingUsersId")
+                    b.Property<int?>("GoingUsersId")
                         .HasColumnType("int");
 
                     b.Property<string>("ImageId")
@@ -314,10 +317,7 @@ namespace EventFinder2021.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NotGoingUsersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Type")
+                    b.Property<int?>("NotGoingUsersId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")

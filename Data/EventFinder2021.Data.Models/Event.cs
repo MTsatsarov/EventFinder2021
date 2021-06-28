@@ -24,7 +24,7 @@
 
         public virtual Image Image { get; set; }
 
-        public Category Type { get; set; }
+        public Category Category { get; set; }
 
         public City? City { get; set; }
 
@@ -32,11 +32,11 @@
 
         public virtual ApplicationUser User { get; set; }
 
-        public int GoingUsersId { get; set; }
+        public int? GoingUsersId { get; set; }
 
         public virtual GoingUsers GoingUsers { get; set; }
 
-        public int NotGoingUsersId { get; set; }
+        public int? NotGoingUsersId { get; set; }
 
         public virtual NotGoingUsers NotGoingUsers { get; set; }
 

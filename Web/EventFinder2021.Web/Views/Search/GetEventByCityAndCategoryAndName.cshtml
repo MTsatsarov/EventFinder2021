@@ -1,0 +1,21 @@
+﻿@using EventFinder2021.Web.ViewModels.EventViewModels
+@using EventFinder2021.Data.Models.Enums
+@model EventSearchModel
+@{
+    this.ViewData["Title"] = " Search Event";
+}
+<h1 class="text-center">@this.ViewData["Title"]</h1>
+<body>
+    <form method="get">
+        <select class="form-control" asp-for="@Model.Category" asp-items="@Html.GetEnumSelectList<Category>()"></select>
+        <label asp-for="@Model.Category">Category</label>
+
+        <select class="form-control" asp-for="@Model.City" asp-items="@Html.GetEnumSelectList<City>()"></select>
+        <label asp-for="@Model.City">City</label>
+
+        <input class="form-control" asp-for="@Model.Name" />
+        <label asp-for="@Model.Name">Name</label>
+
+        <button type="submit" asp-action="GetSearchedEvents">Search</button>
+    </form>
+</body>

@@ -1,6 +1,9 @@
 ﻿namespace EventFinder2021.Web.ViewModels.EventViewModels
 {
-    public class EventViewModel
+    using EventFinder2021.Data.Models;
+    using EventFinder2021.Services.Mapping;
+
+    public class EventViewModel : IMapFrom<Event>, IMapTo<Event>
     {
         public int Id { get; set; }
 

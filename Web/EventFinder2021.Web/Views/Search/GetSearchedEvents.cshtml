@@ -1,0 +1,32 @@
+﻿@using EventFinder2021.Web.ViewModels.EventViewModels
+
+@model List<EventViewModel>  
+
+
+
+<body>
+    @if (Model.Count == 0)
+    {
+        <h3>Sorry, no events were found.</h3>
+
+        <a asp-controller="Search" asp-action="GetEventByCityAndCategoryAndName">Back to search page</a>
+    }
+
+    else
+    {
+        @foreach (var currEvent in this.Model)
+        {
+            <div class="card col-md-3">
+                <div>
+                    <img src="@currEvent.ImageUrl" class="mr-3" width="100">
+                </div>
+
+                <div class="card-body">
+                    <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
+                    <p class="card-text">Category: @currEvent.Category</p>
+                    <p>City: @currEvent.City</p>
+                </div>
+            </div>
+        }
+    }
+</body>

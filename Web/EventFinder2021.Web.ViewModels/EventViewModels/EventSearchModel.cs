@@ -4,6 +4,8 @@
 
     public class EventSearchModel
     {
+        public string Name { get; set; }
+
         public City City { get; set; }
 
         public Category Category { get; set; }

@@ -20,5 +20,7 @@
         int AddGoingUser(string id, int eventId);
 
         int AddNotGoingUserAsync(string id, int eventId);
+
+        IEnumerable<EventViewModel> GetSearchedEvents(EventSearchModel model);
     }
 }
