@@ -22,6 +22,7 @@ namespace EventFinder2021.Data.Models
             this.NotGoingUsers = new HashSet<NotGoingUsers>();
             this.Likes = new HashSet<Like>();
             this.Dislikes = new HashSet<Dislike>();
+            this.Votes = new HashSet<Vote>();
         }
 
         public virtual ICollection<GoingUsers> GoingUsers { get; set; }
@@ -41,6 +42,8 @@ namespace EventFinder2021.Data.Models
         public virtual ICollection<Like> Likes { get; set; }
 
         public virtual ICollection<Dislike> Dislikes { get; set; }
+
+        public virtual ICollection<Vote> Votes { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

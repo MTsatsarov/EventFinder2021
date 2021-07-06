@@ -1,5 +1,6 @@
 ﻿namespace EventFinder2021.Web.Controllers
 {
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using EventFinder2021.Common;
@@ -31,13 +32,39 @@
         }
 
         [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var model = this.eventService.GetEventById(id);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (userId != model.CreatorId)
+            {
+                return this.Redirect("/");
+            }
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(EventViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            await this.eventService.UpdateInfo(model);
+            return this.Redirect("/Event/MyEvents");
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateEvent(CreateEventInputModel model)
         {
-            // if (!this.ModelState.IsValid)
-            // {
-            //    return this.View(this.ModelState.ErrorCount);
-            // }
+             // if (!this.ModelState.IsValid)
+             // {
+             //   return this.View(this.ModelState.ErrorCount );
+             // }
             var imagePath = this.environment.WebRootPath;
             model.CreatedByuser = this.User.Identity.Name;
             await this.eventService.CreateEventAsync(model, imagePath);
@@ -50,6 +77,7 @@
             return this.View(model);
         }
 
+        [Authorize]
         public async Task<IActionResult> MyEvents(int id = 1)
         {
             var user = await this.userManager.GetUserAsync(this.User);

@@ -12,6 +12,7 @@
         public Event()
         {
             this.Comentaries = new HashSet<Comentary>();
+            this.Votes = new HashSet<Vote>();
         }
 
         public string Name { get; set; }
@@ -44,5 +45,7 @@
 
         [InverseProperty("Event")]
         public virtual ICollection<Comentary> Comentaries { get; set; }
+
+        public virtual ICollection<Vote> Votes { get; set; }
     }
 }

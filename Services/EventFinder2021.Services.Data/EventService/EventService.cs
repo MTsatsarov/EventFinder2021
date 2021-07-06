@@ -10,6 +10,8 @@
     using EventFinder2021.Data;
     using EventFinder2021.Data.Common.Repositories;
     using EventFinder2021.Data.Models;
+    using EventFinder2021.Data.Models.Enums;
+    using EventFinder2021.Services.Data.VoteService;
     using EventFinder2021.Web.ViewModels.EventViewModels;
 
     public class EventService : IEventService
@@ -17,12 +19,14 @@
         private readonly ApplicationDbContext db;
         private readonly EventFinder2021.Data.Common.Repositories.IDeletableEntityRepository<Image> imageRepository;
         private readonly IDeletableEntityRepository<Event> eventRepository;
+        private readonly IVoteService voteService;
 
-        public EventService(ApplicationDbContext db, IDeletableEntityRepository<Image> imageRepository, IDeletableEntityRepository<Event> eventRepository)
+        public EventService(ApplicationDbContext db, IDeletableEntityRepository<Image> imageRepository, IDeletableEntityRepository<Event> eventRepository, IVoteService voteService)
         {
             this.db = db;
             this.imageRepository = imageRepository;
             this.eventRepository = eventRepository;
+            this.voteService = voteService;
         }
 
         public int AddGoingUser(string userId, int eventId)
@@ -130,11 +134,12 @@
             {
                 Id = x.Id,
                 Name = x.Name,
-                Category = x.Category.ToString(),
-                City = x.City.ToString(),
+                Category = x.Category,
+                City = x.City,
                 Description = x.Description,
                 ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension ?? GlobalConstants.DefaultImageLocation,
-                Date = x.Date.ToString(),
+                Date = x.Date,
+                VotesAverageGrade = this.voteService.GetAverageVoteValue(x.Id),
             }).ToList();
             return events;
         }
@@ -158,11 +163,11 @@
             {
                 Id = currentEvent.Id,
                 Name = currentEvent.Name,
-                Category = currentEvent.Category.ToString(),
-                City = currentEvent.City.ToString(),
+                Category = currentEvent.Category,
+                City = currentEvent.City,
                 Description = currentEvent.Description,
                 ImageUrl = "/images/Events/" + currentEvent.ImageId + "." + currentEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
-                Date = currentEvent.Date.ToString(),
+                Date = currentEvent.Date,
                 CreatorId = currentEvent.UserId,
             };
 
@@ -176,10 +181,10 @@
                 Name = x.Name,
                 Description = x.Description,
                 Id = x.Id,
-                Date = x.Date.ToString(),
+                Date = x.Date,
                 ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension ?? GlobalConstants.DefaultImageLocation,
-                City = x.City.ToString(),
-                Category = x.Category.ToString(),
+                City = x.City,
+                Category = x.Category,
             }).OrderByDescending(x => x.Date).ToList();
         }
 
@@ -197,12 +202,12 @@
                 {
                     var eventViewModel = new EventViewModel()
                     {
-                        Category = currEvent.Category.ToString(),
-                        City = currEvent.City.ToString(),
+                        Category = currEvent.Category,
+                        City = currEvent.City,
                         Description = currEvent.Description,
                         ImageUrl = "/images/Events/" + currEvent.ImageId + "." + currEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
                         CreatorId = currEvent.UserId,
-                        Date = currEvent.Date.ToString(),
+                        Date = currEvent.Date,
                         Name = currEvent.Name,
                         Id = currEvent.Id,
                     };
@@ -219,12 +224,12 @@
             {
                 var eventViewModel = new EventViewModel()
                 {
-                    Category = currEvent.Category.ToString(),
-                    City = currEvent.City.ToString(),
+                    Category = currEvent.Category,
+                    City = currEvent.City,
                     Description = currEvent.Description,
                     ImageUrl = "/images/Events/" + currEvent.ImageId + "." + currEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
                     CreatorId = currEvent.UserId,
-                    Date = currEvent.Date.ToString(),
+                    Date = currEvent.Date,
                     Name = currEvent.Name,
                     Id = currEvent.Id,
                 };
@@ -233,6 +238,18 @@
             }
 
             return eventViewModels;
+        }
+
+        public async Task UpdateInfo(EventViewModel model)
+        {
+            var currEvent = this.db.Events.FirstOrDefault(x => x.Id == model.Id);
+
+            currEvent.Name = model.Name;
+            currEvent.Description = model.Description;
+            currEvent.Date = model.Date;
+            currEvent.City = model.City;
+            currEvent.Category = model.Category;
+            await this.db.SaveChangesAsync();
         }
     }
 }

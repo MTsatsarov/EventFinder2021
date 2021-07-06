@@ -544,6 +544,37 @@ namespace EventFinder2021.Data.Migrations
                     b.ToTable("Settings");
                 });
 
+            modelBuilder.Entity("EventFinder2021.Data.Models.Vote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("Grade")
+                        .HasColumnType("tinyint");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Votes");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -820,6 +851,23 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("EventFinder2021.Data.Models.Vote", b =>
+                {
+                    b.HasOne("EventFinder2021.Data.Models.Event", "Event")
+                        .WithMany("Votes")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EventFinder2021.Data.Models.ApplicationUser", "User")
+                        .WithMany("Votes")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Event");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("EventFinder2021.Data.Models.ApplicationRole", null)
@@ -884,6 +932,8 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("Replies");
 
                     b.Navigation("Roles");
+
+                    b.Navigation("Votes");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Comentary", b =>
@@ -904,6 +954,8 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("Image");
 
                     b.Navigation("NotGoingUsers");
+
+                    b.Navigation("Votes");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Reply", b =>

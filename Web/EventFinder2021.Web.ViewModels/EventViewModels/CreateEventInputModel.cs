@@ -22,12 +22,14 @@
         public string Description { get; set; }
 
         [Required]
+        [EnumDataType(typeof(Category))]
         public Category Category { get; set; }
 
         [Required]
         public IFormFile Image { get; set; }
 
         [Required]
+        [EnumDataType(typeof(City))]
         public City City { get; set; }
 
         [Required]

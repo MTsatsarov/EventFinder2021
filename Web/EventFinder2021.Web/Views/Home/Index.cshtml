@@ -8,12 +8,27 @@
         <h1 class="display-4 text-center">Welcome to @GlobalConstants.SystemName!</h1>
         <div class="col-md-8">
             <div class="row">
-               <partial name="_EventsViewPartial" />
+                @foreach (var currEvent in this.Model.Events)
+                {
+        <div class="card col-md-3">
+            <div>
+                <img src="@currEvent.ImageUrl" class="mr-3" width="100">
+            </div>
+
+            <div class="card-body">
+                <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
+                <p class="card-text">Category: @currEvent.Category</p>
+                <p>City: @currEvent.City</p>
+            </div>
+            
+        </div>
+    }
             </div>
         </div>
     </div>
     <hr />
 </body>
+
 <nav aria-label="...">
     <ul class="pagination justify-content-center">
         <li class="page-item @if (!Model.HasPreviousPage) {<text>disabled</text>} ">
@@ -31,7 +46,7 @@
         <li class="page-item active">
             <a class="page-link" asp-action="Index" asp-route-id="@Model.PageNumber">@Model.PageNumber <span class="sr-only">(current)</span></a>
         </li>
-        @for (int i = Model.PageNumber + 1; i <= Model.PageNumber+3; i++)
+        @for (int i = Model.PageNumber + 1; i <= Model.PageNumber + 3; i++)
         {
             if (i <= Model.PagesCount)
             {
@@ -44,3 +59,6 @@
         </li>
     </ul>
 </nav>
+
+
+

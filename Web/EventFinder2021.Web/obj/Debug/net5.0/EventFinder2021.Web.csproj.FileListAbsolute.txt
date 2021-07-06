@@ -943,3 +943,4 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.We
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Search\GetEventByCityAndCategoryAndName.cshtml.g.cs
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Search\GetSearchedEvents.cshtml.g.cs
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Shared\_EventsViewPartial.cshtml.g.cs
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Event\Edit.cshtml.g.cs

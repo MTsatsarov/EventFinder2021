@@ -22,5 +22,7 @@
         int AddNotGoingUserAsync(string id, int eventId);
 
         IEnumerable<EventViewModel> GetSearchedEvents(EventSearchModel model);
+
+        Task UpdateInfo(EventViewModel model);
     }
 }

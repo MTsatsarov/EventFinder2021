@@ -21,11 +21,14 @@
                                 <div>
                                     <img src="@currEvent.ImageUrl" class="mr-4" width="130">
                                 </div>
-
                                 <div>
                                     <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
                                     <p>@currEvent.Category</p>
                                 </div>
+
+                                <a asp-controller="Event" asp-action="Edit" asp-route-id = "@currEvent.Id" class=" btn bg-info">Edit</a>
+
+                                <a  asp-controller="Event" asp-action="Delete" asp-route-id="@currEvent.Id" class="btn bg-danger">Delete</a>
                             </td>
                             <td class="col">
                                 <p>  @currEvent.Description</p>
