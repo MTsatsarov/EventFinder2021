@@ -128,6 +128,13 @@
             await this.db.SaveChangesAsync();
         }
 
+        public async Task DeleteEvent(int id)
+        {
+            var currentEvent = this.db.Events.Where(x => x.Id == id).FirstOrDefault();
+            this.eventRepository.Delete(currentEvent);
+            await this.eventRepository.SaveChangesAsync();
+        }
+
         public IEnumerable<EventViewModel> GetAllEvents(int pageNumber, int itemsPerPage = 12)
         {
             var events = this.db.Events.OrderByDescending(x => x.Id).Skip((pageNumber - 1) * 12).Take(itemsPerPage).Select(x => new EventViewModel()

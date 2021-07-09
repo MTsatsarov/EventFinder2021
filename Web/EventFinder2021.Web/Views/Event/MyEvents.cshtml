@@ -25,10 +25,12 @@
                                     <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
                                     <p>@currEvent.Category</p>
                                 </div>
-
-                                <a asp-controller="Event" asp-action="Edit" asp-route-id = "@currEvent.Id" class=" btn bg-info">Edit</a>
-
-                                <a  asp-controller="Event" asp-action="Delete" asp-route-id="@currEvent.Id" class="btn bg-danger">Delete</a>
+                                <div class="d-inline">
+                                    <a asp-controller="Event" asp-action="Edit" asp-route-id="@currEvent.Id" class=" btn bg-info">Edit</a>
+                                    <form method="post">
+                                        <button type="submit" asp-action="DeleteEvent" asp-route-id="@currEvent.Id" class="btn bg-danger">Delete</button>
+                                    </form>
+                                </div>
                             </td>
                             <td class="col">
                                 <p>  @currEvent.Description</p>

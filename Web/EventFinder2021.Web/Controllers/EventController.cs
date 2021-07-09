@@ -61,13 +61,27 @@
         [HttpPost]
         public async Task<IActionResult> CreateEvent(CreateEventInputModel model)
         {
-             // if (!this.ModelState.IsValid)
-             // {
-             //   return this.View(this.ModelState.ErrorCount );
-             // }
+            // if (!this.ModelState.IsValid)
+            // {
+            //   return this.View(this.ModelState.ErrorCount );
+            // }
             var imagePath = this.environment.WebRootPath;
             model.CreatedByuser = this.User.Identity.Name;
             await this.eventService.CreateEventAsync(model, imagePath);
+            return this.Redirect("/");
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteEvent(int id)
+        {
+            var currEvent = this.eventService.GetEventById(id);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (currEvent.CreatorId == userId)
+            {
+                await this.eventService.DeleteEvent(id);
+            }
+
             return this.Redirect("/");
         }
 

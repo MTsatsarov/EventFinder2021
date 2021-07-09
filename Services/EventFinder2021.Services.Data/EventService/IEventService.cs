@@ -24,5 +24,7 @@
         IEnumerable<EventViewModel> GetSearchedEvents(EventSearchModel model);
 
         Task UpdateInfo(EventViewModel model);
+
+        Task DeleteEvent(int id);
     }
 }
