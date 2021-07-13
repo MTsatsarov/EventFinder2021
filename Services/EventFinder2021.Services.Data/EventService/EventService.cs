@@ -17,15 +17,11 @@
     public class EventService : IEventService
     {
         private readonly ApplicationDbContext db;
-        private readonly EventFinder2021.Data.Common.Repositories.IDeletableEntityRepository<Image> imageRepository;
-        private readonly IDeletableEntityRepository<Event> eventRepository;
         private readonly IVoteService voteService;
 
-        public EventService(ApplicationDbContext db, IDeletableEntityRepository<Image> imageRepository, IDeletableEntityRepository<Event> eventRepository, IVoteService voteService)
+        public EventService(ApplicationDbContext db, IVoteService voteService)
         {
             this.db = db;
-            this.imageRepository = imageRepository;
-            this.eventRepository = eventRepository;
             this.voteService = voteService;
         }
 
@@ -131,8 +127,10 @@
         public async Task DeleteEvent(int id)
         {
             var currentEvent = this.db.Events.Where(x => x.Id == id).FirstOrDefault();
-            this.eventRepository.Delete(currentEvent);
-            await this.eventRepository.SaveChangesAsync();
+            currentEvent.IsDeleted = true;
+            currentEvent.DeletedOn = DateTime.UtcNow;
+            this.db.Events.Update(currentEvent);
+            await this.db.SaveChangesAsync();
         }
 
         public IEnumerable<EventViewModel> GetAllEvents(int pageNumber, int itemsPerPage = 12)

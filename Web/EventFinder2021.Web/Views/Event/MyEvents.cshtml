@@ -12,7 +12,7 @@
         <div>
         </div>
         <div class="col-md-12">
-            <table>
+            <table class="table-striped table-bordered">
                 <tbody>
                     @foreach (var currEvent in Model.Events)
                     {
@@ -26,14 +26,15 @@
                                     <p>@currEvent.Category</p>
                                 </div>
                                 <div class="d-inline">
-                                    <a asp-controller="Event" asp-action="Edit" asp-route-id="@currEvent.Id" class=" btn bg-info">Edit</a>
+                                    <a asp-controller="Event" asp-action="Edit" asp-route-id="@currEvent.Id" class=" btn bg-info"><i class="fa fas fa-edit"></i></a>
                                     <form method="post">
-                                        <button type="submit" asp-action="DeleteEvent" asp-route-id="@currEvent.Id" class="btn bg-danger">Delete</button>
+                                        <button type="submit" asp-action="DeleteEvent" asp-route-id="@currEvent.Id" class="btn bg-danger"><i class="fa fas fa-eraser"></i></button>
                                     </form>
                                 </div>
                             </td>
                             <td class="col">
-                                <p>  @currEvent.Description</p>
+
+                                <p> <i class="fa-envelope-open-text"></i>  @currEvent.Description</p>
 
                             </td>
                         </tr>

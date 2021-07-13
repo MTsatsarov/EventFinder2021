@@ -77,7 +77,8 @@
             builder.Entity<Event>()
                .HasOne(i => i.Image)
                .WithOne(e => e.Event)
-               .HasForeignKey<Image>(x => x.EventId);
+               .HasForeignKey<Image>(x => x.EventId)
+               .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Event>()
                .HasOne(i => i.GoingUsers)
