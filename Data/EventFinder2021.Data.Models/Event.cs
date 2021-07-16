@@ -13,6 +13,8 @@
         {
             this.Comentaries = new HashSet<Comentary>();
             this.Votes = new HashSet<Vote>();
+            this.NotGoingUsers = new NotGoingUsers();
+            this.GoingUsers = new GoingUsers();
         }
 
         public string Name { get; set; }

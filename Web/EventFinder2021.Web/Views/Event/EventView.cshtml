@@ -51,10 +51,10 @@
         {
             <div>
                 <div id="btnSuccess" style="display:inline">
-                    <button onclick="Going()" class="btn-success">Going</button>
+                    <button onclick="Going()" id="goingButton" class="btn-success">Going </button>
                 </div>
                 <div id="btn-danger" style="display:inline">
-                    <button id="btn" type="submit" class="btn-danger" onclick=NotGoing()>Not Going</button>
+                    <button id="notGoingButton" type="submit" class="btn-danger" onclick=NotGoing()>Not Going</button>
                 </div>
             </div>
         }
@@ -86,7 +86,11 @@
                          // Response
                          var responseText = JSON.parse(this.responseText);
                          var count = responseText.count
-                         document.getElementById("btnSuccess").outerHTML = count;
+                         var btn = document.getElementById("goingButton");
+
+                         btn.textContent = `Going ${count}`;
+                         btn.style.backgroundColor = "Green";
+
 
                      }
     };
@@ -107,7 +111,10 @@
                          // Response
                          var responseText = JSON.parse(this.responseText);
                          var count = responseText.count
-                         document.getElementById("btn-danger").innerText = count.AverageVoteValue;
+                         var btn = document.getElementById("notGoingButton");
+
+                         btn.textContent = `Not Going ${count}`;
+                         btn.style.backgroundColor = "Red";
 
                      }
     };

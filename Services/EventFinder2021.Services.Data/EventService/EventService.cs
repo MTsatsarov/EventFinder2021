@@ -42,7 +42,7 @@
             var goingUser = currEvent.GoingUsers.Users.Where(x => x.Id == user.Id).FirstOrDefault();
             if (goingUser != null)
             {
-                throw new InvalidOperationException($"This user is already going to {currEvent.Name}");
+                return currEvent.GoingUsers.Users.Count();
             }
 
             var notGoingUser = currEvent.NotGoingUsers.Users.Where(x => x.Id == user.Id).FirstOrDefault();
@@ -71,9 +71,9 @@
                 throw new InvalidOperationException("Event not found");
             }
 
-            if (!currEvent.NotGoingUsers.Users.Any(x => x.Id == user.Id))
+            if (currEvent.NotGoingUsers.Users.Any(x => x.Id == user.Id))
             {
-                throw new InvalidOperationException($"This user is already missing {currEvent.Name}");
+                return currEvent.NotGoingUsers.Users.Count();
             }
 
             if (currEvent.GoingUsers.Users.Contains(user))
