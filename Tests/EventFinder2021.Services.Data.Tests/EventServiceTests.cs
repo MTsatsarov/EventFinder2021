@@ -7,6 +7,7 @@
 
     using EventFinder2021.Data;
     using EventFinder2021.Data.Models;
+    using EventFinder2021.Data.Models.Enums;
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Services.Data.VoteService;
     using EventFinder2021.Web.ViewModels.EventViewModels;
@@ -99,11 +100,27 @@
             dbContext.Users.Add(this.user);
             await dbContext.SaveChangesAsync();
             await service.CreateEventAsync(this.inputModel, "ss");
-
-            var userS = service.GetAllEvents(1, 12);
-            var userEvents = service.GetEventsByUser("User").ToList();
-            //TO FIX
+            var userEvents = service.GetEventsByUser(this.user.Id).ToList();
             Assert.Equal(this.user.Events.Count(), userEvents.Count());
+        }
+
+        [Fact]
+        public async Task WhenCallEventByIdReturnsOnlyThisEvent()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+.UseInMemoryDatabase("ReturnEventsByIdTest");
+
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var voteserivce = new VoteService(dbContext);
+            var service = new EventService(dbContext, voteserivce);
+
+            await service.CreateEventAsync(this.inputModel, "ss");
+            await service.CreateEventAsync(this.inputModel, "ss");
+            await service.CreateEventAsync(this.inputModel, "ss");
+
+            var returnedEvent = service.GetEventById(3);
+
+            Assert.Equal(3, returnedEvent.Id);
         }
 
         [Fact]
@@ -124,6 +141,130 @@
             var allEvents = service.GetAllEvents(1, 12);
 
             Assert.Equal(3, allEvents.Count());
+        }
+
+
+        [Fact]
+
+        public async Task WhenSearchEventByCityAndCategoryReturnsEventByCityAndCategory()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+  .UseInMemoryDatabase("ReturnEventsByCityAndCategory");
+
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var voteserivce = new VoteService(dbContext);
+            var service = new EventService(dbContext, voteserivce);
+
+            await service.CreateEventAsync(this.inputModel, "ss");
+            this.inputModel.City = Enum.Parse<City>("Burgas");
+            this.inputModel.Category = Enum.Parse<Category>("Art");
+            this.inputModel.Name = "NewName";
+            await service.CreateEventAsync(this.inputModel, "ss");
+            await service.CreateEventAsync(this.inputModel, "ss");
+
+            var searchedEvents = new EventSearchModel()
+            {
+                City = Enum.Parse<City>("Burgas"),
+                Category = Enum.Parse<Category>("Art"),
+            };
+            var events = service.GetSearchedEvents(searchedEvents).ToList();
+
+            Assert.Equal(2, events.Count());
+
+            Assert.Equal(2, events[0].Id);
+            Assert.Equal(3, events[1].Id);
+        }
+
+        [Fact]
+
+        public async Task WhenSearchByNameReturnesEventsByName()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+ .UseInMemoryDatabase("ReturnEventsByCityAndCategory");
+
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var voteserivce = new VoteService(dbContext);
+            var service = new EventService(dbContext, voteserivce);
+
+            await service.CreateEventAsync(this.inputModel, "ss");
+            this.inputModel.City = Enum.Parse<City>("Burgas");
+            this.inputModel.Category = Enum.Parse<Category>("Art");
+            this.inputModel.Name = "NewName";
+            await service.CreateEventAsync(this.inputModel, "ss");
+            await service.CreateEventAsync(this.inputModel, "ss");
+
+            var searchedEvents = new EventSearchModel()
+            {
+                City = Enum.Parse<City>("Burgas"),
+                Category = Enum.Parse<Category>("Art"),
+                Name = "NewName",
+            };
+            var events = service.GetSearchedEvents(searchedEvents).ToList();
+
+            Assert.Equal(2, events.Count());
+            foreach (var currEvent in events)
+            {
+                Assert.Equal("NewName", currEvent.Name);
+            }
+        }
+
+        [Fact]
+
+        public async Task WhenAddsGoingUsersReturnsProperCount()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+ .UseInMemoryDatabase("ReturnsCorrectCountUsersGoingToEvent");
+
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var voteserivce = new VoteService(dbContext);
+            var service = new EventService(dbContext, voteserivce);
+
+            await service.CreateEventAsync(this.inputModel, "ss");
+
+            var userTwo = new ApplicationUser()
+            {
+                UserName = "UserTwo",
+            };
+
+            dbContext.Users.Add(this.user);
+            dbContext.Users.Add(userTwo);
+            await dbContext.SaveChangesAsync();
+            var oneUserCount = service.AddGoingUser(this.user.Id, 1);
+            var twoUsersCount = service.AddGoingUser(userTwo.Id, 1);
+
+            Assert.Equal(1, oneUserCount);
+            Assert.Equal(2, twoUsersCount);
+        }
+
+        [Fact]
+
+        public async Task WhenAddGoingUserThatNotExistsThrowsException()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+.UseInMemoryDatabase("AddNotExistedUserToGoingUsers");
+
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var voteserivce = new VoteService(dbContext);
+            var service = new EventService(dbContext, voteserivce);
+
+            await service.CreateEventAsync(this.inputModel, "ss");
+
+            Assert.Throws<ArgumentNullException>(() => service.AddGoingUser(this.user.Id, 1)).Message.Contains("User not found");
+        }
+
+
+        [Fact]
+        public async Task WhennAddGoingUserToNotExistingEventThrowsException()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+.UseInMemoryDatabase("AddNotExistedUserToGoingUsers");
+
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var voteserivce = new VoteService(dbContext);
+            var service = new EventService(dbContext, voteserivce);
+            dbContext.Users.Add(this.user);
+            await dbContext.SaveChangesAsync();
+            Assert.Throws<InvalidOperationException>(() => service.AddGoingUser(this.user.Id, 242424)).Message.Contains("Event not found");
         }
     }
 }
