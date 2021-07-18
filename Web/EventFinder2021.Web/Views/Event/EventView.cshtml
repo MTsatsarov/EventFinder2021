@@ -145,8 +145,8 @@
                      if (this.readyState == 4 && this.status == 200) {
                          // Response
                          var responseText = JSON.parse(this.responseText);
-                         var grade = responseText.AverageVoteValue;
-                         document.getElementById('averageVoteGrade').Value = `${grade}/5`;
+                         var grade = responseText.averageVoteValue;
+                         document.getElementById('averageVoteGrade').textContent = `${grade}/5`;
 
                      }
             };
