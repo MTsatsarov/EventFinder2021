@@ -143,7 +143,6 @@
             Assert.Equal(3, allEvents.Count());
         }
 
-
         [Fact]
 
         public async Task WhenSearchEventByCityAndCategoryReturnsEventByCityAndCategory()
@@ -232,8 +231,8 @@
             var oneUserCount = service.AddGoingUser(this.user.Id, 1);
             var twoUsersCount = service.AddGoingUser(userTwo.Id, 1);
 
-            Assert.Equal(1, oneUserCount);
-            Assert.Equal(2, twoUsersCount);
+            Assert.Equal(1, oneUserCount.GoingUsersCount);
+            Assert.Equal(2, twoUsersCount.GoingUsersCount);
         }
 
         [Fact]
@@ -251,7 +250,6 @@
 
             Assert.Throws<ArgumentNullException>(() => service.AddGoingUser(this.user.Id, 1)).Message.Contains("User not found");
         }
-
 
         [Fact]
         public async Task WhennAddGoingUserToNotExistingEventThrowsException()

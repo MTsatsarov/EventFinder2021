@@ -25,7 +25,7 @@
             this.voteService = voteService;
         }
 
-        public int AddGoingUser(string userId, int eventId)
+        public GoingNotGoingViewModel AddGoingUser(string userId, int eventId)
         {
             var currEvent = this.db.Events.Where(x => x.Id == eventId).FirstOrDefault();
             var user = this.db.Users.Where(x => x.Id == userId).FirstOrDefault();
@@ -42,7 +42,11 @@
             var goingUser = currEvent.GoingUsers.Users.Where(x => x.Id == user.Id).FirstOrDefault();
             if (goingUser != null)
             {
-                return currEvent.GoingUsers.Users.Count();
+                return new GoingNotGoingViewModel()
+                {
+                    GoingUsersCount = currEvent.GoingUsers.Users.Count(),
+                    NotGoingUsersCount = currEvent.NotGoingUsers.Users.Count(),
+                };
             }
 
             var notGoingUser = currEvent.NotGoingUsers.Users.Where(x => x.Id == user.Id).FirstOrDefault();
@@ -54,10 +58,14 @@
             this.db.Events.Where(x => x.Id == currEvent.Id).FirstOrDefault().GoingUsers.Users.Add(user);
             this.db.SaveChanges();
 
-            return currEvent.GoingUsers.Users.Count();
+            return new GoingNotGoingViewModel()
+            {
+                GoingUsersCount = currEvent.GoingUsers.Users.Count(),
+                NotGoingUsersCount = currEvent.NotGoingUsers.Users.Count(),
+            };
         }
 
-        public int AddNotGoingUserAsync(string userId, int eventId)
+        public GoingNotGoingViewModel AddNotGoingUser(string userId, int eventId)
         {
             var currEvent = this.db.Events.Where(x => x.Id == eventId).FirstOrDefault();
             var user = this.db.Users.Where(x => x.Id == userId).FirstOrDefault();
@@ -73,7 +81,11 @@
 
             if (currEvent.NotGoingUsers.Users.Any(x => x.Id == user.Id))
             {
-                return currEvent.NotGoingUsers.Users.Count();
+                return new GoingNotGoingViewModel()
+                {
+                    GoingUsersCount = currEvent.GoingUsers.Users.Count(),
+                    NotGoingUsersCount = currEvent.NotGoingUsers.Users.Count(),
+                };
             }
 
             if (currEvent.GoingUsers.Users.Contains(user))
@@ -85,7 +97,11 @@
             this.db.Events.Where(x => x.Id == currEvent.Id).FirstOrDefault().NotGoingUsers.Users.Add(user);
             this.db.SaveChanges();
 
-            return currEvent.NotGoingUsers.Users.Count();
+            return new GoingNotGoingViewModel()
+            {
+                GoingUsersCount = currEvent.GoingUsers.Users.Count(),
+                NotGoingUsersCount = currEvent.NotGoingUsers.Users.Count(),
+            };
         }
 
         public async Task CreateEventAsync(CreateEventInputModel model, string imagePath)
@@ -174,6 +190,8 @@
                 ImageUrl = "/images/Events/" + currentEvent.ImageId + "." + currentEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
                 Date = currentEvent.Date,
                 CreatorId = currentEvent.UserId,
+                GoingUsers = currentEvent.GoingUsers.Users.Count(),
+                NotGoingUsers = currentEvent.NotGoingUsers.Users.Count(),
             };
 
             return viewModel;

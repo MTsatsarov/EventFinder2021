@@ -31,7 +31,7 @@
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             await this.voteService.EventVote(model.EventId, userId, model.Grade);
             var averageGrade = this.voteService.GetAverageVoteValue(model.EventId);
-            return new VoteViewModel { AverageVoteValue = averageGrade };
+            return this.Json(new VoteViewModel { AverageVoteValue = averageGrade });
         }
     }
 }

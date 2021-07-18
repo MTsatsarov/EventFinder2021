@@ -34,5 +34,8 @@
         public string CreatorId { get; set; }
 
         public double VotesAverageGrade { get; set; }
+
+        public int GoingUsers { get; set; }
+        public int NotGoingUsers { get; set; }
     }
 }

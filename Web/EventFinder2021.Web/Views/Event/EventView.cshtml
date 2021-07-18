@@ -51,10 +51,10 @@
         {
             <div>
                 <div id="btnSuccess" style="display:inline">
-                    <button onclick="Going()" id="goingButton" class="btn-success">Going </button>
+                    <button onclick="Going()" id="goingButton" class="btn-success">Going @Model.GoingUsers</button>
                 </div>
                 <div id="btn-danger" style="display:inline">
-                    <button id="notGoingButton" type="submit" class="btn-danger" onclick=NotGoing()>Not Going</button>
+                    <button id="notGoingButton" type="submit" class="btn-danger" onclick=NotGoing()>Not Going @Model.NotGoingUsers </button>
                 </div>
             </div>
         }
@@ -85,12 +85,17 @@
                      if (this.readyState == 4 && this.status == 200) {
                          // Response
                          var responseText = JSON.parse(this.responseText);
-                         var count = responseText.count
+                         var goingUsersCount = responseText.goingUsersCount;
                          var btn = document.getElementById("goingButton");
 
-                         btn.textContent = `Going ${count}`;
+                         btn.textContent = `Going ${goingUsersCount}`;
                          btn.style.backgroundColor = "Green";
 
+                         var notGoingUsersCount = responseText.notGoingUsersCount;
+                         var notGoingButton = document.getElementById("notGoingButton");
+
+                         notGoingButton.textContent = `Not Going ${notGoingUsersCount}`;
+                         notGoingButton.style.backgroundColor = "Red";
 
                      }
     };
@@ -110,11 +115,17 @@
                      if (this.readyState == 4 && this.status == 200) {
                          // Response
                          var responseText = JSON.parse(this.responseText);
-                         var count = responseText.count
-                         var btn = document.getElementById("notGoingButton");
+                         var goingUsersCount = responseText.goingUsersCount;
+                         var btn = document.getElementById("goingButton");
 
-                         btn.textContent = `Not Going ${count}`;
-                         btn.style.backgroundColor = "Red";
+                         btn.textContent = `Going ${goingUsersCount}`;
+                         btn.style.backgroundColor = "Green";
+
+                         var notGoing = responseText.notGoingUsersCount;
+                         var notGoingButton = document.getElementById("notGoingButton");
+
+                         notGoingButton.textContent = `Not Going ${notGoing}`;
+                         notGoingButton.style.backgroundColor = "Red";
 
                      }
     };
@@ -134,7 +145,7 @@
                      if (this.readyState == 4 && this.status == 200) {
                          // Response
                          var responseText = JSON.parse(this.responseText);
-                         var grade = responseText.Value;
+                         var grade = responseText.AverageVoteValue;
                          document.getElementById('averageVoteGrade').Value = `${grade}/5`;
 
                      }

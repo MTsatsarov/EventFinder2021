@@ -17,9 +17,9 @@
 
         IEnumerable<EventViewModel> GetEventsByUser(string userId);
 
-        int AddGoingUser(string id, int eventId);
+        GoingNotGoingViewModel AddGoingUser(string id, int eventId);
 
-        int AddNotGoingUserAsync(string id, int eventId);
+        GoingNotGoingViewModel AddNotGoingUser(string id, int eventId);
 
         IEnumerable<EventViewModel> GetSearchedEvents(EventSearchModel model);
 

@@ -112,8 +112,12 @@
         {
             var userId = model.UserId;
             var eventId = model.EventId;
-            var goingUsersCount = this.eventService.AddGoingUser(userId, eventId).ToString();
-            return this.Json(new { count = $"{goingUsersCount}" });
+            var eventUsers = this.eventService.AddGoingUser(userId, eventId);
+            return this.Json(new GoingNotGoingViewModel()
+            {
+                GoingUsersCount = eventUsers.GoingUsersCount,
+                NotGoingUsersCount = eventUsers.NotGoingUsersCount,
+            });
         }
 
         [HttpPost]
@@ -122,8 +126,12 @@
         {
             var userId = model.UserId;
             var eventId = model.EventId;
-            var notGoingUsersCount = this.eventService.AddNotGoingUserAsync(userId, eventId);
-            return this.Json(new { count = $"{notGoingUsersCount}" });
+            var eventUsers = this.eventService.AddNotGoingUser(userId, eventId);
+            return this.Json(new GoingNotGoingViewModel()
+            {
+                GoingUsersCount = eventUsers.GoingUsersCount,
+                NotGoingUsersCount = eventUsers.NotGoingUsersCount,
+            });
         }
     }
 }
