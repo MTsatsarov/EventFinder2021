@@ -21,22 +21,24 @@
     <div class="justify-content-xl-center">
         <h2 class="text-center">@Model.Name</h2>
         <hr />
-        <a class="event-image image-lightbox " data-imagelightbox="image" title="The games of our grandparents in the museum">
-            <img src="@Model.ImageUrl" title="@Model.Name" class="img-fluid mx-auto">
-        </a>
+        <div class="display-2">
+            <a class="event-image image-lightbox modal-dialog-centered" data-imagelightbox="image" title="The games of our grandparents in the museum">
+                <img src="@Model.ImageUrl" title="@Model.Name" class="img-fluid mx-auto">
+            </a>
+        </div>
         <div>
-            <p>Category: @Model.Category</p>
-            <p>City: @Model.City</p>
-            <p>Date: @Model.Date</p>
+            <p class="justify-content-center">Category: @Model.Category</p>
+            <p class="justify-content-center">City: @Model.City</p>
+            <p class="justify-content-center">Date: @Model.Date</p>
         </div>
         <div class="custom-control-inline">
-            <ul class="d-inline">
-                <li class="star-fill" id="1" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
-                <li class="star-fill" id="2" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
-                <li class="star-fill" id="3" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
-                <li class="star-fill" id="4" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
-                <li class="star-fill" id="5" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
-                <li><span id="averageVoteGrade">@Model.VotesAverageGrade<span> / 5</span></span></li>
+            <ul>
+                <li class="star-fill d-inline-block" id="1" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="2" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="3" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="4" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="5" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
+                <li class="d-inline-block"><span id="averageVoteGrade">@Model.VotesAverageGrade<span> / 5</span></span></li>
             </ul>
         </div>
         <div id="contentpics">
@@ -61,9 +63,10 @@
     </div>
 
     <hr />
-    <span>
-        @Model.Description
-    </span>
+    <div class="text-sm-left">
+        <p class="text-break"> @Model.Description</p>
+           
+    </div>
     <hr />
     <div>
         <span>
@@ -146,7 +149,7 @@
                          // Response
                          var responseText = JSON.parse(this.responseText);
                          var grade = responseText.averageVoteValue;
-                         document.getElementById('averageVoteGrade').textContent = `${grade}/5`;
+                         document.getElementById('averageVoteGrade').textContent = `${grade} / 5`;
 
                      }
             };

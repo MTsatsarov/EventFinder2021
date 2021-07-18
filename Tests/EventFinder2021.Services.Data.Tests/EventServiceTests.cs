@@ -81,7 +81,7 @@
             var service = new EventService(dbContext, voteserivce);
 
             await service.CreateEventAsync(this.inputModel, "ss");
-            await service.DeleteEvent(1);
+            await service.DeleteEventAsync(1);
             var count = service.GetCount();
             Assert.Equal(0, count);
         }

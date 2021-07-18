@@ -25,6 +25,6 @@
 
         Task UpdateInfo(EventViewModel model);
 
-        Task DeleteEvent(int id);
+        Task DeleteEventAsync(int id);
     }
 }

@@ -25,8 +25,8 @@
                                     <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
                                     <p>@currEvent.Category</p>
                                 </div>
-                                <div class="d-inline">
-                                    <a asp-controller="Event" asp-action="Edit" asp-route-id="@currEvent.Id" class=" btn bg-info"><i class="fa fas fa-edit"></i></a>
+                                <div class="btn-group">
+                                    <a  asp-controller="Event" asp-action="Edit" asp-route-id="@currEvent.Id" class=" btn bg-info"><i class="fa fas fa-edit"></i></a>
                                     <form method="post">
                                         <button type="submit" asp-action="DeleteEvent" asp-route-id="@currEvent.Id" class="btn bg-danger"><i class="fa fas fa-eraser"></i></button>
                                     </form>
@@ -34,7 +34,7 @@
                             </td>
                             <td class="col">
 
-                                <p> <i class="fa-envelope-open-text"></i>  @currEvent.Description</p>
+                                <p class="text-break"> <i class="fa-envelope-open-text"></i>  @currEvent.Description</p>
 
                             </td>
                         </tr>

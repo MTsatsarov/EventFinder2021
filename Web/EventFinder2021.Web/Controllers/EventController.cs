@@ -79,7 +79,7 @@
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (currEvent.CreatorId == userId)
             {
-                await this.eventService.DeleteEvent(id);
+                await this.eventService.DeleteEventAsync(id);
             }
 
             return this.Redirect("/");

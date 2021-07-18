@@ -140,7 +140,7 @@
             await this.db.SaveChangesAsync();
         }
 
-        public async Task DeleteEvent(int id)
+        public async Task DeleteEventAsync(int id)
         {
             var currentEvent = this.db.Events.Where(x => x.Id == id).FirstOrDefault();
             currentEvent.IsDeleted = true;
@@ -192,7 +192,16 @@
                 CreatorId = currentEvent.UserId,
                 GoingUsers = currentEvent.GoingUsers.Users.Count(),
                 NotGoingUsers = currentEvent.NotGoingUsers.Users.Count(),
+
             };
+            if (currentEvent.Votes.Count == 0)
+            {
+                viewModel.VotesAverageGrade = 0;
+            }
+            else
+            {
+                viewModel.VotesAverageGrade = currentEvent.Votes.Average(x => x.Grade);
+            }
 
             return viewModel;
         }
