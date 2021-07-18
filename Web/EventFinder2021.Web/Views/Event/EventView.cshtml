@@ -65,16 +65,19 @@
     <hr />
     <div class="text-sm-left">
         <p class="text-break"> @Model.Description</p>
-           
+
     </div>
     <hr />
     <div>
         <span>
-            <a class="btn btn-primary" asp-controller="Comentary" asp-action="AllComentaries" asp-route-id="@Model.Id">See comments</a>
+            <a class="btn btn-primary" asp-controller="Comentary" asp-action="AllComentaries" asp-route-id="@Model.Id" onclick="AllComentaries">See comments</a>
         </span>
         <span class="">
             <a class="btn btn-primary" asp-controller="Comentary" asp-action="WriteComentary" asp-route-id="@Model.Id">Write commentary</a>
         </span>
+    </div>
+    <div id="AllComentaries">
+
     </div>
     <script>
         function Going() {

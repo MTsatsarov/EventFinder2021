@@ -40,9 +40,10 @@
                     Content = comentary.Content,
                     EventName = comentary.Event.Name,
                     ComentaryId = comentary.Id,
-                    LikesCount = this.likeService.GetComentaryLikes(comentary.Id),
-                    DislikesCount = this.dislikeService.GetComentaryDislikes(comentary.Id),
                 };
+                var comentaryLikeDislikeCount = this.likeService.GetComentaryLikesAndDislikes(comentary.Id);
+                currComentary.LikesCount = comentaryLikeDislikeCount.ComentaryLikeCount;
+                currComentary.DislikesCount = comentaryLikeDislikeCount.ComentaryDislikeCount;
 
                 foreach (var reply in comentary.Replies)
                 {

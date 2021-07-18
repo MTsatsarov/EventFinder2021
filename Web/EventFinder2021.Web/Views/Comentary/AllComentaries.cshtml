@@ -7,7 +7,7 @@
 @{
     var currentUserId = this.UserManager.GetUserId(this.User);
     var comentary = new ComentaryViewModel();
-    var reply  = new ReplyViewModel();
+    var reply = new ReplyViewModel();
     var replies = new List<ReplyViewModel>();
 }
 @functions
@@ -21,7 +21,7 @@
 
 <body>
     <table class="col-md-8  justify-content-md-center border-info">
-        <tbody>   
+        <tbody>
             @for (int i = 0; i < Model.Count; i++)
             {
                 comentary = Model[i];
@@ -37,17 +37,17 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <button id="@comentary.ComentaryId" type="submit" class="btn-success" onclick="Like(this.id)" value="@comentary.ComentaryId">Like @comentary.LikesCount</button>
+                    <td class="@comentary.ComentaryId">
+                        <button id="@comentary.ComentaryId"  type="submit" class="btn-success" onclick="Like(this.id)" value="@comentary.ComentaryId">Like @comentary.LikesCount</button>
                     </td>
                     <td>
                         <button id="@comentary.ComentaryId@i" type="submit" class="btn-danger" onclick="Dislike(this.id)" value="@comentary.ComentaryId">Dislike @comentary.DislikesCount</button>
                     </td>
                 </tr>
-               
-                    @for (int j = 0; j < replies.Count; j++)
-                    {
-                        reply = replies[j];
+
+                @for (int j = 0; j < replies.Count; j++)
+                {
+                    reply = replies[j];
 
                     <tr>
                         <td>
@@ -67,10 +67,6 @@
                             <div>@reply.Content</div>
                         </td>
                     </tr>
-
-
-
-
                 }
                 <tr>
                     <td>
@@ -95,8 +91,11 @@
                      if (this.readyState == 4 && this.status == 200) {
                          // Response
                          var responseText = JSON.parse(this.responseText);
-                         var count = responseText.count
-                         document.getElementById(clicked_id).innerText = count;
+                         var comentaryLikesCount = responseText.comentaryLikeCount;
+                         var comentaryDislikeCount = responseText.comentaryDislikeCount;
+                         document.getElementById(clicked_id).textContent = `Like ${comentaryLikesCount}`
+
+                         document.getElementById(clicked_idi) = `Dislikesss ${comentaryDislikeCount}`
 
                      }
             };

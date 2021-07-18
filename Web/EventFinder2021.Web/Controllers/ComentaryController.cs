@@ -8,6 +8,7 @@
     using EventFinder2021.Services.Data.LikeService;
     using EventFinder2021.Services.Models;
     using EventFinder2021.Web.ViewModels.ComentaryModels;
+    using EventFinder2021.Web.ViewModels.LikeDislikeViewModel;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -62,8 +63,8 @@
         {
             int comentaryId = int.Parse(model.ComentaryId);
             this.likeService.AddComentaryLike(model.UserId, comentaryId);
-            var comentaryLikesCount = this.likeService.GetComentaryLikes(comentaryId);
-            return this.Json(new { count = $"{comentaryLikesCount}" });
+            var comentaryLikesCount = this.likeService.GetComentaryLikesAndDislikes(comentaryId);
+            return this.Json(comentaryLikesCount);
         }
 
         [HttpPost]

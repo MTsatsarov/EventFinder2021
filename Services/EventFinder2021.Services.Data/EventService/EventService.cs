@@ -192,7 +192,6 @@
                 CreatorId = currentEvent.UserId,
                 GoingUsers = currentEvent.GoingUsers.Users.Count(),
                 NotGoingUsers = currentEvent.NotGoingUsers.Users.Count(),
-
             };
             if (currentEvent.Votes.Count == 0)
             {
@@ -242,8 +241,17 @@
                         Date = currEvent.Date,
                         Name = currEvent.Name,
                         Id = currEvent.Id,
+                        GoingUsers = currEvent.GoingUsers.Users.Count(),
+                        NotGoingUsers = currEvent.NotGoingUsers.Users.Count(),
                     };
-
+                    if (currEvent.Votes.Count() == 0)
+                    {
+                        eventViewModel.VotesAverageGrade = 0;
+                    }
+                    else
+                    {
+                        eventViewModel.VotesAverageGrade = currEvent.Votes.Average(x => x.Grade);
+                    }
                     eventViewModels.Add(eventViewModel);
                 }
 

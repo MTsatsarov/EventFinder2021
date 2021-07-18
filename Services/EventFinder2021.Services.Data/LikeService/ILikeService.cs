@@ -1,10 +1,10 @@
 ﻿namespace EventFinder2021.Services.Data.LikeService
 {
-    using System.Threading.Tasks;
+    using EventFinder2021.Web.ViewModels.LikeDislikeViewModel;
 
     public interface ILikeService
     {
-        int GetComentaryLikes(int comentaryId);
+        LikeDislikeViewModel GetComentaryLikesAndDislikes(int comentaryId);
 
         int GetReplyLikes(int replyId);
 

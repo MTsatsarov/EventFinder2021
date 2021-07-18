@@ -264,5 +264,27 @@
             await dbContext.SaveChangesAsync();
             Assert.Throws<InvalidOperationException>(() => service.AddGoingUser(this.user.Id, 242424)).Message.Contains("Event not found");
         }
+
+        [Fact]
+
+        public async Task WhenAddGoingUserThatIsNotGoingDecreasesNotGoingCount()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+.UseInMemoryDatabase("AddNotGoingUserThat");
+
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var voteserivce = new VoteService(dbContext);
+            var service = new EventService(dbContext, voteserivce);
+
+            await service.CreateEventAsync(this.inputModel, "ss");
+
+            dbContext.Users.Add(this.user);
+            await dbContext.SaveChangesAsync();
+            service.AddNotGoingUser(this.user.Id, 1);
+            service.AddGoingUser(this.user.Id, 1);
+
+            var notGoingUsers = service.GetEventById(1);
+            Assert.Equal(0,notGoingUsers.NotGoingUsers);
+        }
     }
 }
