@@ -75,7 +75,7 @@
             int comentaryId = int.Parse(id);
             this.dislikeService.AddComentaryDislike(model.UserId, comentaryId);
             var comentaryLikesCount = this.dislikeService.GetComentaryDislikes(comentaryId);
-            return this.Json(new { count = $"{comentaryLikesCount}" });
+            return this.Json(comentaryLikesCount);
         }
     }
 }

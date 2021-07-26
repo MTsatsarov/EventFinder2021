@@ -38,10 +38,10 @@
                 </tr>
                 <tr>
                     <td class="@comentary.ComentaryId">
-                        <button id="@comentary.ComentaryId"  type="submit" class="btn-success" onclick="Like(this.id)" value="@comentary.ComentaryId">Like @comentary.LikesCount</button>
+                        <button id="@comentary.ComentaryId" type="submit" class="btn-success" onclick="Like(this.id)" value="@comentary.ComentaryId">Like @comentary.LikesCount</button>
                     </td>
                     <td>
-                        <button id="@comentary.ComentaryId@i" type="submit" class="btn-danger" onclick="Dislike(this.id)" value="@comentary.ComentaryId">Dislike @comentary.DislikesCount</button>
+                        <button name="@comentary.ComentaryId" id="@comentary.ComentaryId@i" type="submit" class="btn-danger" onclick="Dislike(this.id)" value="@comentary.ComentaryId">Dislike @comentary.DislikesCount</button>
                     </td>
                 </tr>
 
@@ -80,87 +80,4 @@
 
 
 </body>
-<script>
-        function Like(clicked_id) {
-      var xhttp = new XMLHttpRequest();
-            xhttp.open('POST', "/Comentary/LikeComentary", true);
-            xhttp.setRequestHeader("Content-Type", "application/json");
-            xhttp.setRequestHeader("RequestVerificationToken", "@GetAntiXsrfRequestToken()");
-            xhttp.onreadystatechange = function ()
-            {
-                     if (this.readyState == 4 && this.status == 200) {
-                         // Response
-                         var responseText = JSON.parse(this.responseText);
-                         var comentaryLikesCount = responseText.comentaryLikeCount;
-                         var comentaryDislikeCount = responseText.comentaryDislikeCount;
-                         document.getElementById(clicked_id).textContent = `Like ${comentaryLikesCount}`
-
-                         document.getElementById(clicked_idi) = `Dislikesss ${comentaryDislikeCount}`
-
-                     }
-            };
-            var data = { userId: '@currentUserId', comentaryId: clicked_id };
-            xhttp.send(JSON.stringify(data));
-        }
-</script>
-<script>
-        function Dislike(clicked_id) {
-      var xhttp = new XMLHttpRequest();
-            xhttp.open('POST', "/Comentary/DislikeComentary", true);
-            xhttp.setRequestHeader("Content-Type", "application/json");
-            xhttp.setRequestHeader("RequestVerificationToken", "@GetAntiXsrfRequestToken()");
-            xhttp.onreadystatechange = function ()
-            {
-                     if (this.readyState == 4 && this.status == 200) {
-                         // Response
-                         var responseText = JSON.parse(this.responseText);
-                         var count = responseText.count
-                         document.getElementById(clicked_id).innerText = count;
-
-                     }
-            };
-            var data = { userId: '@currentUserId', comentaryId: clicked_id };
-            xhttp.send(JSON.stringify(data));
-        }
-</script>
-
-<script>
-        function LikeReply(clicked_id) {
-      var xhttp = new XMLHttpRequest();
-            xhttp.open('POST', "/Reply/LikeReply", true);
-            xhttp.setRequestHeader("Content-Type", "application/json");
-            xhttp.setRequestHeader("RequestVerificationToken", "@GetAntiXsrfRequestToken()");
-            xhttp.onreadystatechange = function ()
-            {
-                     if (this.readyState == 4 && this.status == 200) {
-                         // Response
-                         var responseText = JSON.parse(this.responseText);
-                         var count = responseText.count
-                         document.getElementById(clicked_id).innerText = count;
-
-                     }
-            };
-            var data = { userId: '@currentUserId', replyId: clicked_id };
-            xhttp.send(JSON.stringify(data));
-        }
-</script>
-<script>
-        function DislikeReply(clicked_id) {
-      var xhttp = new XMLHttpRequest();
-            xhttp.open('POST', "/Reply/DislikeReply", true);
-            xhttp.setRequestHeader("Content-Type", "application/json");
-            xhttp.setRequestHeader("RequestVerificationToken", "@GetAntiXsrfRequestToken()");
-            xhttp.onreadystatechange = function ()
-            {
-                     if (this.readyState == 4 && this.status == 200) {
-                         // Response
-                         var responseText = JSON.parse(this.responseText);
-                         var count = responseText.count
-                         document.getElementById(clicked_id).innerText = count;
-
-                     }
-            };
-            var data = { userId: '@currentUserId', replyId: clicked_id };
-            xhttp.send(JSON.stringify(data));
-        }
-</script>
+<script src="~/js/ComentaryView.js"></script>

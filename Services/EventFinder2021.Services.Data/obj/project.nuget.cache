@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qOdKZ6aIUZjQb8ZxhHO+qn+JrVKPOEko5RB1i7NZ0A4V4s70J91Z9QTac+c5EXeactTh6p+tUjctp2rHOf05tA==",
+  "dgSpecHash": "Xf9Msa26g4sAxphXLS+YarVf31DMq14tPdE12MBS9aHx2IBWwv+3hR7cqf86XxheCgyqvdLwOkyhUJct1StaEQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Services\\EventFinder2021.Services.Data\\EventFinder2021.Services.Data.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Data\\EventFinder2021.Services.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",

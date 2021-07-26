@@ -1,8 +1,10 @@
 ﻿namespace EventFinder2021.Services.Data.DislikeService
 {
+    using EventFinder2021.Web.ViewModels.LikeDislikeViewModel;
+
    public interface IDislikeService
     {
-        int GetComentaryDislikes(int comentaryId);
+        LikeDislikeViewModel GetComentaryDislikes(int comentaryId);
 
         int GetReplyDislikes(int replyId);
 

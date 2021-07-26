@@ -10,7 +10,7 @@
             <div class="row">
                 @foreach (var currEvent in this.Model.Events)
                 {
-        <div class="card col-md-3">
+        <div class="card col-md-3" name="eventCards">
             <div>
                 <img src="@currEvent.ImageUrl" class="mr-3" width="100">
             </div>
@@ -60,5 +60,22 @@
     </ul>
 </nav>
 
+<script>
+    [...document.getElementsByName('eventCards')].forEach(x => {
+        x.addEventListener('mouseover', onHover);
+        x.addEventListener('mouseout', onMouseOut)
+    })
+
+
+    function onHover(ev) {
+        ev.target.parentNode.setAttribute('style','background-color:gray;')
+
+    }
+    function onMouseOut(ev) {
+        ev.target.parentNode.setAttribute('style', 'background-color:none')
+
+    }
+
+</script>
 
 

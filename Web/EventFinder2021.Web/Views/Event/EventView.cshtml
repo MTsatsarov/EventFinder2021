@@ -32,7 +32,7 @@
             <p class="justify-content-center">Date: @Model.Date</p>
         </div>
         <div class="custom-control-inline">
-            <ul>
+            <ul class="starss">
                 <li class="star-fill d-inline-block" id="1" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
                 <li class="star-fill d-inline-block" id="2" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
                 <li class="star-fill d-inline-block" id="3" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
@@ -48,7 +48,6 @@
                 </div>
             </div>
         </div>
-        @* TODO *@
         @if (this.SignInManager.IsSignedIn(this.User) && currentUserId != Model.CreatorId)
         {
             <div>
@@ -69,15 +68,14 @@
     </div>
     <hr />
     <div>
-        <span>
-            <a class="btn btn-primary" asp-controller="Comentary" asp-action="AllComentaries" asp-route-id="@Model.Id" onclick="AllComentaries">See comments</a>
-        </span>
-        <span class="">
-            <a class="btn btn-primary" asp-controller="Comentary" asp-action="WriteComentary" asp-route-id="@Model.Id">Write commentary</a>
-        </span>
-    </div>
-    <div id="AllComentaries">
-
+        <div>
+            <span>
+                <a class="btn btn-primary" asp-controller="Comentary" asp-action="AllComentaries" asp-route-id="@Model.Id">See comments</a>
+            </span>
+            <span class="">
+                <a class="btn btn-primary" asp-controller="Comentary" asp-action="WriteComentary" asp-route-id="@Model.Id">Write commentary</a>
+            </span>
+        </div>
     </div>
     <script>
         function Going() {
@@ -153,6 +151,7 @@
                          var responseText = JSON.parse(this.responseText);
                          var grade = responseText.averageVoteValue;
                          document.getElementById('averageVoteGrade').textContent = `${grade} / 5`;
+
 
                      }
             };

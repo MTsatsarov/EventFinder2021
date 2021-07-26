@@ -8,6 +8,7 @@
 
     using EventFinder2021.Data;
     using EventFinder2021.Data.Models;
+    using EventFinder2021.Web.ViewModels.LikeDislikeViewModel;
 
     public class DislikeService : IDislikeService
     {
@@ -97,9 +98,17 @@
             }
         }
 
-        public int GetComentaryDislikes(int comentaryId)
+        public LikeDislikeViewModel GetComentaryDislikes(int comentaryId)
         {
-            return this.db.Dislikes.Where(x => x.ComentaryId == comentaryId).ToList().Count();
+            var comentary = this.db.Comentaries.Where(x => x.Id == comentaryId).FirstOrDefault();
+
+            var likeDislikeModel = new LikeDislikeViewModel()
+            {
+                ComentaryDislikeCount = comentary.Dislikes.Count(),
+                ComentaryLikeCount = comentary.Likes.Count(),
+            };
+
+            return likeDislikeModel;
         }
 
         public int GetReplyDislikes(int replyId)
