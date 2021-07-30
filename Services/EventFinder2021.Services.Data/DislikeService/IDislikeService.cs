@@ -4,7 +4,6 @@
 
    public interface IDislikeService
     {
-        LikeDislikeViewModel GetComentaryDislikes(int comentaryId);
 
         int GetReplyDislikes(int replyId);
 

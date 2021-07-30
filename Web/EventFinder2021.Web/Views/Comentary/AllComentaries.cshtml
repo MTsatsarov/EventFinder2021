@@ -19,7 +19,7 @@
 }
 @model List<ComentaryViewModel>
 
-<body>
+<body onload="Like()">
     <table class="col-md-8  justify-content-md-center border-info">
         <tbody>
             @for (int i = 0; i < Model.Count; i++)
@@ -38,10 +38,10 @@
                 </tr>
                 <tr>
                     <td class="@comentary.ComentaryId">
-                        <button id="@comentary.ComentaryId" type="submit" class="btn-success" onclick="Like(this.id)" value="@comentary.ComentaryId">Like @comentary.LikesCount</button>
+                        <button id="@comentary.ComentaryId" type="submit" name="LikeComentary" class="btn-success" value="@comentary.ComentaryId">Like @comentary.LikesCount</button>
                     </td>
                     <td>
-                        <button name="@comentary.ComentaryId" id="@comentary.ComentaryId@i" type="submit" class="btn-danger" onclick="Dislike(this.id)" value="@comentary.ComentaryId">Dislike @comentary.DislikesCount</button>
+                        <button name="DislikeComentary" id="@comentary.ComentaryId" type="submit" class="btn-danger" value="@comentary.ComentaryId">Dislike @comentary.DislikesCount</button>
                     </td>
                 </tr>
 
@@ -56,10 +56,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <button id="@reply.ReplyId" type="submit" class="btn-success" onclick="LikeReply(this.id)" value="@reply.ReplyId">Like @reply.ReplyLikesCount</button>
+                            <button id="@reply.ReplyId" type="submit" class="btn-success"value="@reply.ReplyId">Like @reply.ReplyLikesCount</button>
                         </td>
                         <td>
-                            <button id="@reply.ReplyId@j" type="submit" class="btn-danger" onclick="DislikeReply(this.id)" value="@reply.ReplyId">Dislike @reply.ReplyDislikesCount</button>
+                            <button id="@reply.ReplyId@j" type="submit" class="btn-danger"  value="@reply.ReplyId">Dislike @reply.ReplyDislikesCount</button>
                         </td>
                     </tr>
                     <tr>
@@ -80,4 +80,4 @@
 
 
 </body>
-<script src="~/js/ComentaryView.js"></script>
+<script src="~/js/comentaries.js"></script>

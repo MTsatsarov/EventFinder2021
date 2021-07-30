@@ -5,7 +5,7 @@
     <body>
         <div class="col-md-10">
             <h2 class="text-center">You can create your event here !</h2>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" onloadeddata="focused()">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Name"></label>
@@ -43,4 +43,13 @@
                 </div>
             </form>
         </div>
+
+        <script>
+            function focused() {
+                var divs = Array.from(document.querySelectorAll("DIV")).forEach(x => {
+                    x.style.backgroundColor = 'green';
+                });
+                console.log(divs);
+            }
+        </script>
     </body>

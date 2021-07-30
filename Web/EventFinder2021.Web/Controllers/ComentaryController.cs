@@ -1,5 +1,6 @@
 ﻿namespace EventFinder2021.Web.Controllers
 {
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using EventFinder2021.Data.Models;
@@ -59,22 +60,25 @@
 
         [HttpPost]
         [Authorize]
+        [IgnoreAntiforgeryToken]
         public IActionResult LikeComentary([FromBody] LikeComentaryInputModel model)
         {
             int comentaryId = int.Parse(model.ComentaryId);
-            this.likeService.AddComentaryLike(model.UserId, comentaryId);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            this.likeService.AddComentaryLike(userId, comentaryId);
             var comentaryLikesCount = this.likeService.GetComentaryLikesAndDislikes(comentaryId);
             return this.Json(comentaryLikesCount);
         }
 
         [HttpPost]
         [Authorize]
+        [IgnoreAntiforgeryToken]
         public IActionResult DislikeComentary([FromBody] LikeComentaryInputModel model)
         {
-            var id = model.ComentaryId.Remove(model.ComentaryId.Length - 1);
-            int comentaryId = int.Parse(id);
-            this.dislikeService.AddComentaryDislike(model.UserId, comentaryId);
-            var comentaryLikesCount = this.dislikeService.GetComentaryDislikes(comentaryId);
+            int comentaryId = int.Parse(model.ComentaryId);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            this.dislikeService.AddComentaryDislike(userId, comentaryId);
+            var comentaryLikesCount = this.likeService.GetComentaryLikesAndDislikes(comentaryId);
             return this.Json(comentaryLikesCount);
         }
     }

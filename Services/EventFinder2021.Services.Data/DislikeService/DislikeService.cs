@@ -32,9 +32,7 @@
 
             if (dislike != null)
             {
-                comentary.Dislikes.Remove(dislike);
-                this.db.Comentaries.Update(comentary);
-                this.db.SaveChanges();
+                return;
             }
             else
             {
@@ -49,7 +47,7 @@
                 var currLike = this.db.Likes.Where(x => x.ComentaryId == comentaryId && x.Users.Contains(currUser)).FirstOrDefault();
                 if (currLike != null)
                 {
-                    return;
+                    currLike.IsDeleted = true;
                 }
 
                 dislike.Users.Add(currUser);
@@ -98,18 +96,18 @@
             }
         }
 
-        public LikeDislikeViewModel GetComentaryDislikes(int comentaryId)
-        {
-            var comentary = this.db.Comentaries.Where(x => x.Id == comentaryId).FirstOrDefault();
+        //public LikeDislikeViewModel GetComentaryDislikes(int comentaryId)
+        //{
+        //    var comentary = this.db.Comentaries.Where(x => x.Id == comentaryId).FirstOrDefault();
 
-            var likeDislikeModel = new LikeDislikeViewModel()
-            {
-                ComentaryDislikeCount = comentary.Dislikes.Count(),
-                ComentaryLikeCount = comentary.Likes.Count(),
-            };
+        //    var likeDislikeModel = new LikeDislikeViewModel()
+        //    {
+        //        ComentaryDislikeCount = comentary.Dislikes.Count(),
+        //        ComentaryLikeCount = comentary.Likes.Count(),
+        //    };
 
-            return likeDislikeModel;
-        }
+        //    return likeDislikeModel;
+        //}
 
         public int GetReplyDislikes(int replyId)
         {

@@ -48,7 +48,7 @@
                 var dislike = this.db.Dislikes.Where(x => x.ComentaryId == comentaryId && x.Users.Contains(currUser)).FirstOrDefault();
                 if (dislike != null)
                 {
-                    return;
+                    dislike.IsDeleted = true;
                 }
 
                 like.Users.Add(currUser);

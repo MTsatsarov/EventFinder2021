@@ -3,7 +3,5 @@
     public class LikeComentaryInputModel
     {
         public string ComentaryId { get; set; }
-
-        public string UserId { get; set; }
     }
 }
