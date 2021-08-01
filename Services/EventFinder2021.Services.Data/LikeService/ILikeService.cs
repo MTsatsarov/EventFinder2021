@@ -6,7 +6,7 @@
     {
         LikeDislikeViewModel GetComentaryLikesAndDislikes(int comentaryId);
 
-        int GetReplyLikes(int replyId);
+        LikeDislikeViewModel GetReplyLikesAndDislikes(int replyId);
 
         void AddComentaryLike(string userId, int comentaryId);
 

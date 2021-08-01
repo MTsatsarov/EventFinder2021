@@ -96,19 +96,6 @@
             }
         }
 
-        //public LikeDislikeViewModel GetComentaryDislikes(int comentaryId)
-        //{
-        //    var comentary = this.db.Comentaries.Where(x => x.Id == comentaryId).FirstOrDefault();
-
-        //    var likeDislikeModel = new LikeDislikeViewModel()
-        //    {
-        //        ComentaryDislikeCount = comentary.Dislikes.Count(),
-        //        ComentaryLikeCount = comentary.Likes.Count(),
-        //    };
-
-        //    return likeDislikeModel;
-        //}
-
         public int GetReplyDislikes(int replyId)
         {
             return this.db.Dislikes.Where(x => x.ReplyId == replyId).ToList().Count();

@@ -36,7 +36,7 @@
                         <div>@comentary.Content</div>
                     </td>
                 </tr>
-                <tr>
+                <tr>    
                     <td class="@comentary.ComentaryId">
                         <button id="@comentary.ComentaryId" type="submit" name="LikeComentary" class="btn-success" value="@comentary.ComentaryId">Like @comentary.LikesCount</button>
                     </td>
@@ -56,10 +56,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <button id="@reply.ReplyId" type="submit" class="btn-success"value="@reply.ReplyId">Like @reply.ReplyLikesCount</button>
+                            <button name="LikeReply" id="@reply.ReplyId" type="submit" class="btn-success" value="@reply.ReplyId">Like @reply.ReplyLikesCount</button>
                         </td>
                         <td>
-                            <button id="@reply.ReplyId@j" type="submit" class="btn-danger"  value="@reply.ReplyId">Dislike @reply.ReplyDislikesCount</button>
+                            <button name="DislikeReply" id="@reply.ReplyId" type="submit" class="btn-danger" value="@reply.ReplyId">Dislike @reply.ReplyDislikesCount</button>
                         </td>
                     </tr>
                     <tr>
@@ -68,6 +68,7 @@
                         </td>
                     </tr>
                 }
+
                 <tr>
                     <td>
                         <a class="btn" asp-controller="Reply" asp-action="WriteReply" asp-route-id="@comentary.ComentaryId">Reply</a>

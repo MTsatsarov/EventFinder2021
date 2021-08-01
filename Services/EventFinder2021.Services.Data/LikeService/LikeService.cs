@@ -111,9 +111,17 @@
             return likeDislikeModel;
         }
 
-        public int GetReplyLikes(int replyId)
+        public LikeDislikeViewModel GetReplyLikesAndDislikes(int replyId)
         {
-            return this.db.Likes.Where(x => x.ReplyId == replyId).ToList().Count();
+            int likesCount = this.db.Likes.Where(x => x.ReplyId == replyId).ToList().Count;
+            var dislikeCount = this.db.Dislikes.Where(x => x.ReplyId == replyId).ToList().Count();
+            var likeDislikeModel = new LikeDislikeViewModel()
+            {
+                ComentaryLikeCount = likesCount,
+                ComentaryDislikeCount = dislikeCount,
+            };
+
+            return likeDislikeModel;
         }
     }
 }

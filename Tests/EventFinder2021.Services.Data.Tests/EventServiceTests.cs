@@ -284,7 +284,7 @@
             service.AddGoingUser(this.user.Id, 1);
 
             var notGoingUsers = service.GetEventById(1);
-            Assert.Equal(0,notGoingUsers.NotGoingUsers);
+            Assert.Equal(0, notGoingUsers.NotGoingUsers);
         }
     }
 }

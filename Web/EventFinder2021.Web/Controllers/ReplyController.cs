@@ -1,5 +1,6 @@
 ﻿namespace EventFinder2021.Web.Controllers
 {
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     using EventFinder2021.Data.Models;
@@ -48,23 +49,26 @@
 
         [HttpPost]
         [Authorize]
+        [IgnoreAntiforgeryToken]
         public IActionResult LikeReply([FromBody] LikeReplyInputModel model)
         {
-            int replyId = int.Parse(model.ReplyId);
-            this.likeService.AddReplyLike(model.UserId, replyId);
-            var comentaryLikesCount = this.likeService.GetReplyLikes(replyId);
-            return this.Json(new { count = $"{comentaryLikesCount}" });
+            int replyId = int.Parse(model.ComentaryId);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            this.likeService.AddReplyLike(userId ,replyId);
+            var replyLikesAndDislikes = this.likeService.GetReplyLikesAndDislikes(replyId);
+            return this.Json(replyLikesAndDislikes);
         }
 
         [HttpPost]
         [Authorize]
+        [IgnoreAntiforgeryToken]
         public IActionResult DislikeReply([FromBody] LikeReplyInputModel model)
         {
-            var reply = model.ReplyId.Remove(model.ReplyId.Length - 1);
-            int replyId = int.Parse(reply);
-            this.dislikeService.AddReplyDislike(model.UserId, replyId);
-            var replyDislikes = this.dislikeService.GetReplyDislikes(replyId);
-            return this.Json(new { count = $"{replyDislikes}" });
+            var replyId = int.Parse(model.ComentaryId);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            this.dislikeService.AddReplyDislike(userId, replyId);
+            var replyLikesAndDislikes = this.likeService.GetReplyLikesAndDislikes(replyId);
+            return this.Json(replyLikesAndDislikes);
         }
     }
 }

@@ -2,8 +2,6 @@
 {
     public class LikeReplyInputModel
     {
-        public string UserId { get; set; }
-
-        public string ReplyId { get; set; }
+        public string ComentaryId { get; set; }
     }
 }

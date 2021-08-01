@@ -252,6 +252,7 @@
                     {
                         eventViewModel.VotesAverageGrade = currEvent.Votes.Average(x => x.Grade);
                     }
+
                     eventViewModels.Add(eventViewModel);
                 }
 
