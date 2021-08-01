@@ -14,7 +14,7 @@ function ClearComments() {
     element.parentNode.removeChild(element);
     var commentsBtn = document.getElementById('displayComments');
     commentsBtn.textContent = 'See comments';
-    commentsBtn.removeEventListener('click',ClearComments);
+    commentsBtn.removeEventListener('click', ClearComments);
     commentsBtn.addEventListener('click', ShowComments);
 
 }
@@ -87,8 +87,60 @@ function CreateHtml(comentaries) {
         DislikeComentaryButton.type = 'submit';
         dislikeButtonTd.appendChild(DislikeComentaryButton);
         buttonsTr.appendChild(dislikeButtonTd);
-        //TODO ---Replies;
         tbody.appendChild(buttonsTr);
+
+        if (commentary.replies.length >0) {
+            for (const reply of commentary.replies) {
+
+                var replyUserNameTr = document.createElement('tr');
+                var replyUserNameTd = document.createElement('td');
+                replyUserNameTd.textContent=reply.userName;
+                replyUserNameTr.appendChild(replyUserNameTd);
+    
+                var replyContentTr = document.createElement('tr');
+                var replyContentTd = document.createElement('td');
+                replyContentTd.textContent = reply.content;
+                replyContentTr.appendChild(replyContentTd);
+    
+                var replyButtonsTr = document.createElement('tr');
+                var likeReplyButtonTd = document.createElement('td');
+                replyButtonsTr.appendChild(likeReplyButtonTd);
+
+                var likeReplyButton = document.createElement('button');
+    
+                likeReplyButton.setAttribute('name', 'LikeReply');
+                likeReplyButton.setAttribute('type', 'submit');
+                likeReplyButton.setAttribute('class', 'btn-success');
+                likeReplyButton.value = reply.replyId;
+                likeReplyButton.textContent = `Like ${reply.replyLikesCount}`
+    
+                var dislikeReplyButtonTd = document.createElement('td');
+    
+                var dislikeReplyButton = document.createElement('button');
+                dislikeReplyButton.setAttribute('name', 'DislikeReply');
+                dislikeReplyButton.setAttribute('type', 'submit');
+                dislikeReplyButton.setAttribute('class', 'btn-danger');
+                dislikeReplyButton.value = reply.replyId;
+                dislikeReplyButton.textContent = `Like ${reply.replyDislikesCount}`
+    
+    
+                likeReplyButtonTd.appendChild(likeReplyButton);
+                dislikeReplyButtonTd.appendChild(dislikeReplyButton);
+                replyButtonsTr.appendChild(likeReplyButtonTd);
+                replyButtonsTr.appendChild(dislikeReplyButtonTd);
+                
+    
+                tbody.appendChild(replyUserNameTr);
+    
+                tbody.appendChild(replyContentTr);
+    
+                tbody.appendChild(replyButtonsTr);
+    
+            }
+        }
+       
+    
+
 
     }
     var commentaryBtn = document.getElementById('displayComments');
