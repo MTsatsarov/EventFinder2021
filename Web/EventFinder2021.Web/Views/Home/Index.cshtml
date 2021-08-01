@@ -3,79 +3,64 @@
 @model ListEventViewModel
 <head>
 </head>
-<body class="text-center">
+<body class="text-center" onload="Hover()">
     <div class="text-center row">
         <h1 class="display-4 text-center">Welcome to @GlobalConstants.SystemName!</h1>
         <div class="col-md-8">
             <div class="row">
                 @foreach (var currEvent in this.Model.Events)
                 {
-        <div class="card col-md-3" name="eventCards">
-            <div>
-                <img src="@currEvent.ImageUrl" class="mr-3" width="100">
-            </div>
+                    <div class="card col-md-3" name="eventCards">
+                        <div>
+                            <img src="@currEvent.ImageUrl" class="mr-3" width="100">
+                        </div>
 
-            <div class="card-body">
-                <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
-                <p class="card-text">Category: @currEvent.Category</p>
-                <p>City: @currEvent.City</p>
-            </div>
-            
-        </div>
-    }
+                        <div class="card-body">
+                            <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
+                            <p class="card-text">Category: @currEvent.Category</p>
+                            <p>City: @currEvent.City</p>
+                        </div>
+
+                    </div>
+                }
             </div>
         </div>
     </div>
     <hr />
+    <script src="~/js/HomeIndex.js"></script>
+
+
+    <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @if (!Model.HasPreviousPage) {<text>disabled</text>} ">
+                <a class="page-link" asp-action="Index" asp-route-id="@Model.PreviousPageNumber">Previous</a>
+            </li>
+            @for (int i = Model.PageNumber - 3; i < Model.PageNumber; i++)
+            {
+                if (i > 0)
+                {
+                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-id="@i">@i</a></li>
+                }
+
+            }
+
+            <li class="page-item active">
+                <a class="page-link" asp-action="Index" asp-route-id="@Model.PageNumber">@Model.PageNumber <span class="sr-only">(current)</span></a>
+            </li>
+            @for (int i = Model.PageNumber + 1; i <= Model.PageNumber + 3; i++)
+            {
+                if (i <= Model.PagesCount)
+                {
+                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-id="@i">@i</a></li>
+                }
+
+            }
+            <li class="page-item @if (!Model.HasNextPage) {<text>disabled</text>} ">
+                <a class="page-link" asp-action="Index" asp-route-id="@Model.NextPage">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+
 </body>
-
-<nav aria-label="...">
-    <ul class="pagination justify-content-center">
-        <li class="page-item @if (!Model.HasPreviousPage) {<text>disabled</text>} ">
-            <a class="page-link" asp-action="Index" asp-route-id="@Model.PreviousPageNumber">Previous</a>
-        </li>
-        @for (int i = Model.PageNumber - 3; i < Model.PageNumber; i++)
-        {
-            if (i > 0)
-            {
-                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-id="@i">@i</a></li>
-            }
-
-        }
-
-        <li class="page-item active">
-            <a class="page-link" asp-action="Index" asp-route-id="@Model.PageNumber">@Model.PageNumber <span class="sr-only">(current)</span></a>
-        </li>
-        @for (int i = Model.PageNumber + 1; i <= Model.PageNumber + 3; i++)
-        {
-            if (i <= Model.PagesCount)
-            {
-                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-id="@i">@i</a></li>
-            }
-
-        }
-        <li class="page-item @if (!Model.HasNextPage) {<text>disabled</text>} ">
-            <a class="page-link" asp-action="Index" asp-route-id="@Model.NextPage">Next</a>
-        </li>
-    </ul>
-</nav>
-
-<script>
-    [...document.getElementsByName('eventCards')].forEach(x => {
-        x.addEventListener('mouseover', onHover);
-        x.addEventListener('mouseout', onMouseOut)
-    })
-
-
-    function onHover(ev) {
-        ev.target.parentNode.setAttribute('style','background-color:gray;')
-
-    }
-    function onMouseOut(ev) {
-        ev.target.parentNode.setAttribute('style', 'background-color:none')
-
-    }
-
-</script>
-
 

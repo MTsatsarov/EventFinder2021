@@ -6,6 +6,7 @@
 }
 <h1 class="text-center">@this.ViewData["Title"]</h1>
 <body>
+    <link rel="stylesheet" href="~/css/SearchButton.css" asp-append-version="true" />
     <form method="get">
         <select class="form-control" asp-for="@Model.Category" asp-items="@Html.GetEnumSelectList<Category>()"></select>
         <label asp-for="@Model.Category">Category</label>
@@ -16,6 +17,6 @@
         <input class="form-control" asp-for="@Model.Name" />
         <label asp-for="@Model.Name">Name</label>
 
-        <button type="submit" asp-action="GetSearchedEvents">Search</button>
+        <button class="ripple" type="submit" asp-action="GetSearchedEvents">Search</button>
     </form>
 </body>
