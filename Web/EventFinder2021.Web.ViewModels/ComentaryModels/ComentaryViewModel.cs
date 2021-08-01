@@ -1,7 +1,8 @@
 ﻿namespace EventFinder2021.Web.ViewModels.ComentaryModels
 {
-    using Newtonsoft.Json;
     using System.Collections.Generic;
+
+    using Newtonsoft.Json;
 
     public class ComentaryViewModel
     {

@@ -31,12 +31,13 @@
         }
 
         [Authorize]
-        public IActionResult AllComentaries(string id)
+        [IgnoreAntiforgeryToken]
+        public IActionResult AllComentaries([FromBody]GetComentaryModel id)
         {
-            var eventId = int.Parse(id);
+            var eventId = int.Parse(id.EventId);
             var comentaries = this.comentaryService.GetAllEventComentaries(eventId);
 
-            return this.View(comentaries);
+            return this.Json(comentaries);
         }
 
         [Authorize]

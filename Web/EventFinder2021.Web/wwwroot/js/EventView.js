@@ -3,9 +3,98 @@
 
     document.getElementById('btn-danger').addEventListener('click', NotGoing);
 
-   var smth =  document.querySelectorAll('li i').forEach(x=> x.addEventListener('click',Vote))
+    document.getElementById('displayComments').addEventListener('click', ShowComments)
+
+    var smth = document.querySelectorAll('li i').forEach(x => x.addEventListener('click', Vote))
 
     console.log(smth);
+}
+function ClearComments() {
+    var element = document.getElementsByName('comentaryDivContainer')[0];
+    element.parentNode.removeChild(element);
+    var commentsBtn = document.getElementById('displayComments');
+    commentsBtn.textContent = 'See comments';
+    commentsBtn.removeEventListener('click',ClearComments);
+    commentsBtn.addEventListener('click', ShowComments);
+
+}
+
+function ShowComments() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('POST', "/Comentary/AllComentaries", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            // Response
+            var responseText = JSON.parse(this.responseText);
+            CreateHtml(responseText)
+        }
+
+    };
+    var currEvent = document.querySelector('body');
+    var id = currEvent.id;
+    var data = { eventId: id };
+    xhttp.send(JSON.stringify(data));
+
+}
+
+function CreateHtml(comentaries) {
+    var body = document.getElementsByTagName('BODY')[0];
+    var divContainer = document.createElement('div');
+    divContainer.setAttribute('name', 'comentaryDivContainer')
+    var table = document.createElement('table');
+    var tbody = document.createElement('tbody');
+    table.appendChild(tbody);
+    divContainer.appendChild(table);
+    body.appendChild(divContainer);
+    for (const commentary of comentaries) {
+
+        var userNameTr = document.createElement('tr');
+        var userNameTd = document.createElement('td');
+        var userNameDiv = document.createElement('div');
+        userNameDiv.textContent = commentary.userName;
+        userNameTd.appendChild(userNameDiv);
+        userNameTr.appendChild(userNameTd);
+        tbody.appendChild(userNameTr);
+
+        var contentTr = document.createElement('tr');
+        var contentTd = document.createElement('td');
+        var contentDiv = document.createElement('div');
+        contentDiv.textContent = commentary.content;
+        contentTd.appendChild(contentDiv);
+        contentTr.appendChild(contentTd);
+        tbody.appendChild(contentTr);
+
+        var buttonsTr = document.createElement('tr');
+        var likeButtonTd = document.createElement('td');
+        var dislikeButtonTd = document.createElement('td');
+        var likeComentaryButton = document.createElement('button');
+        var DislikeComentaryButton = document.createElement('button');
+        likeComentaryButton.id = commentary.id;
+        likeComentaryButton.name = "LikeComentary";
+        likeComentaryButton.setAttribute('class', 'btn-success');
+        likeComentaryButton.value = commentary.id;
+        likeComentaryButton.textContent = `Like ${commentary.likesCount}`;
+        likeComentaryButton.type = 'submit';
+        likeButtonTd.appendChild(likeComentaryButton);
+        buttonsTr.appendChild(likeButtonTd);
+
+        DislikeComentaryButton.id = commentary.id;
+        DislikeComentaryButton.name = "DislikeComentary";
+        DislikeComentaryButton.setAttribute('class', 'btn-danger');
+        DislikeComentaryButton.value = commentary.id;
+        DislikeComentaryButton.textContent = `Dislikes ${commentary.dislikesCount}`;
+        DislikeComentaryButton.type = 'submit';
+        dislikeButtonTd.appendChild(DislikeComentaryButton);
+        buttonsTr.appendChild(dislikeButtonTd);
+        //TODO ---Replies;
+        tbody.appendChild(buttonsTr);
+
+    }
+    var commentaryBtn = document.getElementById('displayComments');
+    commentaryBtn.textContent = 'Hide Commentary';
+    commentaryBtn.removeEventListener('click', ShowComments)
+    commentaryBtn.addEventListener('click', ClearComments)
 }
 
 function Going() {
@@ -34,7 +123,7 @@ function Going() {
     };
     var currEvent = document.querySelector('body');
     var id = currEvent.id;
-    var data = {eventId: id };
+    var data = { eventId: id };
     xhttp.send(JSON.stringify(data));
 }
 function NotGoing() {
@@ -63,7 +152,7 @@ function NotGoing() {
     };
     var currEvent = document.querySelector('body');
     var id = currEvent.id;
-    var data = {eventId: id };
+    var data = { eventId: id };
     xhttp.send(JSON.stringify(data));
 }
 function Vote(ev) {
@@ -83,6 +172,6 @@ function Vote(ev) {
     var currEvent = document.querySelector('body');
     var currEventId = currEvent.id;
     var gradeId = ev.target.parentNode.id;
-    var data = {eventId: currEventId, grade: gradeId };
+    var data = { eventId: currEventId, grade: gradeId };
     xhttp.send(JSON.stringify(data));
 }
