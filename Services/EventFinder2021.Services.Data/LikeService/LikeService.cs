@@ -71,9 +71,7 @@
 
             if (like != null)
             {
-                reply.Likes.Remove(like);
-                this.db.Replies.Update(reply);
-                this.db.SaveChanges();
+                return;
             }
             else
             {
@@ -85,10 +83,10 @@
 
                 var currUser = this.userRepository.All().Where(x => x.Id == userId).First();
 
-                var currLike = this.db.Dislikes.Where(x => x.ReplyId == replyId && x.Users.Contains(currUser)).FirstOrDefault();
-                if (currLike != null)
+                var currDislike = this.db.Dislikes.Where(x => x.ReplyId == replyId && x.Users.Contains(currUser)).FirstOrDefault();
+                if (currDislike != null)
                 {
-                    return;
+                    currDislike.IsDeleted = true;
                 }
 
                 like.Users.Add(currUser);

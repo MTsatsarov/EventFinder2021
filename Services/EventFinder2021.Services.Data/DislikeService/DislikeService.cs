@@ -86,7 +86,7 @@
                 var currLike = this.db.Likes.Where(x => x.ReplyId == replyId && x.Users.Contains(currUser)).FirstOrDefault();
                 if (currLike != null)
                 {
-                    return;
+                    currLike.IsDeleted = true;
                 }
 
                 dislike.Users.Add(currUser);
