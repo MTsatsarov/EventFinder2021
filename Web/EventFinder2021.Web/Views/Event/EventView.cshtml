@@ -10,14 +10,7 @@
 @{
     var currentUserId = this.UserManager.GetUserId(this.User);
 }
-@functions
-{
-    public string GetAntiXsrfRequestToken()
-    {
-        return Xsrf.GetAndStoreTokens(Context).RequestToken;
-    }
-}
-<body class="table-responsive">
+<body onload="GoingNotGoing()" id="@Model.Id" class="table-responsive">
     <div class="justify-content-xl-center">
         <h2 class="text-center">@Model.Name</h2>
         <hr />
@@ -33,11 +26,11 @@
         </div>
         <div class="custom-control-inline">
             <ul class="starss">
-                <li class="star-fill d-inline-block" id="1" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
-                <li class="star-fill d-inline-block" id="2" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
-                <li class="star-fill d-inline-block" id="3" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
-                <li class="star-fill d-inline-block" id="4" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
-                <li class="star-fill d-inline-block" id="5" onclick="Vote(this.id)"><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="1" ><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="2"><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="3"><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="4"><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="5" ><i class="fas fa-star"></i></li>
                 <li class="d-inline-block"><span id="averageVoteGrade">@Model.VotesAverageGrade<span> / 5</span></span></li>
             </ul>
         </div>
@@ -48,17 +41,15 @@
                 </div>
             </div>
         </div>
-        @if (this.SignInManager.IsSignedIn(this.User) && currentUserId != Model.CreatorId)
-        {
-            <div>
-                <div id="btnSuccess" style="display:inline">
-                    <button onclick="Going()" id="goingButton" class="btn-success">Going @Model.GoingUsers</button>
-                </div>
-                <div id="btn-danger" style="display:inline">
-                    <button id="notGoingButton" type="submit" class="btn-danger" onclick=NotGoing()>Not Going @Model.NotGoingUsers </button>
-                </div>
+        <div >
+            <div id="btnSuccess" style="display:inline">
+                <button id="goingButton" class="btn-success">Going @Model.GoingUsers</button>
             </div>
-        }
+            <div id="btn-danger" style="display:inline">
+                <button id="notGoingButton" type="submit" class="btn-danger">Not Going @Model.NotGoingUsers </button>
+            </div>
+        </div>
+
     </div>
 
     <hr />
@@ -77,85 +68,7 @@
             </span>
         </div>
     </div>
-    <script>
-        function Going() {
-
-
-      var xhttp = new XMLHttpRequest();
-            xhttp.open('POST', "/Event/GoingToEvent", true);
-            xhttp.setRequestHeader("Content-Type", "application/json");
-            xhttp.setRequestHeader("RequestVerificationToken", "@GetAntiXsrfRequestToken()");
-            xhttp.onreadystatechange = function() {
-                     if (this.readyState == 4 && this.status == 200) {
-                         // Response
-                         var responseText = JSON.parse(this.responseText);
-                         var goingUsersCount = responseText.goingUsersCount;
-                         var btn = document.getElementById("goingButton");
-
-                         btn.textContent = `Going ${goingUsersCount}`;
-                         btn.style.backgroundColor = "Green";
-
-                         var notGoingUsersCount = responseText.notGoingUsersCount;
-                         var notGoingButton = document.getElementById("notGoingButton");
-
-                         notGoingButton.textContent = `Not Going ${notGoingUsersCount}`;
-                         notGoingButton.style.backgroundColor = "Red";
-
-                     }
-    };
-            var data = { userId: '@currentUserId', eventId: '@Model.Id' };
-            xhttp.send(JSON.stringify(data));
-        }
-        function NotGoing() {
-
-
-      var xhttp = new XMLHttpRequest();
-            xhttp.open('POST', "/Event/NotGoingToEvent", true);
-            xhttp.setRequestHeader("Content-Type", "application/json");
-            xhttp.setRequestHeader("RequestVerificationToken", "@GetAntiXsrfRequestToken()");
-            xhttp.onreadystatechange = function() {
-                     if (this.readyState == 4 && this.status == 200) {
-                         // Response
-                         var responseText = JSON.parse(this.responseText);
-                         var goingUsersCount = responseText.goingUsersCount;
-                         var btn = document.getElementById("goingButton");
-
-                         btn.textContent = `Going ${goingUsersCount}`;
-                         btn.style.backgroundColor = "Green";
-
-                         var notGoing = responseText.notGoingUsersCount;
-                         var notGoingButton = document.getElementById("notGoingButton");
-
-                         notGoingButton.textContent = `Not Going ${notGoing}`;
-                         notGoingButton.style.backgroundColor = "Red";
-
-                     }
-    };
-            var data = { userId: '@currentUserId', eventId: '@Model.Id' };
-            xhttp.send(JSON.stringify(data));
-        }
-        function Vote(clicked_id) {
-      var xhttp = new XMLHttpRequest();
-            xhttp.open('POST', "/api/Votes", true);
-            xhttp.setRequestHeader("Content-Type", "application/json");
-            @*xhttp.setRequestHeader("RequestVerificationToken", "@GetAntiXsrfRequestToken()");*@
-            xhttp.onreadystatechange = function ()
-            {
-                     if (this.readyState == 4 && this.status == 200) {
-                         // Response
-                         var responseText = JSON.parse(this.responseText);
-                         var grade = responseText.averageVoteValue;
-                         document.getElementById('averageVoteGrade').textContent = `${grade} / 5`;
-
-
-                     }
-            };
-
-            var data = { eventId: @Model.Id, grade: clicked_id };
-            xhttp.send(JSON.stringify(data));
-        } 
-    </script>
-
+    <script src="~/js/EventView.js"></script>
 </body>
 
 

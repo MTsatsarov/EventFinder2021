@@ -108,10 +108,11 @@
 
         [HttpPost]
         [Authorize]
+        [IgnoreAntiforgeryToken]
         public IActionResult GoingToEvent([FromBody] GoingUsersModel model)
         {
-            var userId = model.UserId;
-            var eventId = model.EventId;
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var eventId = int.Parse(model.EventId);
             var eventUsers = this.eventService.AddGoingUser(userId, eventId);
             return this.Json(new GoingNotGoingViewModel()
             {
@@ -122,10 +123,11 @@
 
         [HttpPost]
         [Authorize]
+        [IgnoreAntiforgeryToken]
         public IActionResult NotGoingToEvent([FromBody] GoingUsersModel model)
         {
-            var userId = model.UserId;
-            var eventId = model.EventId;
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var eventId = int.Parse(model.EventId);
             var eventUsers = this.eventService.AddNotGoingUser(userId, eventId);
             return this.Json(new GoingNotGoingViewModel()
             {
