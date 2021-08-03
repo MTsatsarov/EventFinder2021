@@ -86,7 +86,7 @@ function CreateHtml(comentaries) {
         DislikeComentaryButton.name = "DislikeComentary";
         DislikeComentaryButton.setAttribute('class', 'btn-danger');
         DislikeComentaryButton.setAttribute('value', `${commentary.comentaryId}`);
-        DislikeComentaryButton.textContent = `Dislikes ${commentary.dislikesCount}`;
+        DislikeComentaryButton.textContent = `Dislike ${commentary.dislikesCount}`;
         DislikeComentaryButton.type = 'submit';
 
         messageSpan.appendChild(likeComentaryButton);
@@ -95,22 +95,64 @@ function CreateHtml(comentaries) {
         dialogBoxDiv.appendChild(bodyDiv);
         divContainer.appendChild(dialogBoxDiv);
 
+        if (commentary.replies.length > 0) {
+            for (let reply of commentary.replies) {
+                replyDialogBoxDiv = document.createElement('div');
+                replyDialogBoxDiv.setAttribute('class', 'replyDialogbox');
+                replyComentarySpan = document.createElement('span');
+                replyComentaryA = document.createElement('a');
+                replyComentaryA.textContent = reply.userName;
+                replyComentarySpan.appendChild(replyComentaryA);
+                replyDialogBoxDiv.appendChild(replyComentarySpan);
+
+
+                replyBodyDiv = document.createElement('div');
+                replyBodyDiv.setAttribute('class', 'replyBody');
+                replyBodySpan = document.createElement('span');
+                replyBodySpan.setAttribute('class', 'tip tip-up')
+                replyBodyDiv.appendChild(replyBodySpan);
+
+                replyMessageDiv = document.createElement('div');
+                replyMessageDiv.setAttribute('class', 'message');
+                replyMessageSpan = document.createElement('span');
+                replyMessageDiv.appendChild(replyMessageSpan);
+                var replyMessageP = document.createElement('p');
+                replyMessageP.setAttribute('class', 'text-break');
+                replyMessageP.textContent = `${reply.content} + I AM REPLLYYYY`;
+                replyMessageSpan.appendChild(replyMessageP);
+
+
+                replyBodyDiv.appendChild(replyMessageDiv);
+                replyDialogBoxDiv.appendChild(replyBodyDiv);
+                divContainer.appendChild(replyDialogBoxDiv);
+            }
+        }
         // if (commentary.replies.length >0) {
         //     for (const reply of commentary.replies) {
 
-        //         var replyUserNameTr = document.createElement('tr');
-        //         var replyUserNameTd = document.createElement('td');
-        //         replyUserNameTd.textContent=reply.userName;
-        //         replyUserNameTr.appendChild(replyUserNameTd);
+        //        dialogBoxDiv = document.createElement('div');
+        // dialogBoxDiv.setAttribute('class', 'dialogbox');
+        // comentarySpan = document.createElement('span');
+        // comentaryA = document.createElement('a');
+        // comentaryA.textContent = commentary.userName;
+        // comentarySpan.appendChild(comentaryA);
+        // dialogBoxDiv.appendChild(comentarySpan);
 
-        //         var replyContentTr = document.createElement('tr');
-        //         var replyContentTd = document.createElement('td');
-        //         replyContentTd.textContent = reply.content;
-        //         replyContentTr.appendChild(replyContentTd);
 
-        //         var replyButtonsTr = document.createElement('tr');
-        //         var likeReplyButtonTd = document.createElement('td');
-        //         replyButtonsTr.appendChild(likeReplyButtonTd);
+        // bodyDiv = document.createElement('div');
+        // bodyDiv.setAttribute('class', 'body');
+        // bodySpan = document.createElement('span');
+        // bodySpan.setAttribute('class', 'tip tip-up')
+        // bodyDiv.appendChild(bodySpan);
+
+        // messageDiv = document.createElement('div');
+        // messageDiv.setAttribute('class', 'message');
+        // messageSpan = document.createElement('span');
+        // messageDiv.appendChild(messageSpan);
+        // var messageP = document.createElement('p');
+        // messageP.setAttribute('class', 'text-break');
+        // messageP.textContent = commentary.content;
+        // messageSpan.appendChild(messageP);
 
         //         var likeReplyButton = document.createElement('button');
 
@@ -144,9 +186,6 @@ function CreateHtml(comentaries) {
 
         //     }
         // }
-
-
-
 
     }
     var commentaryBtn = document.getElementById('displayComments');
@@ -278,11 +317,11 @@ function ReturnComentaryLikesAndDislikes(btnId, controller, action) {
 
                 tr = element[0].parentNode.parentNode;
             }
-            var currentLikeButton =   tr.children[0].children[1];
-            var currentDislikeButton =   tr.children[0].children[2];
+            var currentLikeButton = tr.children[0].children[1];
+            var currentDislikeButton = tr.children[0].children[2];
 
-          currentLikeButton.textContent = `Like ${responseText.comentaryLikeCount}`;
-          currentDislikeButton.textContent = `Dislike ${responseText.comentaryDislikeCount}`;
+            currentLikeButton.textContent = `Like ${responseText.comentaryLikeCount}`;
+            currentDislikeButton.textContent = `Dislike ${responseText.comentaryDislikeCount}`;
 
 
 
