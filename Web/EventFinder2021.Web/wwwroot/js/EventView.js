@@ -7,6 +7,8 @@
 
     var smth = document.querySelectorAll('li i').forEach(x => x.addEventListener('click', Vote))
 
+    var grade = document.getElementById('averageVoteGrade').textContent.split(' / ')[0];
+    DecorateStars(grade)
 
 
 }
@@ -229,7 +231,9 @@ function Vote(ev) {
             // Response
             var responseText = JSON.parse(this.responseText);
             var grade = responseText.averageVoteValue;
+
             document.getElementById('averageVoteGrade').textContent = `${grade} / 5`;
+            DecorateStars(grade);
         }
     };
     var currEvent = document.querySelector('body');
@@ -237,6 +241,24 @@ function Vote(ev) {
     var gradeId = ev.target.parentNode.id;
     var data = { eventId: currEventId, grade: gradeId };
     xhttp.send(JSON.stringify(data));
+}
+
+function DecorateStars(grade) {
+    var stars = document.querySelectorAll("i");
+    grade = Math.ceil(grade);
+
+    for (let i = 0; i < grade; i++) {
+        var currentStar = stars[i];
+        currentStar.setAttribute('style', 'color:yellow');
+
+    }
+    for (let i = grade; i < stars.length; i++) {
+        var currentStar = stars[i];
+        currentStar.setAttribute('style', 'color:none');
+
+
+    }
+
 }
 
 function LikeDislikeComentary(ev) {
