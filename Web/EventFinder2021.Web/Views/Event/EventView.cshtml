@@ -10,7 +10,8 @@
 @{
     var currentUserId = this.UserManager.GetUserId(this.User);
 }
-<body onload="GoingNotGoing()" id="@Model.Id" class="table-responsive">
+<body onload="GoingNotGoing()"id="@Model.Id" class="table-responsive">
+    <link rel="stylesheet" href="~/css/ComentariesCSS.css" asp-append-version="true" />
     <div class="justify-content-xl-center">
         <h2 class="text-center">@Model.Name</h2>
         <hr />
@@ -26,11 +27,11 @@
         </div>
         <div class="custom-control-inline">
             <ul class="starss">
-                <li class="star-fill d-inline-block" id="1" ><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="1"><i class="fas fa-star"></i></li>
                 <li class="star-fill d-inline-block" id="2"><i class="fas fa-star"></i></li>
                 <li class="star-fill d-inline-block" id="3"><i class="fas fa-star"></i></li>
                 <li class="star-fill d-inline-block" id="4"><i class="fas fa-star"></i></li>
-                <li class="star-fill d-inline-block" id="5" ><i class="fas fa-star"></i></li>
+                <li class="star-fill d-inline-block" id="5"><i class="fas fa-star"></i></li>
                 <li class="d-inline-block"><span id="averageVoteGrade">@Model.VotesAverageGrade<span> / 5</span></span></li>
             </ul>
         </div>
@@ -41,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div >
+        <div>
             <div id="btnSuccess" style="display:inline">
                 <button id="goingButton" class="btn-success">Going @Model.GoingUsers</button>
             </div>

@@ -11,6 +11,7 @@
             this.Replies = new List<ReplyViewModel>();
         }
 
+        [JsonProperty("comentaryId")]
         public int ComentaryId { get; set; }
 
         [JsonProperty("content")]

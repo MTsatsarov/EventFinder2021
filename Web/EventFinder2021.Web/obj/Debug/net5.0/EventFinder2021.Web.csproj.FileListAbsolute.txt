@@ -934,7 +934,6 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.We
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\EventFinder2021.Web.genruntimeconfig.cache
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Event\MyEvents.cshtml.g.cs
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Event\EventView.cshtml.g.cs
-C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Comentary\AllComentaries.cshtml.g.cs
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Comentary\WriteComentary.cshtml.g.cs
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\bin\Debug\net5.0\Castle.Core.dll
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
@@ -943,4 +942,3 @@ C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.We
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Search\GetSearchedEvents.cshtml.g.cs
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Shared\_EventsViewPartial.cshtml.g.cs
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Event\Edit.cshtml.g.cs
-C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\bin\Debug\net5.0\wwwroot\js\comentaries.js

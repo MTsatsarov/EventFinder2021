@@ -37,10 +37,4 @@
     <ProjectReference Include="..\EventFinder2021.Web.Infrastructure\EventFinder2021.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\EventFinder2021.Web.ViewModels\EventFinder2021.Web.ViewModels.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\js\comentaries.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 </Project>
