@@ -1,7 +1,10 @@
 ﻿namespace EventFinder2021.Web.ViewModels.ComentaryModels
 {
+    using Newtonsoft.Json;
+
     public class LikeReplyInputModel
     {
-        public string ComentaryId { get; set; }
+        [JsonProperty("replyId")]
+        public string ReplyId { get; set; }
     }
 }

@@ -122,70 +122,30 @@ function CreateHtml(comentaries) {
                 replyMessageSpan.appendChild(replyMessageP);
 
 
+                var likeReplyButton = document.createElement('button');
+
+                likeReplyButton.setAttribute('name', 'LikeReply');
+                likeReplyButton.setAttribute('type', 'submit');
+                likeReplyButton.setAttribute('class', 'btn-success');
+                likeReplyButton.value = reply.replyId;
+                likeReplyButton.textContent = `Like ${reply.replyLikesCount}`
+
+                var dislikeReplyButton = document.createElement('button');
+                dislikeReplyButton.setAttribute('name', 'DislikeReply');
+                dislikeReplyButton.setAttribute('type', 'submit');
+                dislikeReplyButton.setAttribute('class', 'btn-danger');
+                dislikeReplyButton.value = reply.replyId;
+                dislikeReplyButton.textContent = `Dislike ${reply.replyDislikesCount}`
+
+                replyMessageSpan.appendChild(likeReplyButton);
+                replyMessageSpan.appendChild(dislikeReplyButton);
+
                 replyBodyDiv.appendChild(replyMessageDiv);
                 replyDialogBoxDiv.appendChild(replyBodyDiv);
                 divContainer.appendChild(replyDialogBoxDiv);
             }
         }
-        // if (commentary.replies.length >0) {
-        //     for (const reply of commentary.replies) {
 
-        //        dialogBoxDiv = document.createElement('div');
-        // dialogBoxDiv.setAttribute('class', 'dialogbox');
-        // comentarySpan = document.createElement('span');
-        // comentaryA = document.createElement('a');
-        // comentaryA.textContent = commentary.userName;
-        // comentarySpan.appendChild(comentaryA);
-        // dialogBoxDiv.appendChild(comentarySpan);
-
-
-        // bodyDiv = document.createElement('div');
-        // bodyDiv.setAttribute('class', 'body');
-        // bodySpan = document.createElement('span');
-        // bodySpan.setAttribute('class', 'tip tip-up')
-        // bodyDiv.appendChild(bodySpan);
-
-        // messageDiv = document.createElement('div');
-        // messageDiv.setAttribute('class', 'message');
-        // messageSpan = document.createElement('span');
-        // messageDiv.appendChild(messageSpan);
-        // var messageP = document.createElement('p');
-        // messageP.setAttribute('class', 'text-break');
-        // messageP.textContent = commentary.content;
-        // messageSpan.appendChild(messageP);
-
-        //         var likeReplyButton = document.createElement('button');
-
-        //         likeReplyButton.setAttribute('name', 'LikeReply');
-        //         likeReplyButton.setAttribute('type', 'submit');
-        //         likeReplyButton.setAttribute('class', 'btn-success');
-        //         likeReplyButton.value = reply.replyId;
-        //         likeReplyButton.textContent = `Like ${reply.replyLikesCount}`
-
-        //         var dislikeReplyButtonTd = document.createElement('td');
-
-        //         var dislikeReplyButton = document.createElement('button');
-        //         dislikeReplyButton.setAttribute('name', 'DislikeReply');
-        //         dislikeReplyButton.setAttribute('type', 'submit');
-        //         dislikeReplyButton.setAttribute('class', 'btn-danger');
-        //         dislikeReplyButton.value = reply.replyId;
-        //         dislikeReplyButton.textContent = `Like ${reply.replyDislikesCount}`
-
-
-        //         likeReplyButtonTd.appendChild(likeReplyButton);
-        //         dislikeReplyButtonTd.appendChild(dislikeReplyButton);
-        //         replyButtonsTr.appendChild(likeReplyButtonTd);
-        //         replyButtonsTr.appendChild(dislikeReplyButtonTd);
-
-
-        //         tbody.appendChild(replyUserNameTr);
-
-        //         tbody.appendChild(replyContentTr);
-
-        //         tbody.appendChild(replyButtonsTr);
-
-        //     }
-        // }
 
     }
     var commentaryBtn = document.getElementById('displayComments');
@@ -270,8 +230,6 @@ function Vote(ev) {
             var responseText = JSON.parse(this.responseText);
             var grade = responseText.averageVoteValue;
             document.getElementById('averageVoteGrade').textContent = `${grade} / 5`;
-
-
         }
     };
     var currEvent = document.querySelector('body');
@@ -290,10 +248,10 @@ function LikeDislikeComentary(ev) {
         ReturnComentaryLikesAndDislikes(clickedBtn.id, 'Comentary', 'DislikeComentary');
     }
     if (clickedBtn.name == 'LikeReply') {
-        ReturnComentaryLikesAndDislikes(clickedBtn.id, 'Reply', 'LikeReply');
+        ReturnComentaryLikesAndDislikes(clickedBtn.value, 'Reply', 'LikeReply');
     }
     if (clickedBtn.name == 'DislikeReply') {
-        ReturnComentaryLikesAndDislikes(clickedBtn.id, 'Reply', 'DislikeReply');
+        ReturnComentaryLikesAndDislikes(clickedBtn.value, 'Reply', 'DislikeReply');
     }
 
 }
@@ -313,20 +271,22 @@ function ReturnComentaryLikesAndDislikes(btnId, controller, action) {
                 var smth = [...document.getElementsByName('LikeComentary')].filter(x => x.id == btnId);
                 var tr = smth[0].parentNode.parentNode;
             } else {
-                var element = Array.from(document.getElementsByName('LikeReply')).filter(x => x.id == `${btnId}`);
-
-                tr = element[0].parentNode.parentNode;
+                var smth = [...document.getElementsByName('LikeReply')].filter(x => x.value == btnId);
+                var tr = smth[0].parentNode.parentNode;
             }
             var currentLikeButton = tr.children[0].children[1];
             var currentDislikeButton = tr.children[0].children[2];
 
             currentLikeButton.textContent = `Like ${responseText.comentaryLikeCount}`;
             currentDislikeButton.textContent = `Dislike ${responseText.comentaryDislikeCount}`;
-
-
-
         }
     };
-    var data = { comentaryId: btnId };
+    if (controller == 'Reply') {
+        var data = { replyId: btnId };
+    }
+    else {
+        var data = { comentaryId: btnId };
+    }
+
     xhttp.send(JSON.stringify(data));
 }

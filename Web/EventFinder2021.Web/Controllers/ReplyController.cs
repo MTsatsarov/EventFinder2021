@@ -52,9 +52,9 @@
         [IgnoreAntiforgeryToken]
         public IActionResult LikeReply([FromBody] LikeReplyInputModel model)
         {
-            int replyId = int.Parse(model.ComentaryId);
+            int replyId = int.Parse(model.ReplyId);
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            this.likeService.AddReplyLike(userId ,replyId);
+            this.likeService.AddReplyLike(userId, replyId);
             var replyLikesAndDislikes = this.likeService.GetReplyLikesAndDislikes(replyId);
             return this.Json(replyLikesAndDislikes);
         }
@@ -64,7 +64,7 @@
         [IgnoreAntiforgeryToken]
         public IActionResult DislikeReply([FromBody] LikeReplyInputModel model)
         {
-            var replyId = int.Parse(model.ComentaryId);
+            var replyId = int.Parse(model.ReplyId);
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             this.dislikeService.AddReplyDislike(userId, replyId);
             var replyLikesAndDislikes = this.likeService.GetReplyLikesAndDislikes(replyId);
