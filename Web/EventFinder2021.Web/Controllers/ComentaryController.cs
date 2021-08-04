@@ -41,26 +41,19 @@
         }
 
         [Authorize]
-        public IActionResult WriteComentary(int id)
-        {
-            var model = new PostComentaryModel()
-            {
-                EventId = id,
-                UserId = this.userManager.GetUserId(this.User),
-            };
-            return this.View(model);
-        }
-
-        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> WriteComentary(PostComentaryModel model)
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> WriteComentary([FromBody]RePostComentaryModel model)
         {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.UserId = userId;
             await this.comentaryService.WriteComentary(model);
-            return this.RedirectToAction("AllComentaries", new { id = $"{model.EventId}" });
+            return this.Redirect($"/Event/EventView/{model.EventId}");
         }
 
         [HttpPost]
         [Authorize]
+
         [IgnoreAntiforgeryToken]
         public IActionResult LikeComentary([FromBody] LikeComentaryInputModel model)
         {

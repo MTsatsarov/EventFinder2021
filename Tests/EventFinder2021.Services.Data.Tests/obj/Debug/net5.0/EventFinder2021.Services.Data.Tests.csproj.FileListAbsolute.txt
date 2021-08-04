@@ -176,12 +176,12 @@ C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Services.Data.Te
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\System.IO.Pipelines.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Web.ViewModels.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Web.ViewModels.pdb
-C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\testhost.exe
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\testhost.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\testhost.exe
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\xunit.runner.reporters.netcoreapp10.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\xunit.runner.utility.netcoreapp10.dll
-C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\appsettings.json
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.Data.Tests.deps.json
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.Data.Tests.runtimeconfig.json
@@ -200,6 +200,7 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.Extensions.Caching.Abstractions.dll
@@ -335,6 +336,7 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Data.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Data.Models.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.Data.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.Mapping.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Web.ViewModels.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Data.pdb
@@ -342,6 +344,7 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Common.pdb
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Data.Common.pdb
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Data.Models.pdb
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.pdb
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.Mapping.pdb
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Web.ViewModels.pdb
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\obj\Debug\net5.0\EventFinder2021.Services.Data.Tests.csprojAssemblyReference.cache
@@ -354,6 +357,3 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\obj\Debug\net5.0\ref\EventFinder2021.Services.Data.Tests.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\obj\Debug\net5.0\EventFinder2021.Services.Data.Tests.pdb
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\EventFinder2021.Services.Data.Tests\obj\Debug\net5.0\EventFinder2021.Services.Data.Tests.genruntimeconfig.cache
-C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.dll
-C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\EventFinder2021.Services.pdb
-C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Services.Data.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll

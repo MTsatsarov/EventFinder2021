@@ -8,7 +8,7 @@
 
     public interface IComentaryService
     {
-        Task WriteComentary(PostComentaryModel model);
+        Task WriteComentary(RePostComentaryModel model);
 
         public IEnumerable<ComentaryViewModel> GetAllEventComentaries(int eventId);
 

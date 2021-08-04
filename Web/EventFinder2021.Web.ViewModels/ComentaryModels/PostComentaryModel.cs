@@ -7,7 +7,5 @@
         public int EventId { get; set; }
 
         public string UserId { get; set; }
-
-        public int ComentaryCount { get; set; }
     }
 }

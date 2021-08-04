@@ -10,7 +10,71 @@
     var grade = document.getElementById('averageVoteGrade').textContent.split(' / ')[0];
     DecorateStars(grade)
 
+    document.getElementById('WriteCommentary').addEventListener('click', WriteCommentary)
 
+
+}
+
+function WriteCommentary() {
+    var body = [...document.getElementsByTagName('BODY')][0];
+    var commentFormDiv = document.createElement('div');
+    commentFormDiv.setAttribute('class', 'comment-form-form-area');
+
+    var commentRespondDiv = document.createElement('div');
+    commentRespondDiv.setAttribute('class', 'comment-respond');
+    commentRespondDiv.setAttribute('id', 'respond');
+    var h3 = document.createElement('h3');
+    h3.textContent = 'Leave commentary here.';
+    commentFormDiv.appendChild(commentRespondDiv);
+    commentRespondDiv.appendChild(h3);
+
+
+    var commentP = document.createElement('p');
+    commentP.setAttribute('class', 'comment-form-comment');
+
+    var label = document.createElement('label');
+    label.textContent = 'Comment';
+    commentP.appendChild(label);
+    commentRespondDiv.appendChild(commentP)
+
+    var commentTextArea = document.createElement('textarea');
+    commentTextArea.setAttribute('id', 'comment');
+    commentTextArea.setAttribute('name', 'comment');
+    commentTextArea.setAttribute('cols', '450')
+    commentTextArea.setAttribute('rows', '8')
+    commentTextArea.setAttribute('maxlength', '65525')
+    commentTextArea.setAttribute('required', 'required')
+    commentRespondDiv.appendChild(commentTextArea)
+    var eventId = body.id;
+
+    var input = document.createElement('input');
+    input.value = eventId;
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('id', 'currEventId')
+    commentRespondDiv.appendChild(input)
+
+    var btn = document.createElement('button');
+    btn.type = 'submit';
+    btn.setAttribute('id', 'submitComment')
+    btn.textContent = 'Send';
+    btn.setAttribute('asp-action', 'WriteComentary');
+    commentRespondDiv.appendChild(btn)
+
+    body.appendChild(commentFormDiv);
+    var btn = document.getElementById('WriteCommentary')
+    btn.parentNode.removeChild(btn);
+    document.getElementById('submitComment').addEventListener('click', SendComment)
+
+}
+function SendComment() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('POST', "/Comentary/WriteComentary", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    
+    var currEventId = document.getElementById('currEventId').value
+    var commentContent = document.getElementById('comment').value
+    var data = { eventId: Number(currEventId), content: commentContent };
+    xhttp.send(JSON.stringify(data));
 }
 function ClearComments() {
     var element = document.getElementsByName('comentaryDivContainer')[0];
@@ -231,7 +295,7 @@ function Vote(ev) {
             // Response
             var responseText = JSON.parse(this.responseText);
             var grade = responseText.averageVoteValue;
-
+            grade = grade.toFixed(1);
             document.getElementById('averageVoteGrade').textContent = `${grade} / 5`;
             DecorateStars(grade);
         }
@@ -245,7 +309,7 @@ function Vote(ev) {
 
 function DecorateStars(grade) {
     var stars = document.querySelectorAll("i");
-    grade = Math.ceil(grade);
+    grade = Math.round(grade);
 
     for (let i = 0; i < grade; i++) {
         var currentStar = stars[i];

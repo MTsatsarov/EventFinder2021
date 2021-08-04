@@ -10,8 +10,9 @@
 @{
     var currentUserId = this.UserManager.GetUserId(this.User);
 }
-<body onload="GoingNotGoing()"id="@Model.Id" class="table-responsive">
+<body onload="GoingNotGoing()" id="@Model.Id" class="table-responsive">
     <link rel="stylesheet" href="~/css/ComentariesCSS.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/PostCommentary.css" asp-append-version="true" />
     <div class="justify-content-xl-center">
         <h2 class="text-center">@Model.Name</h2>
         <hr />
@@ -65,11 +66,9 @@
                 <a id="displayComments" class="btn btn-primary">See comments</a>
             </span>
             <span class="">
-                <a class="btn btn-primary" asp-controller="Comentary" asp-action="WriteComentary" asp-route-id="@Model.Id">Write commentary</a>
+                <a class="btn btn-primary" id="WriteCommentary">Write commentary</a>
             </span>
         </div>
     </div>
     <script src="~/js/EventView.js"></script>
 </body>
-
-

@@ -76,7 +76,7 @@
             return currEvent.Comentaries.Count();
         }
 
-        public async Task WriteComentary(PostComentaryModel model)
+        public async Task WriteComentary(RePostComentaryModel model)
         {
             var currComentary = new Comentary()
             {

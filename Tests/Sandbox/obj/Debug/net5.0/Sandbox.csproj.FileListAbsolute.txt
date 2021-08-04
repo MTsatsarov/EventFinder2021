@@ -88,6 +88,7 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debu
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\ref\Sandbox.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Sandbox.pdb
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Castle.Core.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\CommandLine.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -98,6 +99,7 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debu
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
@@ -160,5 +162,3 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\obj\Debu
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\obj\Debug\net5.0\ref\Sandbox.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\obj\Debug\net5.0\Sandbox.pdb
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Tests\Sandbox\obj\Debug\net5.0\Sandbox.genruntimeconfig.cache
-C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\Sandbox\bin\Debug\net5.0\Castle.Core.dll
-C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\Sandbox\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
