@@ -37,8 +37,4 @@
     <ProjectReference Include="..\EventFinder2021.Web.Infrastructure\EventFinder2021.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\EventFinder2021.Web.ViewModels\EventFinder2021.Web.ViewModels.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Comentary\" />
-  </ItemGroup>
 </Project>

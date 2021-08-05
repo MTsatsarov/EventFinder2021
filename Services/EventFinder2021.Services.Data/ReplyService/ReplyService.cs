@@ -1,14 +1,11 @@
 ﻿namespace EventFinder2021.Services.Data.ReplyService
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using EventFinder2021.Data;
     using EventFinder2021.Data.Models;
-    using EventFinder2021.Services.Models;
+    using EventFinder2021.Web.ViewModels.ComentaryModels;
 
     public class ReplyService : IReplyService
     {
@@ -27,6 +24,7 @@
                 Content = model.Content,
                 UserId = model.UserId,
                 Comentary = this.db.Comentaries.Where(x => x.Id == model.ComentaryId).FirstOrDefault(),
+                EventId = model.EventId,
             };
             await this.db.Replies.AddAsync(currReply);
             await this.db.SaveChangesAsync();

@@ -16,13 +16,14 @@
     public class ComentaryService : IComentaryService
     {
         private readonly IDeletableEntityRepository<Comentary> comentaryRepository;
+        private readonly ApplicationDbContext db;
         private readonly IDeletableEntityRepository<Event> eventRepostiroy;
         private readonly ILikeService likeService;
         private readonly IDislikeService dislikeService;
 
-        public ComentaryService(IDeletableEntityRepository<Comentary> comentaryRepository, IDeletableEntityRepository<Event> eventRepostiroy, ILikeService likeService, IDislikeService dislikeService)
+        public ComentaryService(ApplicationDbContext db, IDeletableEntityRepository<Event> eventRepostiroy, ILikeService likeService, IDislikeService dislikeService)
         {
-            this.comentaryRepository = comentaryRepository;
+            this.db = db;
             this.eventRepostiroy = eventRepostiroy;
             this.likeService = likeService;
             this.dislikeService = dislikeService;
@@ -31,7 +32,7 @@
         public IEnumerable<ComentaryViewModel> GetAllEventComentaries(int eventId)
         {
             List<ComentaryViewModel> comentaries = new List<ComentaryViewModel>();
-            var currComentaries = this.comentaryRepository.All().Where(x => x.EventId == eventId).ToList();
+            var currComentaries = this.db.Comentaries.Where(x => x.EventId == eventId).ToList();
             foreach (var comentary in currComentaries)
             {
                 var currComentary = new ComentaryViewModel()
@@ -84,8 +85,8 @@
                 EventId = model.EventId,
                 UserId = model.UserId,
             };
-            await this.comentaryRepository.AddAsync(currComentary);
-            await this.comentaryRepository.SaveChangesAsync();
+            await this.db.Comentaries.AddAsync(currComentary);
+            await this.db.SaveChangesAsync();
         }
     }
 }

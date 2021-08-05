@@ -15,6 +15,7 @@
             this.Votes = new HashSet<Vote>();
             this.NotGoingUsers = new NotGoingUsers();
             this.GoingUsers = new GoingUsers();
+            this.Replies = new HashSet<Reply>();
         }
 
         public string Name { get; set; }
@@ -49,5 +50,7 @@
         public virtual ICollection<Comentary> Comentaries { get; set; }
 
         public virtual ICollection<Vote> Votes { get; set; }
+
+        public virtual ICollection<Reply> Replies { get; set; }
     }
 }

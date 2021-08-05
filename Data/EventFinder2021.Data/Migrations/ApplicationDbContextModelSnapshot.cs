@@ -492,6 +492,9 @@ namespace EventFinder2021.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -504,6 +507,8 @@ namespace EventFinder2021.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ComentaryId");
+
+                    b.HasIndex("EventId");
 
                     b.HasIndex("IsDeleted");
 
@@ -842,11 +847,19 @@ namespace EventFinder2021.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("EventFinder2021.Data.Models.Event", "Event")
+                        .WithMany("Replies")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("EventFinder2021.Data.Models.ApplicationUser", "User")
                         .WithMany("Replies")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Comentary");
+
+                    b.Navigation("Event");
 
                     b.Navigation("User");
                 });
@@ -954,6 +967,8 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("Image");
 
                     b.Navigation("NotGoingUsers");
+
+                    b.Navigation("Replies");
 
                     b.Navigation("Votes");
                 });

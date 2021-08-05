@@ -70,7 +70,7 @@ function SendComment() {
     var xhttp = new XMLHttpRequest();
     xhttp.open('POST', "/Comentary/WriteComentary", true);
     xhttp.setRequestHeader("Content-Type", "application/json");
-    
+
     var currEventId = document.getElementById('currEventId').value
     var commentContent = document.getElementById('comment').value
     var data = { eventId: Number(currEventId), content: commentContent };
@@ -155,8 +155,13 @@ function CreateHtml(comentaries) {
         DislikeComentaryButton.textContent = `Dislike ${commentary.dislikesCount}`;
         DislikeComentaryButton.type = 'submit';
 
+        var replyA = document.createElement('a');
+        replyA.addEventListener('click', CreateReplyForm);
+        replyA.textContent = 'Reply';
+
         messageSpan.appendChild(likeComentaryButton);
         messageSpan.appendChild(DislikeComentaryButton);
+        messageSpan.appendChild(replyA);
         bodyDiv.appendChild(messageDiv);
         dialogBoxDiv.appendChild(bodyDiv);
         divContainer.appendChild(dialogBoxDiv);
@@ -184,7 +189,7 @@ function CreateHtml(comentaries) {
                 replyMessageDiv.appendChild(replyMessageSpan);
                 var replyMessageP = document.createElement('p');
                 replyMessageP.setAttribute('class', 'text-break');
-                replyMessageP.textContent = `${reply.content} + I AM REPLLYYYY`;
+                replyMessageP.textContent = `${reply.content}`;
                 replyMessageSpan.appendChild(replyMessageP);
 
 
@@ -228,6 +233,57 @@ function CreateHtml(comentaries) {
     }
 }
 
+
+function CreateReplyForm(ev) {
+    var comentaryId = ev.target.parentNode.children[1].id;
+    var div = ev.target.parentNode.parentNode;
+    var commentFormDiv = document.createElement('div');
+    commentFormDiv.setAttribute('class', 'comment-form-form-area');
+
+    var commentRespondDiv = document.createElement('div');
+    commentRespondDiv.setAttribute('class', 'comment-respond');
+    commentRespondDiv.setAttribute('id', 'respond');
+    var h3 = document.createElement('h3');
+    h3.textContent = 'Leave reply here.';
+    commentFormDiv.appendChild(commentRespondDiv);
+    commentRespondDiv.appendChild(h3);
+
+
+    var commentP = document.createElement('p');
+    commentP.setAttribute('class', 'comment-form-comment');
+
+    var label = document.createElement('label');
+    label.textContent = 'Reply';
+    commentP.appendChild(label);
+    commentRespondDiv.appendChild(commentP)
+
+    var commentTextArea = document.createElement('textarea');
+    commentTextArea.setAttribute('id', 'reply');
+    commentTextArea.setAttribute('name', 'reply');
+    commentTextArea.setAttribute('cols', '450')
+    commentTextArea.setAttribute('rows', '8')
+    commentTextArea.setAttribute('maxlength', '65525')
+    commentTextArea.setAttribute('required', 'required')
+    commentRespondDiv.appendChild(commentTextArea)
+    div.appendChild(commentFormDiv);
+    var btn = document.createElement('button');
+    btn.type = 'submit';
+    btn.setAttribute('id', 'submitReply')
+    btn.textContent = 'Send';
+    commentRespondDiv.appendChild(btn)
+    document.getElementById('submitReply').addEventListener('click', SendReply)
+}
+
+function SendReply(ev) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('POST', "/Reply/WriteReply", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    var comentaryId = ev.target.parentNode.parentNode.parentNode.children[0].children[1].id;
+    var replyContent = document.getElementById('reply').value;
+    var eventId = document.getElementsByTagName('BODY')[0].id;
+    var data = { eventId: Number(eventId), comentaryId: Number(comentaryId), content: replyContent };
+    xhttp.send(JSON.stringify(data));
+}
 function Going() {
 
 

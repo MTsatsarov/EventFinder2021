@@ -41,8 +41,11 @@
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> WriteReply(PostReplyModel reply)
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> WriteReply([FromBody] PostReplyModel reply)
         {
+            var user = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            reply.UserId = user;
             await this.replyService.WriteReply(reply);
             return this.Redirect("/");
         }

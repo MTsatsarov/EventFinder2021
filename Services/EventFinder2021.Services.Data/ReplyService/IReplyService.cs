@@ -2,7 +2,7 @@
 {
     using System.Threading.Tasks;
 
-    using EventFinder2021.Services.Models;
+    using EventFinder2021.Web.ViewModels.ComentaryModels;
 
     public interface IReplyService
     {
