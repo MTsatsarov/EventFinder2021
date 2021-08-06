@@ -14,6 +14,7 @@
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Services.Data.LikeService;
     using EventFinder2021.Services.Data.ReplyService;
+    using EventFinder2021.Services.Data.UserService;
     using EventFinder2021.Services.Data.VoteService;
     using EventFinder2021.Services.Mapping;
     using EventFinder2021.Services.Messaging;
@@ -77,6 +78,7 @@
             services.AddTransient<ILikeService, LikeService>();
             services.AddTransient<IDislikeService, DislikeService>();
             services.AddTransient<IVoteService, VoteService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

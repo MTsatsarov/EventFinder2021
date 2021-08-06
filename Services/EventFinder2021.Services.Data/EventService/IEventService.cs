@@ -26,5 +26,9 @@
         Task UpdateInfo(EventViewModel model);
 
         Task DeleteEventAsync(int id);
+
+        IEnumerable<TopEventsByCommentaries> GetMostCommentedEvents();
+
+        IEnumerable<TopEventsByGoingUsers> GetMostVisitedEvents();
     }
 }

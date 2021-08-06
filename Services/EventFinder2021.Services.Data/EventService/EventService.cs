@@ -219,6 +219,44 @@
             }).OrderByDescending(x => x.Date).ToList();
         }
 
+        public IEnumerable<TopEventsByCommentaries> GetMostCommentedEvents()
+        {
+            var mostCommentedEvents = this.db.Events.OrderByDescending(x => x.Comentaries.Count()).Take(10).ToList();
+            var topEvents = new List<TopEventsByCommentaries>();
+
+            foreach (var currentMostCommentedEvent in mostCommentedEvents)
+            {
+                var currEvent = new TopEventsByCommentaries()
+                {
+                    CreatorName = currentMostCommentedEvent.User.UserName,
+                    CommentaryCount = currentMostCommentedEvent.Comentaries.Count(),
+                    Name = currentMostCommentedEvent.Name,
+                };
+                topEvents.Add(currEvent);
+            }
+
+            return topEvents;
+        }
+
+        public IEnumerable<TopEventsByGoingUsers> GetMostVisitedEvents()
+        {
+            var goingUsersCount = this.db.Events.OrderByDescending(x => x.GoingUsers.Users.Count).Take(10).ToList();
+            var topEvents = new List<TopEventsByGoingUsers>();
+
+            foreach (var goingUsersEvent in goingUsersCount)
+            {
+                var currEvent = new TopEventsByGoingUsers()
+                {
+                    CreatorName = goingUsersEvent.User.UserName,
+                    GoingUsersCount = goingUsersEvent.GoingUsers.Users.Count(),
+                    Name = goingUsersEvent.Name,
+                };
+                topEvents.Add(currEvent);
+            }
+
+            return topEvents;
+        }
+
         public IEnumerable<EventViewModel> GetSearchedEvents(EventSearchModel model)
         {
             var searchedCity = model.City;
