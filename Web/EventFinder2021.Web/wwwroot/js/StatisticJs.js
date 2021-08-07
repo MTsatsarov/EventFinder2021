@@ -157,6 +157,7 @@ function CreateUsersHtml(topUsers, pageDiv, firstRow) {
 function CreateSearchHtml(pageDiv) {
 
     var searchDiv = document.createElement('div');
+    searchDiv.setAttribute('class','searchDiv')
     var inputField = document.createElement('input');
     inputField.setAttribute('id', 'input');
     var btn = document.createElement('button');

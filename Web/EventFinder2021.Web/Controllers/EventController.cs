@@ -28,7 +28,8 @@
         [Authorize]
         public IActionResult CreateEvent()
         {
-            return this.View();
+            var inputModel = new CreateEventInputModel();
+            return this.View(inputModel);
         }
 
         [Authorize]
@@ -61,12 +62,12 @@
         [HttpPost]
         public async Task<IActionResult> CreateEvent(CreateEventInputModel model)
         {
-            // if (!this.ModelState.IsValid)
-            // {
-            //   return this.View(this.ModelState.ErrorCount );
-            // }
+            if (!this.ModelState.IsValid)
+            {
+                return this.View();
+            }
             var imagePath = this.environment.WebRootPath;
-            model.CreatedByuser = this.User.Identity.Name;
+            
             await this.eventService.CreateEventAsync(model, imagePath);
             return this.Redirect("/");
         }
