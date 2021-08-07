@@ -29,7 +29,6 @@
                 TopUsers = topUsers,
                 MostVisitedEvents = topEventsByGoingUsers,
                 UsersCount = usersCount,
-
             };
             return this.View(statisticModel);
         }

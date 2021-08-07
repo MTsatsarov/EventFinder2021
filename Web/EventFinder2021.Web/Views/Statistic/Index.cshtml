@@ -1,67 +1,14 @@
 ﻿@using EventFinder2021.Web.ViewModels.StatisticViewModels;
-@using EventFinder2021.Web.ViewModels.EventViewModels;
-@using EventFinder2021.Web.ViewModels.UserViewModels;
-@model StatistiViewModel;
+@model StatistiViewModel
 
-@{
-    var currEvent = new TopEventsByGoingUsers();
-    var currCommentedEvent = new TopEventsByCommentaries();
-    var users = new TopUsersByEventsViewModel();
+@section scripts{
+
+    <script>
+        //TODO HTML SANITIZER
+        var customer = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+
+    </script>
 }
-
-@foreach (var mostVisitedEvent in Model.MostVisitedEvents)
-{
-    currEvent = mostVisitedEvent;
-    <p>@currEvent.Name</p>
-    <p>@currEvent.GoingUsersCount</p>
-    <p>@currEvent.CreatorName</p>
-    <h1>"------------------"</h1>
-
-}
-<p>"__________________________________________________________"</p>
-<h1>"_______________________________________________________"</h1>
-@foreach (var mostVisitedEvent in Model.MostCommentedEvents)
-{
-    currCommentedEvent = mostVisitedEvent;
-    <p>@currCommentedEvent.Name</p>
-    <p>@currCommentedEvent.CommentaryCount</p>
-    <p>@currCommentedEvent.CreatorName</p>
-    <h1>"------------------"</h1>
-
-}
-
-<p>"__________________________________________________________"</p>
-<h1>"_______________________________________________________"</h1>
-<p>"__________________________________________________________"</p>
-<h1>"_______________________________________________________"</h1>
-
-<p>@Model.UsersCount</p>
-<p>"__________________________________________________________"</p>
-<h1>"_______________________________________________________"</h1>
-<p>"__________________________________________________________"</p>
-<p>"__________________________________________________________"</p>
-<h1>"_______________________________________________________"</h1>
-<p>"__________________________________________________________"</p>
-<p>"__________________________________________________________"</p>
-<h1>"_______________________________________________________"</h1>
-<p>"__________________________________________________________"</p>
-<p>"__________________________________________________________"</p>
-<h1>"_______________________________________________________"</h1>
-<p>"__________________________________________________________"</p>
-<p>"__________________________________________________________"</p>
-<h1>"_______________________________________________________"</h1>
-<p>"__________________________________________________________"</p>
-<h1>"_______________________________________________________"</h1>
-<h1>"_______________________________________________________"</h1>
-<h1>"_______________________________________________________"</h1>
-<h1>"_______________________________________________________"</h1>
-<h1>"_______________________________________________________"</h1>
-
-@foreach (var currUser in Model.TopUsers)
-{
-    users = currUser;
-    <p>@currUser.EventCount</p>
-    <p>@currUser.UserName</p>
-    <h1>"------------------"</h1>
-
-}
+<body onload="OnLoad(customer)">
+    <script src="~/js/StatisticJs.js"></script>
+</body>
