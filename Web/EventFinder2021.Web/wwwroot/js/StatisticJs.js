@@ -7,18 +7,19 @@
 
     var pageBody = document.getElementsByTagName('body')[0];
     var pageDiv = document.createElement('div');
+    pageDiv.setAttribute('class', 'statisticDiv')
     pageBody.appendChild(pageDiv);
 
     DisplayUsersCount(usersCount, pageDiv);
 
     CreateEventHtml(mostVisitedEvents, pageDiv,
-        { firstTd: 'Event Name', secondTd: 'Creator', thirdTd: 'Going Users' });
+        { firstTd: 'Position', secondTd: 'Event Name', thirdTd: 'Creator', fourthTd: 'Going Users' }, 'visited events');
 
     CreateEventHtml(mostCommentedEvents, pageDiv,
-        { firstTd: 'Event Name', secondTd: 'Creator', thirdTd: 'Commentaries Count' });
+        { firstTd: 'Position', secondTd: 'Event Name', thirdTd: 'Creator', fourthTd: 'Commentaries' }, 'commented events.');
 
     CreateUsersHtml(topUsers, pageDiv,
-        { firstTd: 'Username', secondTd: 'Events Count' });
+        { firstTd: 'Position', secondTd: 'Username', thirdTd: 'Events Created' });
 
 
 
@@ -37,11 +38,16 @@ function DisplayUsersCount(usersCount, pageDiv) {
 
 }
 
-function CreateEventHtml(mostVisitedEvents, pageDiv, firstRow) {
+function CreateEventHtml(mostVisitedEvents, pageDiv, firstRow, tableName) {
     var visitedEventsDiv = document.createElement('div');
     var visitedEventsTable = document.createElement('table');
     var visitedEventsTBody = document.createElement('tbody');
+    var h4 = document.createElement('h4');
+    h4.textContent = `These are our most ${tableName}.`
 
+    visitedEventsDiv.appendChild(h4);
+    var visitedEventsTHead = document.createElement('thead');
+    visitedEventsTable.appendChild(visitedEventsTHead);
     var tr = document.createElement('tr');
     var firstTd = document.createElement('td');
     firstTd.textContent = firstRow.firstTd;
@@ -49,16 +55,24 @@ function CreateEventHtml(mostVisitedEvents, pageDiv, firstRow) {
     secondTd.textContent = firstRow.secondTd;
     var thirdTd = document.createElement('td');
     thirdTd.textContent = firstRow.thirdTd;
+    var fourthTd = document.createElement('td');
+    fourthTd.textContent = firstRow.fourthTd;
 
     tr.appendChild(firstTd);
     tr.appendChild(secondTd);
     tr.appendChild(thirdTd);
-
-    visitedEventsTBody.appendChild(tr);
+    tr.appendChild(fourthTd);
+    visitedEventsTHead.appendChild(tr);
 
     for (let i = 0; i < mostVisitedEvents.length; i++) {
         var currEvent = mostVisitedEvents[i]
         var eventTr = document.createElement('tr');
+        eventTr.setAttribute('class', 'contentTr');
+
+        var positionTr = document.createElement('td');
+        positionTr.setAttribute('class', 'positionTr');
+        positionTr.textContent = i + 1;
+        eventTr.appendChild(positionTr);
 
         var eventName = document.createElement('td');
         eventName.textContent = currEvent.name;
@@ -82,10 +96,17 @@ function CreateEventHtml(mostVisitedEvents, pageDiv, firstRow) {
 
 function CreateUsersHtml(topUsers, pageDiv, firstRow) {
     var usersDiv = document.createElement('div');
+    usersDiv.setAttribute('class', 'UsersDiv');
+    var h4 = document.createElement('h4');
+    h4.textContent = `These are top users`
 
+    usersDiv.appendChild(h4);
     var usersTable = document.createElement('table');
 
     var usersTbody = document.createElement('tbody');
+
+    var usersTHead = document.createElement('thead');
+    usersTable.appendChild(usersTHead);
 
     var firstTr = document.createElement('tr');
 
@@ -94,21 +115,28 @@ function CreateUsersHtml(topUsers, pageDiv, firstRow) {
 
     var secondTd = document.createElement('td');
     secondTd.textContent = firstRow.secondTd;
+    var thirdTd = document.createElement('td');
+    thirdTd.textContent = firstRow.thirdTd;
 
     firstTr.appendChild(firstTd);
     firstTr.appendChild(secondTd);
-    usersTbody.appendChild(firstTr);
+    firstTr.appendChild(thirdTd);
+    usersTHead.appendChild(firstTr);
 
     for (let i = 0; i < topUsers.length; i++) {
         var currRow = topUsers[i];
+        var positionTr = document.createElement('td');
+        positionTr.setAttribute('class', 'positionTr');
+        positionTr.textContent = i + 1;
         var eventTr = document.createElement('tr');
-
+        eventTr.setAttribute('class', 'contentTr');
         var userNameTd = document.createElement('td');
         userNameTd.textContent = currRow.userName;
 
         var eventCount = document.createElement('td');
         eventCount.textContent = currRow.eventCount;
 
+        eventTr.appendChild(positionTr);
         eventTr.appendChild(userNameTd);
         eventTr.appendChild(eventCount);
         usersTbody.appendChild(eventTr);

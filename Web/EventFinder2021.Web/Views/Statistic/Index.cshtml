@@ -2,7 +2,6 @@
 @model StatistiViewModel
 
 @section scripts{
-
     <script>
         //TODO HTML SANITIZER
         var customer = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
@@ -10,5 +9,7 @@
     </script>
 }
 <body onload="OnLoad(customer)">
+    <h1>Our users and events statistics.</h1>
+    <link rel="stylesheet" href="~/css/StatisticCSS.css" asp-append-version="true" />
     <script src="~/js/StatisticJs.js"></script>
 </body>

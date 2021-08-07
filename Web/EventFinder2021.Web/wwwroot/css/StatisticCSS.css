@@ -1,0 +1,54 @@
+﻿body h1 {
+    align-content: center;
+}
+.statisticDiv {
+   margin-left: 400px;
+   margin-right: 150px;
+   align-content: center;
+}
+table {
+    width: 600px;
+    border: black;
+    border-left-style: solid;
+    border-block-end-style: solid;
+    border-right-style: solid;
+    padding: 25px;
+    margin: 15px;
+}
+thead {
+    padding:15px;
+    margin: 25px;
+    text-align:center;
+    background-color: black;
+    color: white;
+}
+h3 {
+    text-align: left;
+    color: white;
+    background-color: black;
+    width: 490px;
+}
+tr{
+    margin: 25px;
+    padding:15px;
+}
+
+tbody tr td {
+    text-align: center;
+    border-right-style:groove;
+    border-block-end-style: groove;
+    background-color:gold;
+    max-width: 80px;
+}
+tbody tr td:hover {
+background-color: fuchsia;
+}
+
+h4 {
+    padding-top: 20px;
+    margin-left:50px;
+}
+
+tbody tr td .positionTr {
+    max-width: 15px;
+}
