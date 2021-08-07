@@ -21,7 +21,7 @@
     CreateUsersHtml(topUsers, pageDiv,
         { firstTd: 'Position', secondTd: 'Username', thirdTd: 'Events Created' });
 
-
+    CreateSearchHtml(pageDiv);
 
 }
 
@@ -72,13 +72,16 @@ function CreateEventHtml(mostVisitedEvents, pageDiv, firstRow, tableName) {
         var positionTr = document.createElement('td');
         positionTr.setAttribute('class', 'positionTr');
         positionTr.textContent = i + 1;
+        positionTr.setAttribute('id', 'positionTr');
         eventTr.appendChild(positionTr);
 
         var eventName = document.createElement('td');
+        eventName.setAttribute('id', 'eventName');
         eventName.textContent = currEvent.name;
 
         var creatorNameTd = document.createElement('td');
         creatorNameTd.textContent = currEvent.creatorName;
+        creatorNameTd.setAttribute('id', 'username');
 
         var countTd = document.createElement('td');
         countTd.textContent = currEvent.count;
@@ -127,10 +130,12 @@ function CreateUsersHtml(topUsers, pageDiv, firstRow) {
         var currRow = topUsers[i];
         var positionTr = document.createElement('td');
         positionTr.setAttribute('class', 'positionTr');
+        positionTr.setAttribute('id', 'positionTr');
         positionTr.textContent = i + 1;
         var eventTr = document.createElement('tr');
         eventTr.setAttribute('class', 'contentTr');
         var userNameTd = document.createElement('td');
+        userNameTd.setAttribute('id', 'username');
         userNameTd.textContent = currRow.userName;
 
         var eventCount = document.createElement('td');
@@ -145,4 +150,32 @@ function CreateUsersHtml(topUsers, pageDiv, firstRow) {
     usersTable.appendChild(usersTbody);
     usersDiv.appendChild(usersTable)
     pageDiv.appendChild(usersDiv)
+}
+
+
+
+function CreateSearchHtml(pageDiv) {
+
+    var searchDiv = document.createElement('div');
+    var inputField = document.createElement('input');
+    inputField.setAttribute('id', 'input');
+    var btn = document.createElement('button');
+    btn.setAttribute('class', 'searchBtn');
+    btn.textContent = 'Search';
+    btn.addEventListener('click', SearchInput)
+    searchDiv.appendChild(inputField);
+    searchDiv.appendChild(btn);
+    pageDiv.appendChild(searchDiv);
+}
+
+function SearchInput() {
+    var inputField = document.getElementById('input')
+    var input = inputField.value;
+
+    var tds = [...document.querySelectorAll('tbody>tr>td')].filter(x => x.id != 'positionTr' && x.id == 'eventName' || x.id == 'username');
+    tds.forEach(x => x.parentNode.style.backgroundColor = 'gold');
+    var text = tds.filter(x => x.textContent.toLowerCase().includes(input.toLowerCase()));
+
+    text.forEach(x => x.parentNode.style.backgroundColor = 'red');
+    inputField.value="";
 }
