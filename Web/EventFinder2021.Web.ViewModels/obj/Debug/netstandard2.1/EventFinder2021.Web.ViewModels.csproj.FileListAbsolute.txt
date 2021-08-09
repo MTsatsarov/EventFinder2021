@@ -30,3 +30,5 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.We
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.ViewModels\obj\Debug\netstandard2.1\EventFinder2021.Web.ViewModels.csproj.CopyComplete
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.ViewModels\obj\Debug\netstandard2.1\EventFinder2021.Web.ViewModels.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.ViewModels\obj\Debug\netstandard2.1\EventFinder2021.Web.ViewModels.pdb
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web.ViewModels\bin\Debug\netstandard2.1\EventFinder2021.Common.dll
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web.ViewModels\bin\Debug\netstandard2.1\EventFinder2021.Common.pdb

@@ -553,7 +553,6 @@ C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\appsettings.json
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\bundleconfig.json
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\libman.json
-C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\EventFinder2021.Web.StaticWebAssets.xml
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\EventFinder2021.Web.exe
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\testhost.exe
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll

@@ -35,7 +35,7 @@
         [Authorize]
         public IActionResult Edit(int id)
         {
-            var model = this.eventService.GetEventById(id);
+            var model = this.eventService.GetEventById<EventViewModel>(id);
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (userId != model.CreatorId)
             {
@@ -66,8 +66,9 @@
             {
                 return this.View();
             }
+
             var imagePath = this.environment.WebRootPath;
-            
+
             await this.eventService.CreateEventAsync(model, imagePath);
             return this.Redirect("/");
         }
@@ -76,7 +77,7 @@
         [HttpPost]
         public async Task<IActionResult> DeleteEvent(int id)
         {
-            var currEvent = this.eventService.GetEventById(id);
+            var currEvent = this.eventService.GetEventById<EventViewModel>(id);
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (currEvent.CreatorId == userId)
             {
@@ -88,7 +89,7 @@
 
         public IActionResult EventView(int id)
         {
-            var model = this.eventService.GetEventById(id);
+            var model = this.eventService.GetEventById<EventViewModel>(id);
             return this.View(model);
         }
 
@@ -101,7 +102,7 @@
             {
                 ItemsPerPage = GlobalConstants.ItemsPerPage,
                 PageNumber = id,
-                Events = this.eventService.GetEventsByUser(userId),
+                Events = this.eventService.GetEventsByUser<EventViewModel>(userId),
                 EventsCount = this.eventService.GetCount(),
             };
             return this.View(viewModel);

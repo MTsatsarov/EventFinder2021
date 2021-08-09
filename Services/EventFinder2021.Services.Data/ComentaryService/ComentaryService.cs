@@ -15,7 +15,6 @@
 
     public class ComentaryService : IComentaryService
     {
-        private readonly IDeletableEntityRepository<Comentary> comentaryRepository;
         private readonly ApplicationDbContext db;
         private readonly IDeletableEntityRepository<Event> eventRepostiroy;
         private readonly ILikeService likeService;

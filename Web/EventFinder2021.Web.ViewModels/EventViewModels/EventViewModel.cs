@@ -2,12 +2,14 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-
+    using System.Linq;
+    using AutoMapper;
+    using EventFinder2021.Common;
     using EventFinder2021.Data.Models;
     using EventFinder2021.Data.Models.Enums;
     using EventFinder2021.Services.Mapping;
 
-    public class EventViewModel : IMapFrom<Event>, IMapTo<Event>
+    public class EventViewModel : IMapTo<Event>, IMapFrom<Event>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -35,8 +37,29 @@
 
         public double VotesAverageGrade { get; set; }
 
-        public int GoingUsers { get; set; }
+        public int GoingUsersCount { get; set; }
 
-        public int NotGoingUsers { get; set; }
+        public int NotGoingUsersCount { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<Event, EventViewModel>()
+              .ForMember(x => x.ImageUrl, opt =>
+                  opt.MapFrom(
+                      x =>
+                    GlobalConstants.ImageUrl + x.Image.Id + "." + x.Image.Extension))
+               .ForMember(x => x.VotesAverageGrade, opt =>
+               opt.MapFrom(x => x.Votes.Count() > 0 ?
+               x.Votes.Average(x => x.Grade) : 0))
+
+                .ForMember(x => x.GoingUsersCount, opt =>
+                   opt.MapFrom(x =>
+                       x.GoingUsers.Users.Count()))
+
+                .ForMember(x => x.NotGoingUsersCount, opt =>
+                   opt.MapFrom(x =>
+                       x.NotGoingUsers.Users.Count()));
+
+        }
     }
 }

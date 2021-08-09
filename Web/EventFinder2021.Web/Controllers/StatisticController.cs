@@ -2,6 +2,7 @@
 {
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Services.Data.UserService;
+    using EventFinder2021.Web.ViewModels.EventViewModels;
     using EventFinder2021.Web.ViewModels.StatisticViewModels;
     using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +21,7 @@
         {
             var topUsers = this.userService.TopTenUsers();
             var usersCount = this.userService.GetTotalCountOfUsers();
-            var topEventsByComments = this.eventService.GetMostCommentedEvents();
+            var topEventsByComments = this.eventService.GetMostCommentedEvents<TopEventsByCommentaries>();
             var topEventsByGoingUsers = this.eventService.GetMostVisitedEvents();
 
             var statisticModel = new StatistiViewModel()

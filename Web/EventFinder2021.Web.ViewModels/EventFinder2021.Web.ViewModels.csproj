@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\EventFinder2021.Data.Models\EventFinder2021.Data.Models.csproj" />
+    <ProjectReference Include="..\..\EventFinder2021.Common\EventFinder2021.Common.csproj" />
     <ProjectReference Include="..\..\Services\EventFinder2021.Services.Mapping\EventFinder2021.Services.Mapping.csproj" />
   </ItemGroup>
 

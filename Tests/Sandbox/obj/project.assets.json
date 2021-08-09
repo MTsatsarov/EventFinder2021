@@ -2569,6 +2569,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
+          "EventFinder2021.Common": "1.0.0",
           "EventFinder2021.Data.Models": "1.0.0",
           "EventFinder2021.Services.Mapping": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.6",

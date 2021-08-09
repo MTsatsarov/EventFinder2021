@@ -1961,6 +1961,7 @@
       },
       "EventFinder2021.Web.ViewModels/1.0.0": {
         "dependencies": {
+          "EventFinder2021.Common": "1.0.0",
           "EventFinder2021.Data.Models": "1.0.0",
           "EventFinder2021.Services.Mapping": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.6",

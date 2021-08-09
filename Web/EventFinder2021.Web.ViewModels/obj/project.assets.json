@@ -391,6 +391,16 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "EventFinder2021.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/EventFinder2021.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EventFinder2021.Common.dll": {}
+        }
+      },
       "EventFinder2021.Data.Common/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -1333,6 +1343,11 @@
         "version.txt"
       ]
     },
+    "EventFinder2021.Common/1.0.0": {
+      "type": "project",
+      "path": "../../EventFinder2021.Common/EventFinder2021.Common.csproj",
+      "msbuildProject": "../../EventFinder2021.Common/EventFinder2021.Common.csproj"
+    },
     "EventFinder2021.Data.Common/1.0.0": {
       "type": "project",
       "path": "../../Data/EventFinder2021.Data.Common/EventFinder2021.Data.Common.csproj",
@@ -1351,6 +1366,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
+      "EventFinder2021.Common >= 1.0.0",
       "EventFinder2021.Data.Models >= 1.0.0",
       "EventFinder2021.Services.Mapping >= 1.0.0",
       "Microsoft.AspNetCore.Http.Features >= 5.0.6",
@@ -1392,6 +1408,9 @@
           "projectReferences": {
             "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Models\\EventFinder2021.Data.Models.csproj": {
               "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Models\\EventFinder2021.Data.Models.csproj"
+            },
+            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\EventFinder2021.Common\\EventFinder2021.Common.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\EventFinder2021.Common\\EventFinder2021.Common.csproj"
             },
             "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj": {
               "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj"

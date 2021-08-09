@@ -100,7 +100,7 @@
             dbContext.Users.Add(this.user);
             await dbContext.SaveChangesAsync();
             await service.CreateEventAsync(this.inputModel, "ss");
-            var userEvents = service.GetEventsByUser(this.user.Id).ToList();
+            var userEvents = service.GetEventsByUser<EventViewModel>(this.user.Id).ToList();
             Assert.Equal(this.user.Events.Count(), userEvents.Count());
         }
 
@@ -118,7 +118,7 @@
             await service.CreateEventAsync(this.inputModel, "ss");
             await service.CreateEventAsync(this.inputModel, "ss");
 
-            var returnedEvent = service.GetEventById(3);
+            var returnedEvent = service.GetEventById<EventViewModel>(3);
 
             Assert.Equal(3, returnedEvent.Id);
         }
@@ -138,7 +138,7 @@
             await service.CreateEventAsync(this.inputModel, "ss");
             await service.CreateEventAsync(this.inputModel, "ss");
 
-            var allEvents = service.GetAllEvents(1, 12);
+            var allEvents = service.GetAllEvents<EventViewModel>(1, 12);
 
             Assert.Equal(3, allEvents.Count());
         }
@@ -166,7 +166,7 @@
                 City = Enum.Parse<City>("Burgas"),
                 Category = Enum.Parse<Category>("Art"),
             };
-            var events = service.GetSearchedEvents(searchedEvents).ToList();
+            var events = service.GetSearchedEvents<EventViewModel>(searchedEvents).ToList();
 
             Assert.Equal(2, events.Count());
 
@@ -198,7 +198,7 @@
                 Category = Enum.Parse<Category>("Art"),
                 Name = "NewName",
             };
-            var events = service.GetSearchedEvents(searchedEvents).ToList();
+            var events = service.GetSearchedEvents<EventViewModel>(searchedEvents).ToList();
 
             Assert.Equal(2, events.Count());
             foreach (var currEvent in events)
@@ -283,8 +283,8 @@
             service.AddNotGoingUser(this.user.Id, 1);
             service.AddGoingUser(this.user.Id, 1);
 
-            var notGoingUsers = service.GetEventById(1);
-            Assert.Equal(0, notGoingUsers.NotGoingUsers);
+            var notGoingUsers = service.GetEventById<EventViewModel>(1);
+            Assert.Equal(0, notGoingUsers.NotGoingUsersCount);
         }
     }
 }

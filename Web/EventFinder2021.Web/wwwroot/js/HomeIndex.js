@@ -10,12 +10,21 @@ function onHover(ev) {
     if (element.tagName == 'IMG' || element.tagName == 'A' || element.tagName == 'P') {
         element.parentNode.parentNode.setAttribute('style', 'background-color:gray;');
     }
+
     else {
-        element.parentNode.setAttribute('style', 'background-color:gray;');
+        if (ev.target) {
+            
+        }
+        if (ev.target.name != 'eventCards') {
+            console.log(ev.target);
+            element.parentNode.setAttribute('style', 'background-color:gray;');
+        }
+
+
     }
 
-
-
+    var div = document.getElementsByClassName('row')[0]
+    div.setAttribute('style', 'background-color:none');
 }
 function onMouseOut(ev) {
     var element = ev.target;
@@ -25,5 +34,6 @@ function onMouseOut(ev) {
     else {
         element.parentNode.setAttribute('style', 'background-color:none');
     }
-
+    var div = document.getElementsByClassName('row')[0]
+    div.setAttribute('style', 'background-color:none');
 }

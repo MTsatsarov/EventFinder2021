@@ -8,10 +8,9 @@
 
     using EventFinder2021.Common;
     using EventFinder2021.Data;
-    using EventFinder2021.Data.Common.Repositories;
     using EventFinder2021.Data.Models;
-    using EventFinder2021.Data.Models.Enums;
     using EventFinder2021.Services.Data.VoteService;
+    using EventFinder2021.Services.Mapping;
     using EventFinder2021.Web.ViewModels.EventViewModels;
 
     public class EventService : IEventService
@@ -149,19 +148,9 @@
             await this.db.SaveChangesAsync();
         }
 
-        public IEnumerable<EventViewModel> GetAllEvents(int pageNumber, int itemsPerPage = 12)
+        public IEnumerable<T> GetAllEvents<T>(int pageNumber, int itemsPerPage = 12)
         {
-            var events = this.db.Events.OrderByDescending(x => x.Id).Skip((pageNumber - 1) * 12).Take(itemsPerPage).Select(x => new EventViewModel()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Category = x.Category,
-                City = x.City,
-                Description = x.Description,
-                ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension ?? GlobalConstants.DefaultImageLocation,
-                Date = x.Date,
-                VotesAverageGrade = this.voteService.GetAverageVoteValue(x.Id),
-            }).ToList();
+            var events = this.db.Events.OrderByDescending(x => x.Id).Skip((pageNumber - 1) * 12).Take(itemsPerPage).To<T>().ToList();
             return events;
         }
 
@@ -170,53 +159,20 @@
             return this.db.Events.Count();
         }
 
-        public EventViewModel GetEventById(int id)
+        public T GetEventById<T>(int id)
         {
-            var currentEvent = this.db.Events.Where(x => x.Id == id).FirstOrDefault();
+            var currentEvent = this.db.Events.Where(x => x.Id == id).To<T>().FirstOrDefault();
             if (currentEvent == null)
             {
                 throw new ArgumentException($"No event with Id:{id} was found");
             }
 
-            var currImage = this.db.Images.Where(x => x.Id == currentEvent.ImageId).FirstOrDefault();
-
-            var viewModel = new EventViewModel()
-            {
-                Id = currentEvent.Id,
-                Name = currentEvent.Name,
-                Category = currentEvent.Category,
-                City = currentEvent.City,
-                Description = currentEvent.Description,
-                ImageUrl = "/images/Events/" + currentEvent.ImageId + "." + currentEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
-                Date = currentEvent.Date,
-                CreatorId = currentEvent.UserId,
-                GoingUsers = currentEvent.GoingUsers.Users.Count(),
-                NotGoingUsers = currentEvent.NotGoingUsers.Users.Count(),
-            };
-            if (currentEvent.Votes.Count == 0)
-            {
-                viewModel.VotesAverageGrade = 0;
-            }
-            else
-            {
-                viewModel.VotesAverageGrade = currentEvent.Votes.Average(x => x.Grade);
-            }
-
-            return viewModel;
+            return currentEvent;
         }
 
-        public IEnumerable<EventViewModel> GetEventsByUser(string userId)
+        public IEnumerable<T> GetEventsByUser<T>(string userId)
         {
-            return this.db.Events.Where(x => x.UserId == userId).Select(x => new EventViewModel()
-            {
-                Name = x.Name,
-                Description = x.Description,
-                Id = x.Id,
-                Date = x.Date,
-                ImageUrl = "/images/Events/" + x.ImageId + "." + x.Image.Extension ?? GlobalConstants.DefaultImageLocation,
-                City = x.City,
-                Category = x.Category,
-            }).OrderByDescending(x => x.Date).ToList();
+            return this.db.Events.Where(x => x.UserId == userId).OrderByDescending(x => x.Date).To<T>().ToList();
         }
 
         public IEnumerable<TopEventsByCommentaries> GetMostCommentedEvents()
@@ -257,66 +213,20 @@
             return topEvents;
         }
 
-        public IEnumerable<EventViewModel> GetSearchedEvents(EventSearchModel model)
+        public IEnumerable<T> GetSearchedEvents<T>(EventSearchModel model)
         {
             var searchedCity = model.City;
             var searchedCategory = model.Category;
             var searchedName = model.Name;
-            List<EventViewModel> eventViewModels = new List<EventViewModel>();
             if (model.Name == null)
             {
-                var events = this.db.Events.Where(x => x.City == searchedCity).Where(x => x.Category == searchedCategory).ToList();
-
-                foreach (var currEvent in events)
-                {
-                    var eventViewModel = new EventViewModel()
-                    {
-                        Category = currEvent.Category,
-                        City = currEvent.City,
-                        Description = currEvent.Description,
-                        ImageUrl = "/images/Events/" + currEvent.ImageId + "." + currEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
-                        CreatorId = currEvent.UserId,
-                        Date = currEvent.Date,
-                        Name = currEvent.Name,
-                        Id = currEvent.Id,
-                        GoingUsers = currEvent.GoingUsers.Users.Count(),
-                        NotGoingUsers = currEvent.NotGoingUsers.Users.Count(),
-                    };
-                    if (currEvent.Votes.Count() == 0)
-                    {
-                        eventViewModel.VotesAverageGrade = 0;
-                    }
-                    else
-                    {
-                        eventViewModel.VotesAverageGrade = currEvent.Votes.Average(x => x.Grade);
-                    }
-
-                    eventViewModels.Add(eventViewModel);
-                }
-
-                return eventViewModels;
+                var events = this.db.Events.Where(x => x.City == searchedCity).Where(x => x.Category == searchedCategory).To<T>().ToList();
+                return events;
             }
 
-            var searchedEvents = this.db.Events.Where(x => x.City == searchedCity && x.Name == searchedName).Where(x => x.Category == searchedCategory).ToList();
+            var searchedEvents = this.db.Events.Where(x => x.City == searchedCity && x.Name == searchedName).Where(x => x.Category == searchedCategory).To<T>().ToList();
 
-            foreach (var currEvent in searchedEvents)
-            {
-                var eventViewModel = new EventViewModel()
-                {
-                    Category = currEvent.Category,
-                    City = currEvent.City,
-                    Description = currEvent.Description,
-                    ImageUrl = "/images/Events/" + currEvent.ImageId + "." + currEvent.Image.Extension ?? GlobalConstants.DefaultImageLocation,
-                    CreatorId = currEvent.UserId,
-                    Date = currEvent.Date,
-                    Name = currEvent.Name,
-                    Id = currEvent.Id,
-                };
-
-                eventViewModels.Add(eventViewModel);
-            }
-
-            return eventViewModels;
+            return searchedEvents;
         }
 
         public async Task UpdateInfo(EventViewModel model)

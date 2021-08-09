@@ -1,11 +1,11 @@
 ﻿namespace EventFinder2021.Web.ViewModels.EventViewModels
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Text;
 
+    using EventFinder2021.Data.Models;
     using EventFinder2021.Data.Models.Enums;
+    using EventFinder2021.Services.Mapping;
     using Microsoft.AspNetCore.Http;
 
     public class CreateEventInputModel

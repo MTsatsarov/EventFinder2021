@@ -80,7 +80,7 @@ function CreateEventHtml(mostVisitedEvents, pageDiv, firstRow, tableName) {
         eventName.textContent = currEvent.name;
 
         var creatorNameTd = document.createElement('td');
-        creatorNameTd.textContent = currEvent.creatorName;
+        creatorNameTd.textContent = currEvent.userName;
         creatorNameTd.setAttribute('id', 'username');
 
         var countTd = document.createElement('td');

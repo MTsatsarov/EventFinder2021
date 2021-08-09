@@ -21,7 +21,7 @@
 
         public IActionResult GetSearchedEvents(EventSearchModel model)
         {
-            var searchedEvents = this.eventService.GetSearchedEvents(model);
+            var searchedEvents = this.eventService.GetSearchedEvents<EventViewModel>(model);
             return this.View(searchedEvents);
         }
     }

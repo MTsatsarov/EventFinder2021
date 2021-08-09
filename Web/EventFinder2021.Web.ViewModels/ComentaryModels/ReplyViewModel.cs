@@ -1,4 +1,4 @@
-﻿    namespace EventFinder2021.Web.ViewModels.ComentaryModels
+﻿namespace EventFinder2021.Web.ViewModels.ComentaryModels
 {
     using Newtonsoft.Json;
 

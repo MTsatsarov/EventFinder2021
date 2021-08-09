@@ -9,25 +9,25 @@
     {
         Task CreateEventAsync(CreateEventInputModel model, string imagePath);
 
-        IEnumerable<EventViewModel> GetAllEvents(int pageNumber, int itemsPerPage = 12);
+        IEnumerable<T> GetAllEvents<T>(int pageNumber, int itemsPerPage = 12);
 
-        EventViewModel GetEventById(int id);
+        T GetEventById<T>(int id);
 
         int GetCount();
 
-        IEnumerable<EventViewModel> GetEventsByUser(string userId);
+        IEnumerable<T> GetEventsByUser<T>(string userId);
 
         GoingNotGoingViewModel AddGoingUser(string id, int eventId);
 
         GoingNotGoingViewModel AddNotGoingUser(string id, int eventId);
 
-        IEnumerable<EventViewModel> GetSearchedEvents(EventSearchModel model);
+        IEnumerable<T> GetSearchedEvents<T>(EventSearchModel model);
 
         Task UpdateInfo(EventViewModel model);
 
         Task DeleteEventAsync(int id);
 
-        IEnumerable<TopEventsByCommentaries> GetMostCommentedEvents();
+        IEnumerable<T> GetMostCommentedEvents<T>();
 
         IEnumerable<TopEventsByGoingUsers> GetMostVisitedEvents();
     }

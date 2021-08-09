@@ -32,7 +32,7 @@
 
         [Authorize]
         [IgnoreAntiforgeryToken]
-        public IActionResult AllComentaries([FromBody]GetComentaryModel id)
+        public IActionResult AllComentaries([FromBody] GetComentaryModel id)
         {
             var eventId = int.Parse(id.EventId);
             var comentaries = this.comentaryService.GetAllEventComentaries(eventId);
@@ -43,7 +43,7 @@
         [Authorize]
         [HttpPost]
         [IgnoreAntiforgeryToken]
-        public async Task<IActionResult> WriteComentary([FromBody]RePostComentaryModel model)
+        public async Task<IActionResult> WriteComentary([FromBody] RePostComentaryModel model)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.UserId = userId;

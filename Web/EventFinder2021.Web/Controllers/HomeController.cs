@@ -23,7 +23,7 @@
             {
                 ItemsPerPage = GlobalConstants.ItemsPerPage,
                 PageNumber = id,
-                Events = this.eventService.GetAllEvents(id, GlobalConstants.ItemsPerPage),
+                Events = this.eventService.GetAllEvents<EventViewModel>(id, GlobalConstants.ItemsPerPage),
                 EventsCount = this.eventService.GetCount(),
             };
 
