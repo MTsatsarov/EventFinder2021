@@ -175,42 +175,17 @@
             return this.db.Events.Where(x => x.UserId == userId).OrderByDescending(x => x.Date).To<T>().ToList();
         }
 
-        public IEnumerable<TopEventsByCommentaries> GetMostCommentedEvents()
+        public IEnumerable<T> GetMostCommentedEvents<T>()
         {
-            var mostCommentedEvents = this.db.Events.OrderByDescending(x => x.Comentaries.Count()).Take(10).ToList();
-            var topEvents = new List<TopEventsByCommentaries>();
-
-            foreach (var currentMostCommentedEvent in mostCommentedEvents)
-            {
-                var currEvent = new TopEventsByCommentaries()
-                {
-                    CreatorName = currentMostCommentedEvent.User.UserName,
-                    CommentaryCount = currentMostCommentedEvent.Comentaries.Count(),
-                    Name = currentMostCommentedEvent.Name,
-                };
-                topEvents.Add(currEvent);
-            }
-
-            return topEvents;
+            var mostCommentedEvents = this.db.Events.OrderByDescending(x => x.Comentaries.Count()).To<T>().Take(10).ToList();
+            return mostCommentedEvents;
         }
 
-        public IEnumerable<TopEventsByGoingUsers> GetMostVisitedEvents()
+        public IEnumerable<T> GetMostVisitedEvents<T>()
         {
-            var goingUsersCount = this.db.Events.OrderByDescending(x => x.GoingUsers.Users.Count).Take(10).ToList();
-            var topEvents = new List<TopEventsByGoingUsers>();
+            var goingUsersCount = this.db.Events.OrderByDescending(x => x.GoingUsers.Users.Count).To<T>().Take(10).ToList();
 
-            foreach (var goingUsersEvent in goingUsersCount)
-            {
-                var currEvent = new TopEventsByGoingUsers()
-                {
-                    CreatorName = goingUsersEvent.User.UserName,
-                    GoingUsersCount = goingUsersEvent.GoingUsers.Users.Count(),
-                    Name = goingUsersEvent.Name,
-                };
-                topEvents.Add(currEvent);
-            }
-
-            return topEvents;
+            return goingUsersCount;
         }
 
         public IEnumerable<T> GetSearchedEvents<T>(EventSearchModel model)

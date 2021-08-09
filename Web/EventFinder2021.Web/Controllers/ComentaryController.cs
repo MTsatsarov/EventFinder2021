@@ -35,7 +35,7 @@
         public IActionResult AllComentaries([FromBody] GetComentaryModel id)
         {
             var eventId = int.Parse(id.EventId);
-            var comentaries = this.comentaryService.GetAllEventComentaries(eventId);
+            var comentaries = this.comentaryService.GetAllEventComentaries<ComentaryViewModel>(eventId);
 
             return this.Json(comentaries);
         }

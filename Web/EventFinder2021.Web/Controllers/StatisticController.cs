@@ -22,7 +22,7 @@
             var topUsers = this.userService.TopTenUsers();
             var usersCount = this.userService.GetTotalCountOfUsers();
             var topEventsByComments = this.eventService.GetMostCommentedEvents<TopEventsByCommentaries>();
-            var topEventsByGoingUsers = this.eventService.GetMostVisitedEvents();
+            var topEventsByGoingUsers = this.eventService.GetMostVisitedEvents<TopEventsByGoingUsers>();
 
             var statisticModel = new StatistiViewModel()
             {

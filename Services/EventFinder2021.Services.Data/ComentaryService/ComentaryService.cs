@@ -10,8 +10,8 @@
     using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Data.DislikeService;
     using EventFinder2021.Services.Data.LikeService;
-    using EventFinder2021.Services.Models;
     using EventFinder2021.Web.ViewModels.ComentaryModels;
+    using EventFinder2021.Services.Mapping;
 
     public class ComentaryService : IComentaryService
     {
@@ -28,40 +28,13 @@
             this.dislikeService = dislikeService;
         }
 
-        public IEnumerable<ComentaryViewModel> GetAllEventComentaries(int eventId)
+        public IEnumerable<T> GetAllEventComentaries<T>(int eventId)
         {
-            List<ComentaryViewModel> comentaries = new List<ComentaryViewModel>();
-            var currComentaries = this.db.Comentaries.Where(x => x.EventId == eventId).ToList();
-            foreach (var comentary in currComentaries)
-            {
-                var currComentary = new ComentaryViewModel()
-                {
-                    UserName = comentary.User.UserName,
-                    Content = comentary.Content,
-                    EventName = comentary.Event.Name,
-                    ComentaryId = comentary.Id,
-                };
-                var comentaryLikeDislikeCount = this.likeService.GetComentaryLikesAndDislikes(comentary.Id);
-                currComentary.LikesCount = comentaryLikeDislikeCount.ComentaryLikeCount;
-                currComentary.DislikesCount = comentaryLikeDislikeCount.ComentaryDislikeCount;
+            var currComentaries = this.db.Comentaries.Where(x => x.EventId == eventId)
+                                                     .To<T>()
+                                                     .ToList();
 
-                foreach (var reply in comentary.Replies)
-                {
-                    var currReply = new ReplyViewModel()
-                    {
-                        Content = reply.Content,
-                        UserName = reply.User.UserName,
-                        ReplyId = reply.Id,
-                        ReplyLikesCount = reply.Likes.Count,
-                        ReplyDislikesCount = reply.Dislikes.Count,
-                    };
-                    currComentary.Replies.Add(currReply);
-                }
-
-                comentaries.Add(currComentary);
-            }
-
-            return comentaries;
+            return currComentaries;
         }
 
         public int GetComentaryCount(int eventId)

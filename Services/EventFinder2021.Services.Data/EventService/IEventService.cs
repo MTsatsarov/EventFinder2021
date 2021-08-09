@@ -29,6 +29,6 @@
 
         IEnumerable<T> GetMostCommentedEvents<T>();
 
-        IEnumerable<TopEventsByGoingUsers> GetMostVisitedEvents();
+        IEnumerable<T> GetMostVisitedEvents<T>();
     }
 }

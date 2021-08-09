@@ -10,7 +10,7 @@
     {
         Task WriteComentary(RePostComentaryModel model);
 
-        public IEnumerable<ComentaryViewModel> GetAllEventComentaries(int eventId);
+        public IEnumerable<T> GetAllEventComentaries<T>(int eventId);
 
         public int GetComentaryCount(int eventId);
     }

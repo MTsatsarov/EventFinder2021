@@ -1,10 +1,12 @@
 ﻿namespace EventFinder2021.Web.ViewModels.ComentaryModels
 {
     using System.Collections.Generic;
-
+    using AutoMapper;
+    using EventFinder2021.Data.Models;
+    using EventFinder2021.Services.Mapping;
     using Newtonsoft.Json;
 
-    public class ComentaryViewModel
+    public class ComentaryViewModel : IMapFrom<Comentary>, IMapTo<Comentary>, IHaveCustomMappings
     {
         public ComentaryViewModel()
         {
@@ -31,5 +33,12 @@
 
         [JsonProperty("replies")]
         public ICollection<ReplyViewModel> Replies { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<Comentary, ComentaryViewModel>()
+                .ForMember(x => x.ComentaryId, opt => opt.MapFrom(x => x.Id))
+                .ForMember(x => x.UserName, opt => opt.MapFrom(x => x.User.UserName));
+        }
     }
 }

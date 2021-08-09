@@ -1,5 +1,7 @@
 ﻿namespace EventFinder2021.Web.ViewModels.ComentaryModels
 {
+    using EventFinder2021.Data.Models;
+    using EventFinder2021.Services.Mapping;
     using Newtonsoft.Json;
 
     public class RePostComentaryModel
