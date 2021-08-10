@@ -9,5 +9,6 @@
         public City City { get; set; }
 
         public Category Category { get; set; }
+
     }
 }

@@ -941,3 +941,4 @@ C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.We
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\EventFinder2021.Web.csproj.CopyComplete
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\EventFinder2021.Web.genruntimeconfig.cache
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Statistic\Index.cshtml.g.cs
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Shared\_ItemsPerPagePartial.cshtml.g.cs

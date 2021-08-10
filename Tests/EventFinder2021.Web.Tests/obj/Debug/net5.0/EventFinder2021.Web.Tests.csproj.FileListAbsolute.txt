@@ -1077,3 +1077,4 @@ C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\obj\Debug\net5.0\ref\EventFinder2021.Web.Tests.dll
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\obj\Debug\net5.0\EventFinder2021.Web.Tests.pdb
 C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\obj\Debug\net5.0\EventFinder2021.Web.Tests.genruntimeconfig.cache
+C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Tests\EventFinder2021.Web.Tests\bin\Debug\net5.0\EventFinder2021.Web.StaticWebAssets.xml

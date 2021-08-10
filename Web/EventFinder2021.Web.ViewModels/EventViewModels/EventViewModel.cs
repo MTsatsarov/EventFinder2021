@@ -58,7 +58,11 @@
 
                 .ForMember(x => x.NotGoingUsersCount, opt =>
                    opt.MapFrom(x =>
-                       x.NotGoingUsers.Users.Count()));
+                       x.NotGoingUsers.Users.Count()))
+                 .ForMember(x => x.CreatorId, opt =>
+                   opt.MapFrom(x =>
+                       x.UserId));
+
 
         }
     }
