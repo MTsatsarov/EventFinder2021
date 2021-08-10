@@ -5,27 +5,38 @@
 
 
 <body>
-    <div class="text-center row">
-        <h1 class="display-4 text-center">Welcome to @GlobalConstants.SystemName!</h1>
-        <div class="col-md-12">
-            <div class="row">
-                @foreach (var currEvent in this.Model.Events)
-                {
-                    <div class="card col-md-3" name="eventCards">
-                        <div>
-                            <img src="@currEvent.ImageUrl" class="mr-3" width="100">
-                        </div>
+    <link rel="stylesheet" href="~/css/SearchedResultsCSS.css" />
+    @if (Model.Events.Count() == 0)
+    {
+        <h2>"Sorry no events were found"</h2>
+        <a asp-controller="Search" asp-action="GetEventByCityAndCategoryAndName">Return to previous page</a>
+    }
+    else
+    {
+        <div class="text-center row">
+            <h1 class="display-4 text-center">Search Results</h1>
+            <div class="col-md-12">
+                <div class="row">
+                    @foreach (var currEvent in this.Model.Events)
+                    {
+                        <div class="card col-md-3" name="eventCards">
+                            <div>
+                                <img src="@currEvent.ImageUrl" class="mr-3" width="100">
+                            </div>
 
-                        <div class="card-body">
-                            <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
-                            <p class="card-text">Category: @currEvent.Category</p>
-                            <p>City: @currEvent.City</p>
-                        </div>
+                            <div class="card-body">
+                                <a asp-controller="Event" asp-action="EventView" asp-route-id="@currEvent.Id" class="card-title">@currEvent.Name</a>
+                                <p class="card-text">Category: @currEvent.Category</p>
+                                <p>City: @currEvent.City</p>
+                            </div>
 
-                    </div>
-                }
+                        </div>
+                    }
+                </div>
             </div>
         </div>
-    </div>
-    <partial name="_ItemsPerPagePartial" />
+        <partial name="_ItemsPerPagePartial" />
+    }
+
+
 </body>

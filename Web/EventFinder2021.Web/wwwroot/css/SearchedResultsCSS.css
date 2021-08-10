@@ -1,0 +1,21 @@
+﻿h1 {
+    align-content: center;
+    text-decoration: white;
+    color: black;
+}
+
+body {
+    background-color: white;
+}
+
+.card {
+    margin: 1px;
+    border-width: 2px;
+    border-color: black;
+    
+}
+
+.card:hover{
+background-color:navajowhite
+b
+}

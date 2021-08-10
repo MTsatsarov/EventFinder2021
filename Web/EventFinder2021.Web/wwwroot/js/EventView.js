@@ -75,6 +75,16 @@ function SendComment() {
     var commentContent = document.getElementById('comment').value
     var data = { eventId: Number(currEventId), content: commentContent };
     xhttp.send(JSON.stringify(data));
+    var divToRemove =  document.getElementsByClassName('comment-form-form-area')[0];
+    var parent = divToRemove.parentNode.children[0];
+    divToRemove.parentElement.removeChild(divToRemove);
+      var a = document.createElement('a');
+      a.addEventListener('click', CreateReplyForm);
+      a.setAttribute('id','replyA');
+      a.textContent="Reply";
+      parent.appendChild(a);
+
+
 }
 function ClearComments() {
     var element = document.getElementsByName('comentaryDivContainer')[0];
@@ -156,6 +166,7 @@ function CreateHtml(comentaries) {
         DislikeComentaryButton.type = 'submit';
 
         var replyA = document.createElement('a');
+        replyA.setAttribute('id','replyA')
         replyA.addEventListener('click', CreateReplyForm);
         replyA.textContent = 'Reply';
 
@@ -238,7 +249,7 @@ function CreateReplyForm(ev) {
     var comentaryId = ev.target.parentNode.children[1].id;
     var div = ev.target.parentNode.parentNode;
     var commentFormDiv = document.createElement('div');
-    commentFormDiv.setAttribute('class', 'comment-form-form-area');
+    commentFormDiv.setAttribute('class', 'reply-form-form-area');
 
     var commentRespondDiv = document.createElement('div');
     commentRespondDiv.setAttribute('class', 'comment-respond');
@@ -271,6 +282,8 @@ function CreateReplyForm(ev) {
     btn.setAttribute('id', 'submitReply')
     btn.textContent = 'Send';
     commentRespondDiv.appendChild(btn)
+    var a = document.getElementById('replyA');
+    a.parentNode.removeChild(a);
     document.getElementById('submitReply').addEventListener('click', SendReply)
 }
 
@@ -282,7 +295,17 @@ function SendReply(ev) {
     var replyContent = document.getElementById('reply').value;
     var eventId = document.getElementsByTagName('BODY')[0].id;
     var data = { eventId: Number(eventId), comentaryId: Number(comentaryId), content: replyContent };
+     
+        
     xhttp.send(JSON.stringify(data));
+    var divToRemove =  document.getElementsByClassName('reply-form-form-area')[0];
+    var parent = divToRemove.parentNode.children[0];
+    divToRemove.parentElement.removeChild(divToRemove);
+      var a = document.createElement('a');
+      a.addEventListener('click', CreateReplyForm);
+      a.setAttribute('id','replyA');
+      a.textContent="Reply";
+      parent.appendChild(a);
 }
 function Going() {
 

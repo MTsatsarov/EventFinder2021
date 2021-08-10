@@ -80,7 +80,7 @@ function CreateEventHtml(mostVisitedEvents, pageDiv, firstRow, tableName) {
         eventName.textContent = currEvent.name;
 
         var creatorNameTd = document.createElement('td');
-        creatorNameTd.textContent = currEvent.userName;
+        creatorNameTd.textContent = currEvent.creatorName;
         creatorNameTd.setAttribute('id', 'username');
 
         var countTd = document.createElement('td');
@@ -101,7 +101,7 @@ function CreateUsersHtml(topUsers, pageDiv, firstRow) {
     var usersDiv = document.createElement('div');
     usersDiv.setAttribute('class', 'UsersDiv');
     var h4 = document.createElement('h4');
-    h4.textContent = `These are top users`
+    h4.textContent = `These are our top creators`
 
     usersDiv.appendChild(h4);
     var usersTable = document.createElement('table');
