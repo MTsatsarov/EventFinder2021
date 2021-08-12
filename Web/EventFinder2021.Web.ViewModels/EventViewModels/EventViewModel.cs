@@ -62,8 +62,6 @@
                  .ForMember(x => x.CreatorId, opt =>
                    opt.MapFrom(x =>
                        x.UserId));
-
-
         }
     }
 }

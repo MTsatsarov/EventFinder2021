@@ -7,9 +7,7 @@
     using EventFinder2021.Services.Data.ComentaryService;
     using EventFinder2021.Services.Data.DislikeService;
     using EventFinder2021.Services.Data.LikeService;
-    using EventFinder2021.Services.Models;
     using EventFinder2021.Web.ViewModels.ComentaryModels;
-    using EventFinder2021.Web.ViewModels.LikeDislikeViewModel;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -47,7 +45,7 @@
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.UserId = userId;
-            await this.comentaryService.WriteComentary(model);
+            await this.comentaryService.WriteCommentaryAsync(model);
             return this.Redirect($"/Event/EventView/{model.EventId}");
         }
 

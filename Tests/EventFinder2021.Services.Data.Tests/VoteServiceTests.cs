@@ -76,6 +76,7 @@
             var voteserivce = new EventFinder2021.Services.Data.VoteService.VoteService(dbContext);
             var service = new EventFinder2021.Services.Data.EventService.EventService(dbContext, voteserivce);
 
+            dbContext.Users.Add(this.user);
             await service.CreateEventAsync(this.inputModel, "ss");
             await voteserivce.EventVote(1, this.user.Id, 5);
             var applicationUserTwo = new ApplicationUser()
@@ -98,7 +99,7 @@
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
             var voteserivce = new EventFinder2021.Services.Data.VoteService.VoteService(dbContext);
             var service = new EventFinder2021.Services.Data.EventService.EventService(dbContext, voteserivce);
-
+            dbContext.Users.Add(this.user);
             await service.CreateEventAsync(this.inputModel, "ss");
             await voteserivce.EventVote(1, this.user.Id, 5);
             await voteserivce.EventVote(1, this.user.Id, 4);

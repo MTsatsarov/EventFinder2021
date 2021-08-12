@@ -1,15 +1,20 @@
 ﻿namespace EventFinder2021.Services.Data.Tests
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
     using System.Threading.Tasks;
-
+    using AutoMapper;
+    using AutoMapper.Configuration;
     using EventFinder2021.Data;
     using EventFinder2021.Data.Models;
     using EventFinder2021.Data.Models.Enums;
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Services.Data.VoteService;
+    using EventFinder2021.Services.Mapping;
+    using EventFinder2021.Web.ViewModels;
     using EventFinder2021.Web.ViewModels.EventViewModels;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
@@ -90,6 +95,7 @@
 
         public async Task WhenCallUserEventsReturnUserEvents()
         {
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
     .UseInMemoryDatabase("UserEventTest");
 
@@ -107,6 +113,7 @@
         [Fact]
         public async Task WhenCallEventByIdReturnsOnlyThisEvent()
         {
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
 .UseInMemoryDatabase("ReturnEventsByIdTest");
 
@@ -127,6 +134,7 @@
 
         public async Task WhenCallGetAllEventsReturnsAllEvents()
         {
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
     .UseInMemoryDatabase("ReturnAllEventsTest");
 
@@ -147,13 +155,14 @@
 
         public async Task WhenSearchEventByCityAndCategoryReturnsEventByCityAndCategory()
         {
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-  .UseInMemoryDatabase("ReturnEventsByCityAndCategory");
+  .UseInMemoryDatabase("ReturnEventsss");
 
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
             var voteserivce = new VoteService(dbContext);
             var service = new EventService(dbContext, voteserivce);
-
+            await dbContext.Users.AddAsync(this.user);
             await service.CreateEventAsync(this.inputModel, "ss");
             this.inputModel.City = Enum.Parse<City>("Burgas");
             this.inputModel.Category = Enum.Parse<Category>("Art");
@@ -161,11 +170,14 @@
             await service.CreateEventAsync(this.inputModel, "ss");
             await service.CreateEventAsync(this.inputModel, "ss");
 
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+
             var searchedEvents = new EventSearchModel()
             {
                 City = Enum.Parse<City>("Burgas"),
                 Category = Enum.Parse<Category>("Art"),
             };
+            var sad = dbContext.Events.First();
             var events = service.GetSearchedEvents<EventViewModel>(searchedEvents).ToList();
 
             Assert.Equal(2, events.Count());
@@ -178,6 +190,7 @@
 
         public async Task WhenSearchByNameReturnesEventsByName()
         {
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
  .UseInMemoryDatabase("ReturnEventsByCityAndCategory");
 
@@ -266,17 +279,16 @@
         }
 
         [Fact]
-
         public async Task WhenAddGoingUserThatIsNotGoingDecreasesNotGoingCount()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-.UseInMemoryDatabase("AddNotGoingUserThat");
+.UseInMemoryDatabase("AddNotGoingUserThats");
 
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
             var voteserivce = new VoteService(dbContext);
             var service = new EventService(dbContext, voteserivce);
-
             await service.CreateEventAsync(this.inputModel, "ss");
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             dbContext.Users.Add(this.user);
             await dbContext.SaveChangesAsync();
@@ -284,6 +296,7 @@
             service.AddGoingUser(this.user.Id, 1);
 
             var notGoingUsers = service.GetEventById<EventViewModel>(1);
+
             Assert.Equal(0, notGoingUsers.NotGoingUsersCount);
         }
     }

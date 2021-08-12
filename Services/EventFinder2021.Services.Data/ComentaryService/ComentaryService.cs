@@ -6,26 +6,17 @@
     using System.Threading.Tasks;
 
     using EventFinder2021.Data;
-    using EventFinder2021.Data.Common.Repositories;
     using EventFinder2021.Data.Models;
-    using EventFinder2021.Services.Data.DislikeService;
-    using EventFinder2021.Services.Data.LikeService;
-    using EventFinder2021.Web.ViewModels.ComentaryModels;
     using EventFinder2021.Services.Mapping;
+    using EventFinder2021.Web.ViewModels.ComentaryModels;
 
     public class ComentaryService : IComentaryService
     {
         private readonly ApplicationDbContext db;
-        private readonly IDeletableEntityRepository<Event> eventRepostiroy;
-        private readonly ILikeService likeService;
-        private readonly IDislikeService dislikeService;
 
-        public ComentaryService(ApplicationDbContext db, IDeletableEntityRepository<Event> eventRepostiroy, ILikeService likeService, IDislikeService dislikeService)
+        public ComentaryService(ApplicationDbContext db)
         {
             this.db = db;
-            this.eventRepostiroy = eventRepostiroy;
-            this.likeService = likeService;
-            this.dislikeService = dislikeService;
         }
 
         public IEnumerable<T> GetAllEventComentaries<T>(int eventId)
@@ -39,18 +30,28 @@
 
         public int GetComentaryCount(int eventId)
         {
-            var currEvent = this.eventRepostiroy.All().Where(x => x.Id == eventId).FirstOrDefault();
+            var currEvent = this.db.Events.Where(x => x.Id == eventId).FirstOrDefault();
 
             if (currEvent == null)
             {
-                throw new ArgumentNullException("No event was found");
+                throw new ArgumentException("No event were found");
             }
 
             return currEvent.Comentaries.Count();
         }
 
-        public async Task WriteComentary(RePostComentaryModel model)
+        public async Task WriteCommentaryAsync(RePostComentaryModel model)
         {
+            var thisEvent = this.db.Events.Where(x => x.Id == model.EventId).FirstOrDefault();
+            var user = this.db.Users.Where(x => x.Id == model.UserId).FirstOrDefault();
+            if (user == null)
+            {
+                throw new ArgumentException($"No user with {model.UserId} found.");
+            }
+            if (thisEvent == null)
+            {
+                throw new ArgumentException($"No event with id {model.EventId} found.");
+            }
             var currComentary = new Comentary()
             {
                 Content = model.Content,
