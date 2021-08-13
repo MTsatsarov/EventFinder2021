@@ -11,19 +11,15 @@
     public class LikeService : ILikeService
     {
         private readonly ApplicationDbContext db;
-        private readonly IDeletableEntityRepository<Comentary> comentaryRepository;
-        private readonly IDeletableEntityRepository<ApplicationUser> userRepository;
 
-        public LikeService(ApplicationDbContext db, IDeletableEntityRepository<Comentary> comentaryRepository, IDeletableEntityRepository<ApplicationUser> userRepository)
+        public LikeService(ApplicationDbContext db)
         {
             this.db = db;
-            this.comentaryRepository = comentaryRepository;
-            this.userRepository = userRepository;
         }
 
         public void AddComentaryLike(string userId, int comentaryId)
         {
-            var comentary = this.comentaryRepository.All().Where(x => x.Id == comentaryId).FirstOrDefault();
+            var comentary = this.db.Comentaries.Where(x => x.Id == comentaryId).FirstOrDefault();
 
             if (comentary == null)
             {
@@ -44,7 +40,7 @@
                     Comentary = comentary,
                 };
 
-                var currUser = this.userRepository.All().Where(x => x.Id == userId).First();
+                var currUser = this.db.Users.Where(x => x.Id == userId).First();
                 var dislike = this.db.Dislikes.Where(x => x.ComentaryId == comentaryId && x.Users.Contains(currUser)).FirstOrDefault();
                 if (dislike != null)
                 {
@@ -81,7 +77,7 @@
                     Reply = reply,
                 };
 
-                var currUser = this.userRepository.All().Where(x => x.Id == userId).First();
+                var currUser = this.db.Users.Where(x => x.Id == userId).First();
 
                 var currDislike = this.db.Dislikes.Where(x => x.ReplyId == replyId && x.Users.Contains(currUser)).FirstOrDefault();
                 if (currDislike != null)

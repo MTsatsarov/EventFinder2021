@@ -1,14 +1,10 @@
 ﻿namespace EventFinder2021.Services.Data.Tests
 {
     using System;
-    using System.Linq;
-    using System.Reflection;
     using System.Threading.Tasks;
     using EventFinder2021.Data;
     using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Data.ComentaryService;
-    using EventFinder2021.Services.Mapping;
-    using EventFinder2021.Web.ViewModels;
     using EventFinder2021.Web.ViewModels.ComentaryModels;
     using Microsoft.EntityFrameworkCore;
     using Xunit;
@@ -39,11 +35,13 @@
         public async Task SuccesfullyAddComment()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase("successComment");
+            .UseInMemoryDatabase("adssadas");
 
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            await dbContext.Users.AddAsync(this.user);
             var comentaryService = new ComentaryService(dbContext);
             await dbContext.Events.AddAsync(this.inputModel);
+            await dbContext.SaveChangesAsync();
             var comment = new RePostComentaryModel()
             {
                 Content = "asd",
@@ -56,6 +54,7 @@
 
             Assert.Equal(2, await dbContext.Comentaries.CountAsync());
         }
+
         [Fact]
         public async Task IfInvalidUsersSentCommentsThrowException()
         {

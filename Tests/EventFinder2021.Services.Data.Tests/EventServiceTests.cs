@@ -1,13 +1,11 @@
 ﻿namespace EventFinder2021.Services.Data.Tests
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
-    using AutoMapper;
-    using AutoMapper.Configuration;
+
     using EventFinder2021.Data;
     using EventFinder2021.Data.Models;
     using EventFinder2021.Data.Models.Enums;
@@ -253,7 +251,7 @@
         public async Task WhenAddGoingUserThatNotExistsThrowsException()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-.UseInMemoryDatabase("AddNotExistedUserToGoingUsers");
+.UseInMemoryDatabase("DislikeService");
 
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
             var voteserivce = new VoteService(dbContext);
@@ -275,7 +273,7 @@
             var service = new EventService(dbContext, voteserivce);
             dbContext.Users.Add(this.user);
             await dbContext.SaveChangesAsync();
-            Assert.Throws<InvalidOperationException>(() => service.AddGoingUser(this.user.Id, 242424)).Message.Contains("Event not found");
+            Assert.Throws<InvalidOperationException>(() => service.AddGoingUser(this.user.Id, 242424)).Message.Contains("The comentary you wish to dislike doesn't exists.");
         }
 
         [Fact]

@@ -48,10 +48,12 @@
             {
                 throw new ArgumentException($"No user with {model.UserId} found.");
             }
+
             if (thisEvent == null)
             {
                 throw new ArgumentException($"No event with id {model.EventId} found.");
             }
+
             var currComentary = new Comentary()
             {
                 Content = model.Content,

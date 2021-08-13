@@ -1,14 +1,10 @@
 ﻿namespace EventFinder2021.Services.Data.DislikeService
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     using EventFinder2021.Data;
     using EventFinder2021.Data.Models;
-    using EventFinder2021.Web.ViewModels.LikeDislikeViewModel;
 
     public class DislikeService : IDislikeService
     {
@@ -22,10 +18,15 @@
         public void AddComentaryDislike(string userId, int comentaryId)
         {
             var comentary = this.db.Comentaries.Where(x => x.Id == comentaryId).FirstOrDefault();
-
+            var currentUser = this.db.Users.Where(x => x.Id == userId).FirstOrDefault();
             if (comentary == null)
             {
-                throw new ArgumentNullException("The comentary you wish to dislike doesn't exists.");
+                throw new ArgumentException("The comentary you wish to dislike doesn't exists.");
+            }
+
+            if (currentUser == null)
+            {
+                throw new ArgumentException("User not found.");
             }
 
             var dislike = comentary.Dislikes.Where(x => x.Users.All(x => x.Id == userId)).FirstOrDefault();
@@ -42,15 +43,13 @@
                     Comentary = comentary,
                 };
 
-                var currUser = this.db.Users.Where(x => x.Id == userId).First();
-
-                var currLike = this.db.Likes.Where(x => x.ComentaryId == comentaryId && x.Users.Contains(currUser)).FirstOrDefault();
+                var currLike = this.db.Likes.Where(x => x.ComentaryId == comentaryId && x.Users.Contains(currentUser)).FirstOrDefault();
                 if (currLike != null)
                 {
                     currLike.IsDeleted = true;
                 }
 
-                dislike.Users.Add(currUser);
+                dislike.Users.Add(currentUser);
                 comentary.Dislikes.Add(dislike);
                 this.db.Dislikes.Add(dislike);
                 this.db.SaveChanges();
@@ -63,7 +62,13 @@
 
             if (reply == null)
             {
-                throw new ArgumentNullException("The reply you wish to like doesn't exists.");
+                throw new ArgumentException("The reply you wish to diislike doesn't exists.");
+            }
+
+            var currentUser = this.db.Users.Where(x => x.Id == userId).FirstOrDefault();
+            if (currentUser == null)
+            {
+                throw new ArgumentException("User not found");
             }
 
             var dislike = reply.Dislikes.Where(x => x.Users.All(x => x.Id == userId)).FirstOrDefault();
@@ -81,15 +86,13 @@
                     ReplyId = replyId,
                     Reply = reply,
                 };
-
-                var currUser = this.db.Users.Where(x => x.Id == userId).First();
-                var currLike = this.db.Likes.Where(x => x.ReplyId == replyId && x.Users.Contains(currUser)).FirstOrDefault();
+                var currLike = this.db.Likes.Where(x => x.ReplyId == replyId && x.Users.Contains(currentUser)).FirstOrDefault();
                 if (currLike != null)
                 {
                     currLike.IsDeleted = true;
                 }
 
-                dislike.Users.Add(currUser);
+                dislike.Users.Add(currentUser);
                 reply.Dislikes.Add(dislike);
                 this.db.Dislikes.Add(dislike);
                 this.db.SaveChanges();
