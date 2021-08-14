@@ -1,6 +1,7 @@
 ﻿namespace EventFinder2021.Web.ViewModels.ComentaryModels
 {
     using System.Collections.Generic;
+
     using AutoMapper;
     using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Mapping;

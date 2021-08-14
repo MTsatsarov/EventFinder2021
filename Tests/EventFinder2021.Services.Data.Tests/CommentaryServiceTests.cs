@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+
     using EventFinder2021.Data;
     using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Data.ComentaryService;

@@ -16,6 +16,7 @@
             this.NotGoingUsers = new NotGoingUsers();
             this.GoingUsers = new GoingUsers();
             this.Replies = new HashSet<Reply>();
+            this.Reports = new HashSet<Report>();
         }
 
         public string Name { get; set; }
@@ -52,5 +53,8 @@
         public virtual ICollection<Vote> Votes { get; set; }
 
         public virtual ICollection<Reply> Replies { get; set; }
+
+        [InverseProperty("Event")]
+        public virtual ICollection<Report> Reports { get; set; }
     }
 }

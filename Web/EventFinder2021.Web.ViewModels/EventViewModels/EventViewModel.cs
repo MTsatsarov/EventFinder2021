@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+
     using AutoMapper;
     using EventFinder2021.Common;
     using EventFinder2021.Data.Models;

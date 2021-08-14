@@ -61,7 +61,7 @@
         public async Task CreateEventSuccsefullyCreatesEvent()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase("CreateEventTest");
+                .UseInMemoryDatabase("CreateEventTestTestTest");
 
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
             var voteserivce = new VoteService(dbContext);

@@ -1,4 +1,4 @@
-﻿function GoingNotGoing() {
+function GoingNotGoing() {
     document.getElementById('btnSuccess').addEventListener('click', Going);
 
     document.getElementById('btn-danger').addEventListener('click', NotGoing);
@@ -78,11 +78,8 @@ function SendComment() {
     var divToRemove =  document.getElementsByClassName('comment-form-form-area')[0];
     var parent = divToRemove.parentNode.children[0];
     divToRemove.parentElement.removeChild(divToRemove);
-      var a = document.createElement('a');
-      a.addEventListener('click', CreateReplyForm);
-      a.setAttribute('id','replyA');
-      a.textContent="Reply";
-      parent.appendChild(a);
+
+    
 
 
 }

@@ -5,8 +5,8 @@
 
     using EventFinder2021.Data;
     using EventFinder2021.Data.Models;
-    using EventFinder2021.Services.Data.ReplyService;
     using EventFinder2021.Services.Data.ComentaryService;
+    using EventFinder2021.Services.Data.ReplyService;
     using EventFinder2021.Web.ViewModels.ComentaryModels;
     using Microsoft.EntityFrameworkCore;
     using Xunit;
@@ -34,7 +34,7 @@
         }
 
         [Fact]
-        public async Task IfInvalidUserThrowException()
+        public void IfInvalidUserThrowException()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase("InvalidUserWriteReply");

@@ -74,7 +74,7 @@
         public async Task AssertTopTenUsersReturnTotalCountIfLessThanTen()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase("LessThan10Users");
+                .UseInMemoryDatabase("LessThan10Usersss");
 
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
 

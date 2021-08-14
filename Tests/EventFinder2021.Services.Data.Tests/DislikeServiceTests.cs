@@ -71,7 +71,6 @@
             await commentService.WriteCommentaryAsync(model);
 
             Assert.Throws<ArgumentException>(() => service.AddComentaryDislike("Pesho", 12321312)).Message.Contains("User not found.");
-
         }
 
         [Fact]
@@ -95,7 +94,6 @@
             await commentService.WriteCommentaryAsync(model);
             service.AddComentaryDislike(this.user.Id, 1);
             Assert.Equal(1, await dbContext.Dislikes.CountAsync());
-
         }
 
         [Fact]
@@ -149,7 +147,7 @@
         public async Task WhenUserIdForReplyInvalidThrowsException()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase("InvalidUser");
+                .UseInMemoryDatabase("NewInvalidUser");
 
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
             await dbContext.Events.AddAsync(this.inputModel);
@@ -172,7 +170,7 @@
         public async Task AssertReplyDislikeSuccesfullyAddedAndCountIsCorrect()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase("SuccesfullyAddDIslike");
+                .UseInMemoryDatabase("Adasdasdaasd");
 
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
             await dbContext.Events.AddAsync(this.inputModel);

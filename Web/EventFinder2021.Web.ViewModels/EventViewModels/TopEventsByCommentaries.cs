@@ -1,10 +1,11 @@
 ﻿namespace EventFinder2021.Web.ViewModels.EventViewModels
 {
+    using System.Linq;
+
     using AutoMapper;
     using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Mapping;
     using Newtonsoft.Json;
-    using System.Linq;
 
     public class TopEventsByCommentaries : TopEvents, IMapFrom<Event>, IHaveCustomMappings
     {

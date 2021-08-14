@@ -517,6 +517,51 @@ namespace EventFinder2021.Data.Migrations
                     b.ToTable("Replies");
                 });
 
+            modelBuilder.Entity("EventFinder2021.Data.Models.Report", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ComentaryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CommentaryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReportedUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReporterUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ComentaryId");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Reports");
+                });
+
             modelBuilder.Entity("EventFinder2021.Data.Models.Setting", b =>
                 {
                     b.Property<int>("Id")
@@ -864,6 +909,21 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("EventFinder2021.Data.Models.Report", b =>
+                {
+                    b.HasOne("EventFinder2021.Data.Models.Comentary", "Comentary")
+                        .WithMany("Reports")
+                        .HasForeignKey("ComentaryId");
+
+                    b.HasOne("EventFinder2021.Data.Models.Event", "Event")
+                        .WithMany("Reports")
+                        .HasForeignKey("EventId");
+
+                    b.Navigation("Comentary");
+
+                    b.Navigation("Event");
+                });
+
             modelBuilder.Entity("EventFinder2021.Data.Models.Vote", b =>
                 {
                     b.HasOne("EventFinder2021.Data.Models.Event", "Event")
@@ -956,6 +1016,8 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("Likes");
 
                     b.Navigation("Replies");
+
+                    b.Navigation("Reports");
                 });
 
             modelBuilder.Entity("EventFinder2021.Data.Models.Event", b =>
@@ -969,6 +1031,8 @@ namespace EventFinder2021.Data.Migrations
                     b.Navigation("NotGoingUsers");
 
                     b.Navigation("Replies");
+
+                    b.Navigation("Reports");
 
                     b.Navigation("Votes");
                 });

@@ -1,10 +1,11 @@
 ﻿namespace EventFinder2021.Web.Controllers
 {
+    using System.Linq;
+
     using EventFinder2021.Common;
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Web.ViewModels.EventViewModels;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
 
     public class SearchController : Controller
     {

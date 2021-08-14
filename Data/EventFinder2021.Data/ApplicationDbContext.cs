@@ -44,6 +44,8 @@
 
         public DbSet<Vote> Votes { get; set; }
 
+        public DbSet<Report> Reports { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
