@@ -23,7 +23,7 @@
 
             if (comentary == null)
             {
-                throw new ArgumentNullException("The comentary you wish to like doesn't exists.");
+                throw new ArgumentException("The comentary you wish to like doesn't exists.");
             }
 
             var like = comentary.Likes.Where(x => x.Users.All(x => x.Id == userId)).FirstOrDefault();
@@ -60,7 +60,7 @@
 
             if (reply == null)
             {
-                throw new ArgumentNullException("The reply you wish to like doesn't exists.");
+                throw new ArgumentException("The reply you wish to like doesn't exists.");
             }
 
             var like = reply.Likes.Where(x => x.Users.All(x => x.Id == userId)).FirstOrDefault();
@@ -94,8 +94,14 @@
 
         public LikeDislikeViewModel GetComentaryLikesAndDislikes(int comentaryId)
         {
-            int likesCount = this.db.Likes.Where(x => x.ComentaryId == comentaryId).ToList().Count;
-            var dislikeCount = this.db.Dislikes.Where(x => x.ComentaryId == comentaryId).ToList().Count();
+            var currComment = this.db.Comentaries.FirstOrDefault(x => x.Id == comentaryId);
+            if (currComment == null)
+            {
+                throw new ArgumentException("Comment not found");
+            }
+
+            int likesCount = currComment.Likes.Count();
+            var dislikeCount = currComment.Dislikes.Count();
             var likeDislikeModel = new LikeDislikeViewModel()
             {
                 ComentaryLikeCount = likesCount,
@@ -107,8 +113,14 @@
 
         public LikeDislikeViewModel GetReplyLikesAndDislikes(int replyId)
         {
-            int likesCount = this.db.Likes.Where(x => x.ReplyId == replyId).ToList().Count;
-            var dislikeCount = this.db.Dislikes.Where(x => x.ReplyId == replyId).ToList().Count();
+            var currReply = this.db.Replies.FirstOrDefault(x => x.Id == replyId);
+
+            if (currReply == null)
+            {
+                throw new ArgumentException("Invalid reply");
+            }
+            int likesCount = currReply.Likes.Count();
+            var dislikeCount = currReply.Dislikes.Count();
             var likeDislikeModel = new LikeDislikeViewModel()
             {
                 ComentaryLikeCount = likesCount,
