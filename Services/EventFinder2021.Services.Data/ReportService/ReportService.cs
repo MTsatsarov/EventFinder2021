@@ -24,7 +24,7 @@
             var report = this.db.Reports.Where(x => x.Id == id).FirstOrDefault();
             if (report == null)
             {
-                return;
+                throw new ArgumentException("Report not found");
             }
 
             report.IsDeleted = true;

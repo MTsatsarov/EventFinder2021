@@ -1,6 +1,6 @@
 ﻿namespace EventFinder2021.Services.Data
 {
-   public interface ISettingsService
+    public interface ISettingsService
     {
         int GetCount();
     }

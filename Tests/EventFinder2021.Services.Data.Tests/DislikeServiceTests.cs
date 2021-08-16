@@ -147,11 +147,17 @@
         public async Task WhenUserIdForReplyInvalidThrowsException()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase("NewInvalidUser");
+                .UseInMemoryDatabase("NewInvalidUserasdsad");
 
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
             await dbContext.Events.AddAsync(this.inputModel);
             await dbContext.Users.AddAsync(this.user);
+            await dbContext.Comentaries.AddAsync(new Comentary()
+            {
+                Event = dbContext.Events.FirstOrDefault(),
+                Content = "asdasdasdasd",
+                EventId = 1,
+            });
             await dbContext.SaveChangesAsync();
             var service = new DislikeService(dbContext);
             var replyService = new ReplyService(dbContext);
@@ -160,7 +166,9 @@
                 Content = "asdsadsadsadsa",
                 EventId = 1,
                 UserId = this.user.Id,
+                ComentaryId = 1,
             };
+
             await replyService.WriteReply(model);
 
             Assert.Throws<ArgumentException>(() => service.AddReplyDislike("Pesho", 12321312)).Message.Contains("User not found.");
@@ -175,6 +183,12 @@
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
             await dbContext.Events.AddAsync(this.inputModel);
             await dbContext.Users.AddAsync(this.user);
+            await dbContext.Comentaries.AddAsync(new Comentary()
+            {
+                Event = dbContext.Events.FirstOrDefault(),
+                Content = "asdasdasdasd",
+                EventId = 1,
+            });
             await dbContext.SaveChangesAsync();
             var service = new DislikeService(dbContext);
             var replyService = new ReplyService(dbContext);
@@ -183,6 +197,7 @@
                 Content = "asdsadsadsadsa",
                 EventId = 1,
                 UserId = this.user.Id,
+                ComentaryId = 1,
             };
             await replyService.WriteReply(model);
             service.AddReplyDislike(this.user.Id, 1);
@@ -220,6 +235,7 @@
                 Content = "asdsadsadsadsa",
                 EventId = 1,
                 UserId = this.user.Id,
+                ComentaryId = 1,
             };
             await replyService.WriteReply(replyModel);
             likeService.AddReplyLike(this.user.Id, 1);
