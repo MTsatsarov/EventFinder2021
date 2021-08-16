@@ -57,7 +57,11 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Statistic" asp-action="Index">Statistic</a>
                             </li>
-                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Administration" asp-action="Index">Administration</a></li>
+                            @if (this.User.IsInRole("Administrator"))
+                            {
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Administration" asp-action="Index">Administration</a></li>
+                            }
+
                         }
                     </ul>
                 </div>

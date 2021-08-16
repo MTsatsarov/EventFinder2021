@@ -5,7 +5,7 @@
     using EventFinder2021.Data.Models;
     using EventFinder2021.Services.Mapping;
 
-    public class ReportInputModel : IMapFrom<Report>
+    public class ReportInputModel
     {
         [Required]
         public string ReportedUserId { get; set; }
@@ -17,7 +17,7 @@
 
         public int? CommentaryId { get; set; }
 
-        [MinLength(5)]
+        [MinLength(5, ErrorMessage = "Reason must be at least 5 characters.")]
         public string Reason { get; set; }
     }
 }

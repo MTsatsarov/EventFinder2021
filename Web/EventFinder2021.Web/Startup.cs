@@ -14,6 +14,7 @@
     using EventFinder2021.Services.Data.EventService;
     using EventFinder2021.Services.Data.LikeService;
     using EventFinder2021.Services.Data.ReplyService;
+    using EventFinder2021.Services.Data.ReportService;
     using EventFinder2021.Services.Data.UserService;
     using EventFinder2021.Services.Data.VoteService;
     using EventFinder2021.Services.Mapping;
@@ -53,7 +54,14 @@
                         options.CheckConsentNeeded = context => true;
                         options.MinimumSameSitePolicy = SameSiteMode.None;
                     });
-
+            services.AddMvc(options =>
+            {
+                options.CacheProfiles.Add("Default0",
+                    new CacheProfile()
+                    {
+                        Duration = 0,
+                    });
+            });
             services.AddControllersWithViews(
                 options =>
                     {
@@ -79,6 +87,7 @@
             services.AddTransient<IDislikeService, DislikeService>();
             services.AddTransient<IVoteService, VoteService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IReportService, ReportService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

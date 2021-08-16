@@ -11,14 +11,14 @@
     public class CreateEventInputModel
     {
         [Required]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "Името трябва да бъде между 3 и 30 символа.")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Name must be betweeen 3 and 30 characters.")]
         public string Name { get; set; }
 
         [Required]
         public string CreatedByuser { get; set; }
 
         [Required]
-        [MinLength(10, ErrorMessage = "Описанието трябва да бъде минимум 10 символа")]
+        [MinLength(10, ErrorMessage = "Description must be at least 10 characters long.")]
         public string Description { get; set; }
 
         [Required]

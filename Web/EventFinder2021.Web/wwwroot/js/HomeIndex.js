@@ -12,11 +12,9 @@ function onHover(ev) {
     }
 
     else {
-        if (ev.target) {
-            
+        if (ev.target) {      
         }
         if (ev.target.name != 'eventCards') {
-            console.log(ev.target);
             element.parentNode.setAttribute('style', 'background-color:gray;');
         }
 

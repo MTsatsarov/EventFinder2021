@@ -14,7 +14,7 @@
         public string ReporterUserId { get; set; }
 
         [Required]
-        
+
         public string Reason { get; set; }
 
         public int? EventId { get; set; }

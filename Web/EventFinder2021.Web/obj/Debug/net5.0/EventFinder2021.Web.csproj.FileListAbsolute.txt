@@ -481,9 +481,6 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.We
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\EventFinder2021.Web.TagHelpers.input.cache
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\EventFinder2021.Web.TagHelpers.output.cache
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\EventFinder2021.Web.RazorCoreGenerate.cache
-C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Areas\Administration\Views\Dashboard\Index.cshtml.g.cs
-C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Areas\Administration\Views\_ViewImports.cshtml.g.cs
-C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Areas\Administration\Views\_ViewStart.cshtml.g.cs
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Event\CreateEvent.cshtml.g.cs
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web\obj\Debug\net5.0\Razor\Views\Event\Edit.cshtml.g.cs

@@ -1,15 +1,20 @@
 ﻿namespace EventFinder2021.Services.Data.ReportService
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
     using EventFinder2021.Web.ViewModels.ReportModel;
 
-   public interface IReportService
+    public interface IReportService
     {
-        public void CreateReport(ReportInputModel model);
+        public Task CreateReportAsync(ReportInputModel model);
 
-        public void GetEventReports(ReportViewModel model);
+        public IEnumerable<T> GetEventReports<T>();
 
-        public void GetCommentaryReports(ReportViewModel model);
+        public IEnumerable<T> GetCommentaryReports<T>();
 
         public void CloseReport(int id);
+
+        public void ClearReport(int id);
     }
 }

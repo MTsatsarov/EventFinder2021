@@ -19,24 +19,50 @@
             this.db = db;
         }
 
+        public void ClearReport(int id)
+        {
+            var report = this.db.Reports.Where(x => x.Id == id).FirstOrDefault();
+            if (report == null)
+            {
+                return;
+            }
+
+            report.IsDeleted = true;
+            this.db.Reports.Update(report);
+            this.db.SaveChanges();
+        }
+
         public void CloseReport(int id)
         {
-            var reportToDelete = this.db.Reports.FirstOrDefault(x => x.Id == id);
+            var reportToDelete = this.db.Reports.FirstOrDefault(x => x.EventId == id);
             if (reportToDelete == null)
             {
                 throw new ArgumentException("No report with this id found");
             }
 
+            var eventToRemove = this.db.Events.Where(x => x.Id == id).FirstOrDefault();
+            if (eventToRemove == null)
+            {
+                reportToDelete.IsDeleted = true;
+                this.db.SaveChanges();
+                return;
+            }
+
+            eventToRemove.IsDeleted = true;
+            this.db.Events.Update(eventToRemove);
             reportToDelete.IsDeleted = true;
+            this.db.SaveChanges();
         }
 
-        public async Task CreateReport(ReportInputModel model)
+        public async Task CreateReportAsync(ReportInputModel model)
         {
+            var reportedUserName = this.db.Users.First(x => x.Id == model.ReportedUserId).UserName;
+            var reporterUserUsername = this.db.Users.First(x => x.Id == model.ReporterUserId).UserName;
             var input = new Report()
             {
                 CommentaryId = model.CommentaryId,
-                ReportedUserId = model.ReportedUserId,
-                ReporterUserId = model.ReporterUserId,
+                ReportedUserId = reportedUserName,
+                ReporterUserId = reporterUserUsername,
                 EventId = model.EventId,
                 Reason = model.Reason,
             };
@@ -48,7 +74,7 @@
 
         public IEnumerable<T> GetEventReports<T>()
         {
-           return this.db.Reports.Where(x => x.EventId != null).To<T>();
+            return this.db.Reports.Where(x => x.EventId != null && x.Event.IsDeleted != true && x.IsDeleted == false).To<T>();
         }
     }
 }

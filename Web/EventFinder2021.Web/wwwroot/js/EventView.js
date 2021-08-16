@@ -5,7 +5,7 @@ function GoingNotGoing() {
 
     document.getElementById('displayComments').addEventListener('click', ShowComments)
 
-    var smth = document.querySelectorAll('li i').forEach(x => x.addEventListener('click', Vote))
+ var smth = document.querySelectorAll('li i').forEach(x => x.addEventListener('click', Vote))
 
     var grade = document.getElementById('averageVoteGrade').textContent.split(' / ')[0];
     DecorateStars(grade)
@@ -75,11 +75,11 @@ function SendComment() {
     var commentContent = document.getElementById('comment').value
     var data = { eventId: Number(currEventId), content: commentContent };
     xhttp.send(JSON.stringify(data));
-    var divToRemove =  document.getElementsByClassName('comment-form-form-area')[0];
+    var divToRemove = document.getElementsByClassName('comment-form-form-area')[0];
     var parent = divToRemove.parentNode.children[0];
     divToRemove.parentElement.removeChild(divToRemove);
 
-    
+
 
 
 }
@@ -163,7 +163,7 @@ function CreateHtml(comentaries) {
         DislikeComentaryButton.type = 'submit';
 
         var replyA = document.createElement('a');
-        replyA.setAttribute('id','replyA')
+        replyA.setAttribute('id', 'replyA')
         replyA.addEventListener('click', CreateReplyForm);
         replyA.textContent = 'Reply';
 
@@ -292,17 +292,17 @@ function SendReply(ev) {
     var replyContent = document.getElementById('reply').value;
     var eventId = document.getElementsByTagName('BODY')[0].id;
     var data = { eventId: Number(eventId), comentaryId: Number(comentaryId), content: replyContent };
-     
-        
+
+
     xhttp.send(JSON.stringify(data));
-    var divToRemove =  document.getElementsByClassName('reply-form-form-area')[0];
+    var divToRemove = document.getElementsByClassName('reply-form-form-area')[0];
     var parent = divToRemove.parentNode.children[0];
     divToRemove.parentElement.removeChild(divToRemove);
-      var a = document.createElement('a');
-      a.addEventListener('click', CreateReplyForm);
-      a.setAttribute('id','replyA');
-      a.textContent="Reply";
-      parent.appendChild(a);
+    var a = document.createElement('a');
+    a.addEventListener('click', CreateReplyForm);
+    a.setAttribute('id', 'replyA');
+    a.textContent = "Reply";
+    parent.appendChild(a);
 }
 function Going() {
 
