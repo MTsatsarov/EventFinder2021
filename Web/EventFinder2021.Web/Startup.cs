@@ -79,7 +79,6 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IEventService, EventService>();
             services.AddTransient<IComentaryService, ComentaryService>();
             services.AddTransient<IReplyService, ReplyService>();
