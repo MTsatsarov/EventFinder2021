@@ -11,6 +11,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [Route("api/[controller]")]
     public class VotesController : BaseController
     {

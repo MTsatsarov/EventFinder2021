@@ -12,6 +12,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public class ComentaryController : Controller
     {
         private readonly IComentaryService comentaryService;

@@ -3,9 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    using EventFinder2021.Data.Models;
     using EventFinder2021.Data.Models.Enums;
-    using EventFinder2021.Services.Mapping;
     using Microsoft.AspNetCore.Http;
 
     public class CreateEventInputModel

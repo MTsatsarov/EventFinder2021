@@ -25,7 +25,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                //TODO
+                return this.Redirect($"/Event/EventView{model.EventId}");
             }
 
             await this.reportService.CreateReportAsync(model);

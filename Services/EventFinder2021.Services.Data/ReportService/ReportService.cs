@@ -56,6 +56,10 @@
 
         public async Task CreateReportAsync(ReportInputModel model)
         {
+            if (model.Reason.Length<5)
+            {
+                throw new ArgumentException("Reason must be at least 5 chars");
+            }
             var reportedUserName = this.db.Users.First(x => x.Id == model.ReportedUserId).UserName;
             var reporterUserUsername = this.db.Users.First(x => x.Id == model.ReporterUserId).UserName;
             var input = new Report()

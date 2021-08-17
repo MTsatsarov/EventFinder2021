@@ -33,5 +33,32 @@
             var response = await client.GetAsync("Identity/Account/Manage");
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         }
+
+        [Fact]
+        public async Task SearchPageShouldReturnStatusCode200AndTitle()
+        {
+            var client = this.server.CreateClient();
+            var response = await client.GetAsync("/Search/GetEventByCityAndCategoryAndName");
+            response.EnsureSuccessStatusCode();
+            var responseContent = await response.Content.ReadAsStringAsync();
+            Assert.Contains("<title>", responseContent);
+        }
+
+        [Fact]
+        public async Task MyEventsPageShouldREquireAuthorization()
+        {
+            var client = this.server.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+            var response = await client.GetAsync("/Event/MyEvents");
+            Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task CreateEventPageShouldREquireAuthorization()
+        {
+            var client = this.server.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+            var response = await client.GetAsync("/Event/CreateEvent");
+            Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
+        }
+
     }
 }

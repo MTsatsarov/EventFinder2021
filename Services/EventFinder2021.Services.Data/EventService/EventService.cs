@@ -38,6 +38,13 @@
                 throw new InvalidOperationException("Event not found");
             }
 
+            var notGoingUser = currEvent.NotGoingUsers.Users.Where(x => x.Id == user.Id).FirstOrDefault();
+            if (notGoingUser != null)
+            {
+                currEvent.NotGoingUsers.Users.Remove(user);
+                this.db.SaveChanges();
+            }
+
             var goingUser = currEvent.GoingUsers.Users.Where(x => x.Id == user.Id).FirstOrDefault();
             if (goingUser != null)
             {
@@ -48,11 +55,7 @@
                 };
             }
 
-            var notGoingUser = currEvent.NotGoingUsers.Users.Where(x => x.Id == user.Id).FirstOrDefault();
-            if (notGoingUser != null)
-            {
-                currEvent.NotGoingUsers.Users.Remove(user);
-            }
+
 
             this.db.Events.Where(x => x.Id == currEvent.Id).FirstOrDefault().GoingUsers.Users.Add(user);
             this.db.SaveChanges();
@@ -78,6 +81,12 @@
                 throw new InvalidOperationException("Event not found");
             }
 
+            if (currEvent.GoingUsers.Users.Contains(user))
+            {
+                currEvent.GoingUsers.Users.Remove(user);
+                this.db.SaveChanges();
+            }
+
             if (currEvent.NotGoingUsers.Users.Any(x => x.Id == user.Id))
             {
                 return new GoingNotGoingViewModel()
@@ -87,10 +96,7 @@
                 };
             }
 
-            if (currEvent.GoingUsers.Users.Contains(user))
-            {
-                currEvent.GoingUsers.Users.Remove(user);
-            }
+
 
             currEvent.NotGoingUsers.Users.Add(user);
             this.db.Events.Where(x => x.Id == currEvent.Id).FirstOrDefault().NotGoingUsers.Users.Add(user);

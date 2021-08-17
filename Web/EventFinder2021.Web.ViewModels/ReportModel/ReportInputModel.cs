@@ -16,8 +16,8 @@
         public int? EventId { get; set; }
 
         public int? CommentaryId { get; set; }
-
-        [MinLength(5, ErrorMessage = "Reason must be at least 5 characters.")]
+        [Required]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "Reason must be at between 5 and 100 characters.")]
         public string Reason { get; set; }
     }
 }

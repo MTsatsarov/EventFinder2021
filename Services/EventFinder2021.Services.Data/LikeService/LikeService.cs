@@ -45,6 +45,7 @@
                 if (dislike != null)
                 {
                     dislike.IsDeleted = true;
+                    this.db.SaveChanges();
                 }
 
                 like.Users.Add(currUser);
@@ -100,8 +101,8 @@
                 throw new ArgumentException("Comment not found");
             }
 
-            int likesCount = currComment.Likes.Count();
-            var dislikeCount = currComment.Dislikes.Count();
+            int likesCount = currComment.Likes.Where(x => x.IsDeleted == false).Count();
+            var dislikeCount = currComment.Dislikes.Where(x => x.IsDeleted == false).Count();
             var likeDislikeModel = new LikeDislikeViewModel()
             {
                 ComentaryLikeCount = likesCount,
@@ -119,8 +120,8 @@
             {
                 throw new ArgumentException("Invalid reply");
             }
-            int likesCount = currReply.Likes.Count();
-            var dislikeCount = currReply.Dislikes.Count();
+            int likesCount = currReply.Likes.Where(x => x.IsDeleted == false).Count();
+            var dislikeCount = currReply.Dislikes.Where(x => x.IsDeleted == false).Count();
             var likeDislikeModel = new LikeDislikeViewModel()
             {
                 ComentaryLikeCount = likesCount,
