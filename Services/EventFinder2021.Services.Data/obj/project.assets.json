@@ -8007,25 +8007,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Data\\EventFinder2021.Services.Data.csproj",
+      "projectUniqueName": "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services.Data\\EventFinder2021.Services.Data.csproj",
       "projectName": "EventFinder2021.Services.Data",
-      "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Data\\EventFinder2021.Services.Data.csproj",
+      "projectPath": "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services.Data\\EventFinder2021.Services.Data.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Data\\obj\\",
+      "outputPath": "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services.Data\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -8038,23 +8033,23 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj"
+            "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj": {
+              "projectPath": "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj"
             },
-            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Models\\EventFinder2021.Data.Models.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Models\\EventFinder2021.Data.Models.csproj"
+            "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data.Models\\EventFinder2021.Data.Models.csproj": {
+              "projectPath": "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data.Models\\EventFinder2021.Data.Models.csproj"
             },
-            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data\\EventFinder2021.Data.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data\\EventFinder2021.Data.csproj"
+            "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data\\EventFinder2021.Data.csproj": {
+              "projectPath": "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data\\EventFinder2021.Data.csproj"
             },
-            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj"
+            "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj": {
+              "projectPath": "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services.Mapping\\EventFinder2021.Services.Mapping.csproj"
             },
-            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services\\EventFinder2021.Services.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder2021.Services\\EventFinder2021.Services.csproj"
+            "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services\\EventFinder2021.Services.csproj": {
+              "projectPath": "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services\\EventFinder2021.Services.csproj"
             },
-            "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Web\\EventFinder2021.Web.ViewModels\\EventFinder2021.Web.ViewModels.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Web\\EventFinder2021.Web.ViewModels\\EventFinder2021.Web.ViewModels.csproj"
+            "D:\\MyGithubRepos\\EventFinder\\Web\\EventFinder2021.Web.ViewModels\\EventFinder2021.Web.ViewModels.csproj": {
+              "projectPath": "D:\\MyGithubRepos\\EventFinder\\Web\\EventFinder2021.Web.ViewModels\\EventFinder2021.Web.ViewModels.csproj"
             }
           }
         }
@@ -8091,7 +8086,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

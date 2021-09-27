@@ -2789,25 +2789,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Services\\EventFinder2021.Services.Messaging\\EventFinder2021.Services.Messaging.csproj",
+      "projectUniqueName": "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services.Messaging\\EventFinder2021.Services.Messaging.csproj",
       "projectName": "EventFinder2021.Services.Messaging",
-      "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Services\\EventFinder2021.Services.Messaging\\EventFinder2021.Services.Messaging.csproj",
+      "projectPath": "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services.Messaging\\EventFinder2021.Services.Messaging.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\Eventfinder2021\\Services\\EventFinder2021.Services.Messaging\\obj\\",
+      "outputPath": "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services.Messaging\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
@@ -2858,7 +2853,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

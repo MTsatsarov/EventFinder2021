@@ -22,3 +22,16 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.D
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.csproj.CopyComplete
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.pdb
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\bin\Debug\netstandard2.1\EventFinder2021.Data.Models.deps.json
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\bin\Debug\netstandard2.1\EventFinder2021.Data.Models.dll
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\bin\Debug\netstandard2.1\EventFinder2021.Data.Models.pdb
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\bin\Debug\netstandard2.1\EventFinder2021.Data.Common.dll
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\bin\Debug\netstandard2.1\EventFinder2021.Data.Common.pdb
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.csproj.AssemblyReference.cache
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.AssemblyInfoInputs.cache
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.AssemblyInfo.cs
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.csproj.CoreCompileInputs.cache
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.csproj.CopyComplete
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.dll
+D:\MyGithubRepos\EventFinder\Data\EventFinder2021.Data.Models\obj\Debug\netstandard2.1\EventFinder2021.Data.Models.pdb

@@ -50,8 +50,10 @@
         [InverseProperty("Event")]
         public virtual ICollection<Comentary> Comentaries { get; set; }
 
+        [InverseProperty("Event")]
         public virtual ICollection<Vote> Votes { get; set; }
 
+        [InverseProperty("Event")]
         public virtual ICollection<Reply> Replies { get; set; }
 
         [InverseProperty("Event")]

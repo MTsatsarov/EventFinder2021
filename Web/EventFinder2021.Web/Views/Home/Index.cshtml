@@ -3,6 +3,8 @@
 @model ListEventViewModel
 <head>
 </head>
+@if (Model.EventsCount> 0)
+{ 
 <body class="text-center" onload="Hover()">
     <div class="text-center row">
         <h1 class="display-4 text-center">Welcome to @GlobalConstants.SystemName!</h1>
@@ -30,8 +32,8 @@
     <script src="~/js/HomeIndex.js"></script>
 
 
-    <partial name="_ItemsPerPagePartial" />
 
 
 </body>
+}
 

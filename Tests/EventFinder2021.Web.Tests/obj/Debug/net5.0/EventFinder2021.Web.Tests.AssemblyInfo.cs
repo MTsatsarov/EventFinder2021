@@ -12,13 +12,10 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("EventFinder2021.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Da" +
-    "ta", "EventFinder2021.Data.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("EventFinder2021.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data", "EventFinder2021.Data.csproj", "0")]
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("EventFinder2021.Services.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=n" +
-    "ull", "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Services\\EventFinder202" +
-    "1.Services.Data", "EventFinder2021.Services.Data.csproj", "0")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("EventFinder2021.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Web\\EventFinder2021.Web" +
-    "", "EventFinder2021.Web.csproj", "0")]
+    "ull", "D:\\MyGithubRepos\\EventFinder\\Services\\EventFinder2021.Services.Data", "EventFinder2021.Services.Data.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("EventFinder2021.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\MyGithubRepos\\EventFinder\\Web\\EventFinder2021.Web", "EventFinder2021.Web.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("EventFinder2021.Web.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj": {}
+    "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj": {
+    "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj",
+        "projectUniqueName": "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj",
         "projectName": "EventFinder2021.Data.Common",
-        "projectPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj",
+        "projectPath": "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data.Common\\EventFinder2021.Data.Common.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\SoftUniFinalProject\\EventFinder2021\\Data\\EventFinder2021.Data.Common\\obj\\",
+        "outputPath": "D:\\MyGithubRepos\\EventFinder\\Data\\EventFinder2021.Data.Common\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
@@ -70,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

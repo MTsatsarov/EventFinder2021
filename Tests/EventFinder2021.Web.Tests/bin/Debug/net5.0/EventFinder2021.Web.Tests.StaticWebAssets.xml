@@ -1,4 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
   <ContentRoot BasePath="/Identity" Path="C:\Users\User\.nuget\packages\microsoft.aspnetcore.identity.ui\5.0.6\staticwebassets\V4\" />
-  <ContentRoot BasePath="_content/EventFinder2021.Web" Path="C:\Users\User\Desktop\SoftUniFinalProject\EventFinder2021\Web\EventFinder2021.Web\wwwroot\" />
+  <ContentRoot BasePath="_content/EventFinder2021.Web" Path="D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web\wwwroot\" />
 </StaticWebAssets>

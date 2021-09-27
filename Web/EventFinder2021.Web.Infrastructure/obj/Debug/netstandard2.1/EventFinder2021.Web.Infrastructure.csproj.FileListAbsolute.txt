@@ -16,3 +16,12 @@ C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.We
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.dll
 C:\Users\User\Desktop\SoftUniFinalProject\Eventfinder2021\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.pdb
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web.Infrastructure\bin\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.deps.json
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web.Infrastructure\bin\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.dll
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web.Infrastructure\bin\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.pdb
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.AssemblyInfoInputs.cache
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.AssemblyInfo.cs
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.csproj.CoreCompileInputs.cache
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.dll
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web.Infrastructure\obj\Debug\netstandard2.1\EventFinder2021.Web.Infrastructure.pdb

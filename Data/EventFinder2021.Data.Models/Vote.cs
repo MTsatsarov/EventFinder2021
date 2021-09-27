@@ -1,6 +1,7 @@
 ﻿namespace EventFinder2021.Data.Models
 {
     using EventFinder2021.Data.Common.Models;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Vote : BaseModel<int>
     {
@@ -10,6 +11,7 @@
 
         public int EventId { get; set; }
 
+        [InverseProperty("Votes")]
         public virtual Event Event { get; set; }
 
         public byte Grade { get; set; }

@@ -156,6 +156,10 @@
 
         public IEnumerable<T> GetAllEvents<T>(int pageNumber, int itemsPerPage = 12)
         {
+            if (db.Events.Count() == 0)
+            {
+                return null;
+            }
             var events = this.db.Events.OrderByDescending(x => x.Id).Skip((pageNumber - 1) * 12).Take(itemsPerPage).To<T>().ToList();
             return events;
         }
