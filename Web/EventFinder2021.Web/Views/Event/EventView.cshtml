@@ -11,7 +11,7 @@
 @model EventViewModel
 @{
     var currentUserId = this.UserManager.GetUserId(this.User);
-    var inputForm =new ReportInputModel();
+    var inputForm = new ReportInputModel();
 }
 <body onload="GoingNotGoing()" id="@Model.Id" class="table-responsive">
     <link rel="stylesheet" href="~/css/ComentariesCSS.css" asp-append-version="true" />
@@ -53,9 +53,12 @@
             <div id="btn-danger" style="display:inline">
                 <button id="notGoingButton" type="submit" class="btn-danger">Not Going @Model.NotGoingUsersCount </button>
             </div>
+            @if (this.SignInManager.IsSignedIn(this.User))
+            {
             <div class="btn-primary" style="display:inline">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Report</button>
             </div>
+            }
         </div>
 
     </div>
@@ -76,36 +79,39 @@
             </span>
         </div>
     </div>
+    @if (this.SignInManager.IsSignedIn(this.User))
+    {
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Report [@Model.Name]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" asp-controller="Report" asp-action="ReportEvent">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <input name="eventId" type="hidden" value="@Model.Id" />
+                                <input name="reporterUserId" type="hidden" value="@this.User.FindFirst(ClaimTypes.NameIdentifier).Value" />
+                                <input name="reportedUserID" type="hidden" value="@Model.CreatorId" />
+                                <label for="message-text" class="col-form-label" style="color:red">Please write the reason for your report:</label>
+                                <textarea asp-for="@inputForm.Reason" name="reason" class="form-control" id="message-text"></textarea>
+                                <span asp-validation-for="@inputForm.Reason" class="text-danger"></span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button asp-controller="Report" asp-action="ReportEvent" type="submit" id="sendReport" class="btn btn-primary">Send report</button>
+                            </div>
+                        </form>
+                    </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Report [@Model.Name]</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
-                <div class="modal-body">
-                    <form method="post" asp-controller="Report" asp-action="ReportEvent">
-                        <div asp-validation-summary="All" class="text-danger"></div>
-                        <div class="form-group">
-                            <input name="eventId" type="hidden" value="@Model.Id" />
-                            <input name="reporterUserId" type="hidden" value="@this.User.FindFirst(ClaimTypes.NameIdentifier).Value" />
-                            <input name="reportedUserID" type="hidden" value="@Model.CreatorId" />
-                            <label for="message-text" class="col-form-label" style="color:red">Please write the reason for your report:</label>
-                            <textarea asp-for="@inputForm.Reason" name="reason" class="form-control" id="message-text"></textarea>
-                            <span asp-validation-for="@inputForm.Reason" class="text-danger"></span>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button asp-controller="Report" asp-action="ReportEvent" type="submit" id="sendReport" class="btn btn-primary">Send report</button>
-                        </div>
-                    </form>
-                </div>
-              
             </div>
         </div>
-    </div>
+    }
+    <script defer src="~/lib/signalR/dist/browser/signalr.js"></script>
     <script src="~/js/EventView.js"></script>
 </body>
