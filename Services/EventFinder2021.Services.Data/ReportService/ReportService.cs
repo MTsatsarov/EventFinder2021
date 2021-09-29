@@ -56,7 +56,7 @@
 
         public async Task CreateReportAsync(ReportInputModel model)
         {
-            if (model.Reason.Length<5)
+            if (model.Reason.Length < 5)
             {
                 throw new ArgumentException("Reason must be at least 5 chars");
             }

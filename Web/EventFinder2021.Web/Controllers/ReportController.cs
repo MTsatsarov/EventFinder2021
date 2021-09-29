@@ -56,7 +56,6 @@
         [IgnoreAntiforgeryToken]
         public IActionResult ClearEvent([FromBody] int id)
         {
-
             this.reportService.ClearReport(id);
 
             return this.Json(id);

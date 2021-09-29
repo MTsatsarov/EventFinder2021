@@ -19,6 +19,7 @@
     using EventFinder2021.Services.Data.VoteService;
     using EventFinder2021.Services.Mapping;
     using EventFinder2021.Services.Messaging;
+    using EventFinder2021.Web.Hubs;
     using EventFinder2021.Web.ViewModels;
 
     using Microsoft.AspNetCore.Builder;
@@ -56,7 +57,8 @@
                     });
             services.AddMvc(options =>
             {
-                options.CacheProfiles.Add("Default0",
+                options.CacheProfiles.Add(
+                    "Default0",
                     new CacheProfile()
                     {
                         Duration = 0,
@@ -129,6 +131,7 @@
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
                         endpoints.MapRazorPages();
+                        endpoints.MapHub<EventViewHub>("/eventViewHub");
                     });
         }
     }

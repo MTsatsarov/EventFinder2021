@@ -7,6 +7,7 @@
 
     public interface IComentaryService
     {
+      ComentaryViewModel ReturnLastAddedComment();
         Task WriteCommentaryAsync(RePostComentaryModel model);
 
         public IEnumerable<T> GetAllEventComentaries<T>(int eventId);

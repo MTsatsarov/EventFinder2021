@@ -26,6 +26,9 @@
         [JsonProperty("eventName")]
         public string EventName { get; set; }
 
+        [JsonProperty("eventId")]
+        public int EventId { get; set; }
+
         [JsonProperty("likesCount")]
         public int LikesCount { get; set; }
 

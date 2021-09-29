@@ -1,3 +1,39 @@
+var connection = new signalR.HubConnectionBuilder().withUrl("/eventViewHub").build();
+connection.start().then(function () {
+
+})
+
+connection.on("GetGroup", function (method) {
+    let groupId = document.querySelector('body').id;
+    if (method == 'add') {
+        connection.invoke("AddUserToGroup", groupId).catch(function (err) {
+            return console.error(err.toString());
+        });
+    }
+    else {
+        connection.invoke("RemoveUserFromGroup", groupId).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+    }
+})
+
+connection.on('DisplayNewComment', function (comentary) {
+    var btn = document.getElementById('displayComments');
+    console.log(btn + 'is here')
+    if (btn.classList.contains('clicked')) {
+        console.log('im inside');
+        var container = document.getElementById('12345');
+        var div = document.createElement('div');
+        div.textContent = comentary.content;
+        container.appendChild(div)
+    }
+})
+
+function CallLastComment() {
+    connection.invoke('DisplayNewCommentToUsers')
+}
+
 function GoingNotGoing() {
     document.getElementById('btnSuccess').addEventListener('click', Going);
 
@@ -5,7 +41,7 @@ function GoingNotGoing() {
 
     document.getElementById('displayComments').addEventListener('click', ShowComments)
 
- var smth = document.querySelectorAll('li i').forEach(x => x.addEventListener('click', Vote))
+    var smth = document.querySelectorAll('li i').forEach(x => x.addEventListener('click', Vote))
 
     var grade = document.getElementById('averageVoteGrade').textContent.split(' / ')[0];
     DecorateStars(grade)
@@ -74,12 +110,19 @@ function SendComment() {
     var currEventId = document.getElementById('currEventId').value
     var commentContent = document.getElementById('comment').value
     var data = { eventId: Number(currEventId), content: commentContent };
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            // Response
+
+            CallLastComment();
+        }
+
+    };
     xhttp.send(JSON.stringify(data));
+
     var divToRemove = document.getElementsByClassName('comment-form-form-area')[0];
     var parent = divToRemove.parentNode.children[0];
     divToRemove.parentElement.removeChild(divToRemove);
-
-
 
 
 }
@@ -101,6 +144,7 @@ function ShowComments() {
         if (this.readyState == 4 && this.status == 200) {
             // Response
             var responseText = JSON.parse(this.responseText);
+            ShowAndHideComments();
             CreateHtml(responseText)
         }
 
@@ -111,12 +155,28 @@ function ShowComments() {
     xhttp.send(JSON.stringify(data));
 
 }
+function ShowAndHideComments() {
+    var commentaryBtn = document.getElementById('displayComments');
+    if (commentaryBtn.textContent == 'See comments') {
+        commentaryBtn.classList.add('clicked')
+        commentaryBtn.textContent = 'Hide Commentary';
+        commentaryBtn.removeEventListener('click', ShowComments)
+        commentaryBtn.addEventListener('click', ClearComments)
+    } else {
+        console.log('inside')
+        commentaryBtn.classList.remove('clicked')
+        commentaryBtn.textContent = 'See comments';
+        commentaryBtn.removeEventListener('click', ClearComments)
+        commentaryBtn.addEventListener('click', ShowComments)
+    }
 
+}
 function CreateHtml(comentaries) {
     var body = document.getElementsByTagName('BODY')[0];
     var divContainer = document.createElement('div');
     divContainer.setAttribute('name', 'comentaryDivContainer')
     divContainer.setAttribute('class', 'container');
+    divContainer.id = '12345'
     body.appendChild(divContainer);
 
     for (const commentary of comentaries) {
@@ -227,10 +287,6 @@ function CreateHtml(comentaries) {
 
 
     }
-    var commentaryBtn = document.getElementById('displayComments');
-    commentaryBtn.textContent = 'Hide Commentary';
-    commentaryBtn.removeEventListener('click', ShowComments)
-    commentaryBtn.addEventListener('click', ClearComments)
 
     let arrToPrint = [...document.querySelectorAll('button')]
         .filter(x => x.name == 'LikeComentary' || x.name == 'DislikeComentary' ||

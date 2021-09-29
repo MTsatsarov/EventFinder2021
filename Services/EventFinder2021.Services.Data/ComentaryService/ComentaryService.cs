@@ -63,5 +63,33 @@
             await this.db.Comentaries.AddAsync(currComentary);
             await this.db.SaveChangesAsync();
         }
+
+       public ComentaryViewModel ReturnLastAddedComment()
+        {
+            var lastAddedComment = this.db.Comentaries.OrderByDescending(x => x.CreatedOn).First();
+            var result = new ComentaryViewModel()
+            {
+                ComentaryId = lastAddedComment.Id,
+                Content = lastAddedComment.Content,
+                DislikesCount = lastAddedComment.Dislikes.Count(),
+                LikesCount = lastAddedComment.Likes.Count(),
+                EventName = lastAddedComment.Event.Name,
+                UserName = lastAddedComment.User.UserName,
+                EventId = lastAddedComment.EventId,
+            };
+
+            var replies = this.db.Replies.Where(x => x.EventId == lastAddedComment.EventId && x.ComentaryId == lastAddedComment.Id).Select(x => new ReplyViewModel
+            {
+                ComentaryId = x.ComentaryId,
+                Content = x.Content,
+                ReplyDislikesCount = x.Dislikes.Count(),
+                ReplyId = x.Id,
+                ReplyLikesCount = x.Likes.Count(),
+                UserName = x.User.UserName,
+            }).ToList();
+            result.Replies = replies;
+
+            return result;
+        }
     }
 }

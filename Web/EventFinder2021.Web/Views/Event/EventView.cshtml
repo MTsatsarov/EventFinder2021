@@ -13,7 +13,7 @@
     var currentUserId = this.UserManager.GetUserId(this.User);
     var inputForm = new ReportInputModel();
 }
-<body onload="GoingNotGoing()" id="@Model.Id" class="table-responsive">
+<body onload="GoingNotGoing()" id="@Model.Id"  class="table-responsive model">
     <link rel="stylesheet" href="~/css/ComentariesCSS.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/PostCommentary.css" asp-append-version="true" />
     <div class="justify-content-xl-center">
@@ -72,7 +72,7 @@
     <div>
         <div>
             <span>
-                <a id="displayComments" class="btn btn-primary">See comments</a>
+                <a id="displayComments">See comments</a>
             </span>
             <span class="">
                 <a class="btn btn-primary" id="WriteCommentary">Write commentary</a>
@@ -112,6 +112,6 @@
             </div>
         </div>
     }
-    <script defer src="~/lib/signalR/dist/browser/signalr.js"></script>
+    <script  src="~/lib/signalR/dist/browser/signalr.js"></script>
     <script src="~/js/EventView.js"></script>
 </body>

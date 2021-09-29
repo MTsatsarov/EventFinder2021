@@ -7,6 +7,7 @@
     using EventFinder2021.Services.Data.ComentaryService;
     using EventFinder2021.Services.Data.DislikeService;
     using EventFinder2021.Services.Data.LikeService;
+    using EventFinder2021.Web.Hubs;
     using EventFinder2021.Web.ViewModels.ComentaryModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
