@@ -13,7 +13,7 @@
     var currentUserId = this.UserManager.GetUserId(this.User);
     var inputForm = new ReportInputModel();
 }
-<body onload="GoingNotGoing()" id="@Model.Id"  class="table-responsive model">
+<body  id="@Model.Id"  class="table-responsive model">
     <link rel="stylesheet" href="~/css/ComentariesCSS.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/PostCommentary.css" asp-append-version="true" />
     <div class="justify-content-xl-center">
@@ -46,12 +46,12 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div id="GoNotGoAndReportBtns">
             <div id="btnSuccess" style="display:inline">
-                <button id="goingButton" class="btn-success">Going @Model.GoingUsersCount</button>
+                <button id="Going" class="btn-success">Going @Model.GoingUsersCount</button>
             </div>
             <div id="btn-danger" style="display:inline">
-                <button id="notGoingButton" type="submit" class="btn-danger">Not Going @Model.NotGoingUsersCount </button>
+                <button id="NotGoing" type="submit" class="btn-danger">Not Going @Model.NotGoingUsersCount </button>
             </div>
             @if (this.SignInManager.IsSignedIn(this.User))
             {
@@ -113,5 +113,5 @@
         </div>
     }
     <script  src="~/lib/signalR/dist/browser/signalr.js"></script>
-    <script src="~/js/EventView.js"></script>
+    <script type="module" src="~/js/EventView.js"></script>
 </body>
