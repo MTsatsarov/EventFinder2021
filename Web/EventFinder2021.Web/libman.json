@@ -67,6 +67,14 @@
         "dist/browser/signalr.js",
         "dist/browser/signalr.min.js"
       ]
+    },
+    {
+      "library": "lit-html@2.0.0",
+      "destination": "wwwroot/lib/lit-html/",
+      "files": [
+        "lit-html.js",
+        "directives/style-map.js"
+      ]
     }
   ]
 }

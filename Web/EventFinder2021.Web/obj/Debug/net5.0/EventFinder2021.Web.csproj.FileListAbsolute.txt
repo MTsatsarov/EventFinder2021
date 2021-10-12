@@ -1412,3 +1412,5 @@ D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web\obj\Debug\net5.0\EventFinde
 D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web\obj\Debug\net5.0\ref\EventFinder2021.Web.dll
 D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web\obj\Debug\net5.0\EventFinder2021.Web.pdb
 D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web\obj\Debug\net5.0\EventFinder2021.Web.genruntimeconfig.cache
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web\bin\Debug\net5.0\modules\package-lock.json
+D:\MyGithubRepos\EventFinder\Web\EventFinder2021.Web\bin\Debug\net5.0\modules\package.json

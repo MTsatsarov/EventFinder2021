@@ -1,4 +1,4 @@
-import { serverLocation } from "./EventView.js";
+import * as api from "./api.js"
 export async function GoingNotGoing(ev) {
     if (ev.target.tagName == 'BUTTON') {
         var currEvent = document.querySelector('body');
@@ -6,7 +6,7 @@ export async function GoingNotGoing(ev) {
 
         if (ev.target.id == 'Going' || ev.target.id == 'NotGoing') {
             let action = ev.target.id;
-            var url = serverLocation + "/Event/" + action + "ToEvent";
+            var url = api.host + "Event/" + action + "ToEvent";
 
             const response = await fetch(url, {
                 method: 'post',
