@@ -13,7 +13,7 @@
     var currentUserId = this.UserManager.GetUserId(this.User);
     var inputForm = new ReportInputModel();
 }
-<body  id="@Model.Id"  class="table-responsive model">
+<body id="@Model.Id" class="table-responsive model">
     <link rel="stylesheet" href="~/css/ComentariesCSS.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/PostCommentary.css" asp-append-version="true" />
     <div class="justify-content-xl-center">
@@ -55,9 +55,9 @@
             </div>
             @if (this.SignInManager.IsSignedIn(this.User))
             {
-            <div class="btn-primary" style="display:inline">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Report</button>
-            </div>
+                <div class="btn-primary" style="display:inline">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Report</button>
+                </div>
             }
         </div>
 
@@ -111,7 +111,8 @@
                 </div>
             </div>
         </div>
-    }
-    <script  src="~/lib/signalR/dist/browser/signalr.js"></script>
+    }<div name='comentaryDivContainer'></div>
+
+    <script src="~/lib/signalR/dist/browser/signalr.js"></script>
     <script type="module" src="~/js/EventView.js"></script>
 </body>

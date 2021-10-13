@@ -16,3 +16,8 @@ export async function sendNewComentary(data) {
     return await api.post(api.host + "Comentary/WriteComentary", data);
 
 }
+
+export async function getVotesGrade(data) {
+    const result = await api.post(api.host + "api/Votes", data)
+    return result.averageVoteValue.toFixed(1);
+}

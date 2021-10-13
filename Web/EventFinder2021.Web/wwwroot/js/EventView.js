@@ -1,21 +1,23 @@
 import { GoingNotGoing } from "./EventViewGoingNotGoing.js"
-import { ShowComments, WriteCommentary } from "./EventViewComentaries.js"
-import { Vote } from "./EventViewVote.js"
-  const serverLocation = 'https://localhost:44319';
+import { ShowComments, WriteCommentary, InitialComentariesLoad, LikeDislike, CreateReplyForm } from "./EventViewComentaries.js"
+import { Vote, DecorateStars } from "./EventViewVote.js"
+import { render } from "../lib/lit-html/lit-html.js";
+import { singleComentaryTemplate } from "./EventViewTemplates.js";
+const comentaryContainerDiv = document.getElementsByName('comentaryDivContainer')[0];
+var comentariesList = [];
+Start();
 
-window.addEventListener('load', attachEvents)
-
-function attachEvents() {
+async function Start() {
     document.getElementById('GoNotGoAndReportBtns').addEventListener('click', GoingNotGoing);
-
     document.getElementById('displayComments').addEventListener('click', ShowComments)
-
     var smth = document.querySelectorAll('li i').forEach(x => x.addEventListener('click', Vote))
-
     var grade = document.getElementById('averageVoteGrade').textContent.split(' / ')[0];
     DecorateStars(grade)
+    document.getElementById('WriteCommentary').addEventListener('click', WriteCommentary);
+    comentaryContainerDiv.style.display = 'none'
+    var comentaries = await InitialComentariesLoad(document.body.id, comentariesList)
+    render(comentaries, comentaryContainerDiv)
 
-    document.getElementById('WriteCommentary').addEventListener('click', WriteCommentary)
 }
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/eventViewHub").build();
@@ -37,35 +39,13 @@ connection.on("GetGroup", function (method) {
 
     }
 })
-
 connection.on('DisplayNewComment', function (comentary) {
     var btn = document.getElementById('displayComments');
-    console.log(btn + 'is here')
-    if (btn.classList.contains('clicked')) {
-        console.log('im inside');
-
-    }
+    comentariesList.push(comentary)
+    render(singleComentaryTemplate(comentariesList, LikeDislike, CreateReplyForm), comentaryContainerDiv);
 })
 
- function CallLastComment() {
+export function CallLastComment() {
     connection.invoke('DisplayNewCommentToUsers')
 }
 
- function DecorateStars(grade) {
-    var stars = document.querySelectorAll("i");
-    grade = Math.round(grade);
-    for (let i = 0; i < grade; i++) {
-        var currentStar = stars[i];
-        currentStar.setAttribute('style', 'color:yellow');
-    }
-
-    for (let i = grade; i < stars.length; i++) {
-        var currentStar = stars[i];
-        currentStar.setAttribute('style', 'color:none');
-    }
-}
-export {
-    serverLocation,
-    CallLastComment,
-    DecorateStars
-}

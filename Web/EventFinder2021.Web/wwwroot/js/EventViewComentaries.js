@@ -1,12 +1,22 @@
-import { CallLastComment, serverLocation } from "./EventView.js"
-import { html, render } from "../lib/lit-html/lit-html.js"
+import { CallLastComment, } from "./EventView.js"
+import { render } from "../lib/lit-html/lit-html.js"
 import { SendNewReply, getAllComentaries, getLikesDislikes, sendNewComentary } from "./data.js"
+import * as templates from "./EventViewTemplates.js"
 
-function CreateReplyForm(ev) {
+async function comentaryTemplateResult(list) {
+   return templates.singleComentaryTemplate(list, LikeDislike, CreateReplyForm);
+   
+}
+export async function InitialComentariesLoad(id, list) {
+    var result = await getAllComentaries({ eventId: id });
+    result.forEach(c => list.push(c))
+    return comentaryTemplateResult(result)
+}
+export async function CreateReplyForm(ev) {
     var div = ev.target.parentNode.parentNode;
     var anchor = ev.target;
     anchor.style.display = 'none'
-    render(replyFormTemplate(SendReply), div)
+    render(templates.replyFormTemplate(SendReply, dismissForm, anchor), div)
 
     async function SendReply() {
         var comentaryId = anchor.parentNode.getAttribute('data-id');
@@ -19,32 +29,41 @@ function CreateReplyForm(ev) {
         divToRemove.parentElement.removeChild(divToRemove);
         anchor.style.display = 'inline'
     }
+
+
+}
+
+function dismissForm(buttonToShow, formToRemove) {
+    if (formToRemove == 'reply-form-form-area') {
+        document.querySelector(".reply-form-form-area").remove();
+        buttonToShow.style.display = 'inline';
+    } else {
+        document.querySelector('.comment-form-form-area').remove();
+        document.getElementById('WriteCommentary').style.display = 'inline';
+    }
 }
 
 export async function ShowComments() {
     var id = document.querySelector('body').id;
     var commentaryBtn = document.getElementById('displayComments');
     if (!commentaryBtn.classList.contains("clicked")) {
-        var result = await getAllComentaries({ eventId: id });
         commentaryBtn.classList.add('clicked')
         commentaryBtn.textContent = 'Hide Commentary';
-        CreateComentaryHtml(result)
+        document.getElementsByName('comentaryDivContainer')[0].style.display = 'block'
+
     } else {
+        document.getElementsByName('comentaryDivContainer')[0].style.display = 'none'
         commentaryBtn.classList.remove('clicked')
         commentaryBtn.textContent = 'See comments';
-        document.getElementsByName('comentaryDivContainer')[0].remove();
     }
 }
-function CreateComentaryHtml(comentaries) { render(comentaryBoxTemplate(comentaries, LikeDislikeComentary), document.body); }
-
-
-function LikeDislikeComentary(ev) {
+export function LikeDislike(ev) {
     var action = (ev.target.name)
     var controller = (ev.target.parentNode.getAttribute('data-controller'))
     var id = (ev.target.parentNode.getAttribute('data-id'))
-    ReturnComentaryLikesAndDislikes(id, controller, action)
+    ReturnLikesAndDislikes(id, controller, action)
 
-    async function ReturnComentaryLikesAndDislikes(id, controller, action) {
+    async function ReturnLikesAndDislikes(id, controller, action) {
         var data;
         controller == 'Reply' ? data = { replyId: id } : data = { comentaryId: id };
         var result = await getLikesDislikes(controller, action, data)
@@ -53,10 +72,9 @@ function LikeDislikeComentary(ev) {
         buttons[1].textContent = `Dislike ${result.comentaryDislikeCount}`;
     }
 }
-
 export function WriteCommentary() {
     var body = [...document.getElementsByTagName('BODY')][0];
-    render(postComentaryBoxTemplate(body), body)
+    render(templates.postComentaryBoxTemplate(body), body)
 
     var btn = document.getElementById('WriteCommentary');
     btn.style.display = 'none'
@@ -76,70 +94,3 @@ export function WriteCommentary() {
     }
 
 }
-
-const replyTeplate = (reply, onClick) => html`
-<div class="replyDialogbox"><span><a>${reply.userName}</a></span>
-    <div class="replyBody"><span class="tip tip-up"></span>
-        <div class="message">
-            <span data-controller="Reply" , data-id=${reply.replyId}>
-                <p class="text-break">${reply.content}</p>
-                <button @click=${onClick} name="LikeReply" type="submit" class="btn-success" value=${reply.replyId}>Like
-                    ${reply.replyLikesCount}</button>
-                <button @click=${onClick} name="DislikeReply" type="submit" class="btn-danger"
-                    value=${reply.replyId}>Dislike
-                    ${reply.replyDislikesCount}</button>
-            </span>
-        </div>
-    </div>
-</div>
-`;
-
-const singleComentaryTemplate = (comentary, onClick) => html`
-<div class="dialogbox">
-    <span><a>${comentary.userName}</a>
-    </span>
-    <div class="body">
-        <span class="tip tip-up"></span>
-        <div class="message">
-            <span data-controller="Comentary" , data-id="${comentary.comentaryId}">
-                <p class="text-break">${comentary.content}</p>
-                <button @click=${onClick} name="LikeComentary" class="btn-success" type="submit">Like
-                    ${comentary.likesCount}
-                </button>
-                <button @click=${onClick} name="DislikeComentary" class="btn-danger" type="submit">Dislike
-                    ${comentary.dislikesCount}</button>
-                <a @click=${CreateReplyForm} id="replyA">Reply</a>
-            </span>
-        </div>
-    </div>
-</div>
-${comentary.replies.map(r => replyTeplate(r, onClick))}
-`;
-
-const comentaryBoxTemplate = (comentaries, onClick) => html`
-<div name='comentaryDivContainer'>
-    ${comentaries.map(c => singleComentaryTemplate(c, onClick))}
-</div>
-`;
-
-const replyFormTemplate = (SendReply) => html`
-<div class="reply-form-form-area">
-    <div class="comment-respond" id="respond">
-        <h3>Leave reply here.</h3>
-        <p class="comment-form-comment"><label>Reply</label></p><textarea id="reply" name="reply" cols="450" rows="8"
-            maxlength="65525" required="required"></textarea>
-        <button @click=${SendReply} type="submit" id="submitReply">Send</button>
-    </div>
-</div>
-`;
-
-const postComentaryBoxTemplate = (body) => html`
-<div class="comment-form-form-area">
-    <div class="comment-respond" id="respond">
-        <h3>Leave commentary here.</h3>
-        <p class="comment-form-comment"><label>Comment</label></p><textarea id="comment" name="comment" cols="450"
-            rows="8" maxlength="65525" required="required"></textarea><input type="hidden" value="${body.id}"
-            id="currEventId"><button type="submit" id="submitComment">Send</button>
-    </div>
-</div>
-`;
