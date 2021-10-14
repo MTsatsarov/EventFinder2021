@@ -30,11 +30,10 @@
             this.dislikeService = dislikeService;
         }
 
-        [Authorize]
-        [IgnoreAntiforgeryToken]
-        public IActionResult AllComentaries([FromBody] GetComentaryModel id)
+        
+        public IActionResult AllComentaries([FromRoute] string id)
         {
-            var eventId = int.Parse(id.EventId);
+            var eventId = int.Parse(id);
             var comentaries = this.comentaryService.GetAllEventComentaries<ComentaryViewModel>(eventId);
 
             return this.Json(comentaries);

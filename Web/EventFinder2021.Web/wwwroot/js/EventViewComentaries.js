@@ -4,19 +4,19 @@ import { SendNewReply, getAllComentaries, getLikesDislikes, sendNewComentary } f
 import * as templates from "./EventViewTemplates.js"
 
 async function comentaryTemplateResult(list) {
-   return templates.singleComentaryTemplate(list, LikeDislike, CreateReplyForm);
-   
+    return templates.singleComentaryTemplate(list, LikeDislike, CreateReplyForm);
 }
 export async function InitialComentariesLoad(id, list) {
     var result = await getAllComentaries({ eventId: id });
     result.forEach(c => list.push(c))
     return comentaryTemplateResult(result)
 }
+
 export async function CreateReplyForm(ev) {
     var div = ev.target.parentNode.parentNode;
     var anchor = ev.target;
     anchor.style.display = 'none'
-    render(templates.replyFormTemplate(SendReply, dismissForm, anchor), div)
+    render(templates.replyFormTemplate(SendReply, () => dismissForm(anchor, 'reply-form-form-area'), anchor), div)
 
     async function SendReply() {
         var comentaryId = anchor.parentNode.getAttribute('data-id');
@@ -29,16 +29,14 @@ export async function CreateReplyForm(ev) {
         divToRemove.parentElement.removeChild(divToRemove);
         anchor.style.display = 'inline'
     }
-
-
 }
 
 function dismissForm(buttonToShow, formToRemove) {
     if (formToRemove == 'reply-form-form-area') {
-        document.querySelector(".reply-form-form-area").remove();
+        document.querySelector(".reply-form-form-area").style.display = 'none';
         buttonToShow.style.display = 'inline';
     } else {
-        document.querySelector('.comment-form-form-area').remove();
+        document.getElementById(formToRemove).style.display = 'none';
         document.getElementById('WriteCommentary').style.display = 'inline';
     }
 }
@@ -72,14 +70,12 @@ export function LikeDislike(ev) {
         buttons[1].textContent = `Dislike ${result.comentaryDislikeCount}`;
     }
 }
-export function WriteCommentary() {
-    var body = [...document.getElementsByTagName('BODY')][0];
-    render(templates.postComentaryBoxTemplate(body), body)
-
-    var btn = document.getElementById('WriteCommentary');
-    btn.style.display = 'none'
+export function WriteCommentary(ev) {
+    ev.target.style.display = 'none'
     document.getElementById('submitComment').addEventListener('click', SendComment)
+    document.getElementById('sendComentboxDiv').style.display = 'block';
 
+    document.getElementById('cancelForm').addEventListener('click', () => dismissForm(null, 'sendComentboxDiv'))
     async function SendComment() {
         var currEventId = document.getElementById('currEventId').value
         var commentContent = document.getElementById('comment').value
@@ -87,10 +83,9 @@ export function WriteCommentary() {
         await sendNewComentary(data)
 
         CallLastComment();
-        btn.style.display = 'inline';
-        var divToRemove = document.getElementsByClassName('comment-form-form-area')[0];
-        var parent = divToRemove.parentNode.children[0];
-        divToRemove.parentElement.removeChild(divToRemove);
+        ev.target.style.display = 'inline';
+        var box = document.getElementById('sendComentboxDiv');
+        box.style.display = 'none'
+        box.getElementsByTagName('TEXTAREA')[0].value = ''
     }
-
 }

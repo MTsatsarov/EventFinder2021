@@ -14,8 +14,7 @@
     var inputForm = new ReportInputModel();
 }
 <body id="@Model.Id" class="table-responsive model">
-    <link rel="stylesheet" href="~/css/ComentariesCSS.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/PostCommentary.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/EventViewCSS.css" asp-append-version="true" />
     <div class="justify-content-xl-center">
         <h2 class="text-center">@Model.Name</h2>
         <hr />
@@ -48,10 +47,10 @@
         </div>
         <div id="GoNotGoAndReportBtns">
             <div id="btnSuccess" style="display:inline">
-                <button id="Going" class="btn-success">Going @Model.GoingUsersCount</button>
+                <button disabled id="Going" class="btn-success">Going @Model.GoingUsersCount</button>
             </div>
             <div id="btn-danger" style="display:inline">
-                <button id="NotGoing" type="submit" class="btn-danger">Not Going @Model.NotGoingUsersCount </button>
+                <button disabled id="NotGoing" type="submit" class="btn-danger">Not Going @Model.NotGoingUsersCount </button>
             </div>
             @if (this.SignInManager.IsSignedIn(this.User))
             {
@@ -72,11 +71,21 @@
     <div>
         <div>
             <span>
-                <a id="displayComments">See comments</a>
+
+                <button style="display:none" id="displayComments">See comments</button>
             </span>
             <span class="">
-                <a class="btn btn-primary" id="WriteCommentary">Write commentary</a>
+                <a style="display:none" class="btn btn-primary" id="WriteCommentary">Write commentary</a>
             </span>
+        </div>
+    </div>
+    <div id="sendComentboxDiv">
+        <div class="comment-form-form-area">
+            <div class="comment-respond" id="respond">
+                <h3>Leave commentary here.</h3>
+                <p class="comment-form-comment"><label>Comment</label></p><textarea id="comment" name="comment" cols="450" rows="8" maxlength="65525" required="required"></textarea><input type="hidden" value=@Model.Id id="currEventId"><button type="submit" id="submitComment">Send</button>
+                <button type="submit"id="cancelForm">Cancel</button>
+            </div>
         </div>
     </div>
     @if (this.SignInManager.IsSignedIn(this.User))
@@ -111,7 +120,7 @@
                 </div>
             </div>
         </div>
-    }<div name='comentaryDivContainer'></div>
+    }<div class="hidden" name='comentaryDivContainer'></div>
 
     <script src="~/lib/signalR/dist/browser/signalr.js"></script>
     <script type="module" src="~/js/EventView.js"></script>

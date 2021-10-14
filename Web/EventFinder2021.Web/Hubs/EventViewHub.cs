@@ -1,10 +1,9 @@
 ﻿namespace EventFinder2021.Web.Hubs
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using EventFinder2021.Services.Data.ComentaryService;
-    using EventFinder2021.Web.ViewModels.ComentaryModels;
     using Microsoft.AspNetCore.SignalR;
 
     public class EventViewHub : Hub
@@ -16,6 +15,7 @@
         {
             this.comentaryService = comentaryService;
         }
+     
         public async Task AddUserToGroup(string groupId)
         {
             var currentConnection = this.Context.ConnectionId;
@@ -35,7 +35,7 @@
 
         public async override Task OnConnectedAsync()
         {
-            await this.Clients.Caller.SendAsync("GetGroup", "add");
+            await this.Clients.Caller.SendAsync("GetGroup", "add",this.Context.User.Identity.IsAuthenticated);
         }
 
         public async override Task OnDisconnectedAsync(System.Exception exception)

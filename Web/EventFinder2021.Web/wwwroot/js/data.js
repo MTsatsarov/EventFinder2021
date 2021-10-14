@@ -5,7 +5,7 @@ export async function SendNewReply(data) {
 }
 
 export async function getAllComentaries(data) {
-    return await api.post(api.host + 'Comentary/AllComentaries', data)
+    return await api.get(api.host + 'Comentary/AllComentaries/'+data.eventId)
 }
 
 export async function getLikesDislikes(controller, action, data) {

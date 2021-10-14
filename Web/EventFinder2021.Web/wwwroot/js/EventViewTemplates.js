@@ -1,6 +1,6 @@
-import { html, render } from "../lib/lit-html/lit-html.js"
+import { html} from "../lib/lit-html/lit-html.js"
 
-export let replyTeplate = (reply, onClick) => html`
+export const replyTeplate = (reply, onClick) => html`
 <div class="replyDialogbox"><span><a>${reply.userName}</a></span>
     <div class="replyBody"><span class="tip tip-up"></span>
         <div class="message">
@@ -17,7 +17,7 @@ export let replyTeplate = (reply, onClick) => html`
 </div>
 `;
 
-export let singleComentaryTemplate = (comentary, onClick, createReplyForm) => html`
+export const singleComentaryTemplate = (comentary, onClick, createReplyForm) => html`
 ${comentary.map(c => html`
 <div class="dialogbox">
     <span><a>${c.userName}</a>
@@ -41,7 +41,7 @@ ${c.replies.map(r => replyTeplate(r, onClick))}
 `)}`;
 
 
-export let replyFormTemplate = (SendReply, dismissForm, anchor) => html`
+export const replyFormTemplate = (SendReply, dismissForm, anchor) => html`
     <div class="reply-form-form-area">
         <div class="comment-respond" id="respond">
             <h3>Leave reply here.</h3>
@@ -54,15 +54,3 @@ export let replyFormTemplate = (SendReply, dismissForm, anchor) => html`
     </div>
     `;
 
-export let postComentaryBoxTemplate = (body) => html`
-    <div class="comment-form-form-area">
-        <div class="comment-respond" id="respond">
-            <h3>Leave commentary here.</h3>
-            <p class="comment-form-comment"><label>Comment</label></p><textarea id="comment" name="comment" cols="450"
-                rows="8" maxlength="65525" required="required"></textarea><input type="hidden" value="${body.id}"
-                id="currEventId"><button type="submit" id="submitComment">Send</button>
-            <button @click=${()=> dismissForm(null, "comment-form-form-area")} type="submit"
-                id="submitComment">Cancel</button>
-        </div>
-    </div>
-    `;
