@@ -4,7 +4,7 @@ import { SendNewReply, getAllComentaries, getLikesDislikes, sendNewComentary } f
 import * as templates from "./EventViewTemplates.js"
 
 async function comentaryTemplateResult(list) {
-    return templates.singleComentaryTemplate(list, LikeDislike, CreateReplyForm);
+    return templates.singleComentaryTemplate(list, LikeDislike,CreateReplyForm);
 }
 export async function InitialComentariesLoad(id, list) {
     var result = await getAllComentaries({ eventId: id });
@@ -16,7 +16,7 @@ export async function CreateReplyForm(ev) {
     var div = ev.target.parentNode.parentNode;
     var anchor = ev.target;
     anchor.style.display = 'none'
-    render(templates.replyFormTemplate(SendReply, () => dismissForm(anchor, 'reply-form-form-area'), anchor), div)
+     return render(templates.replyFormTemplate(SendReply, () => dismissForm(anchor, 'reply-form-form-area'), anchor),div)
 
     async function SendReply() {
         var comentaryId = anchor.parentNode.getAttribute('data-id');

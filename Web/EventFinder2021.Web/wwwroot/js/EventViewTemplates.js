@@ -1,4 +1,4 @@
-import { html} from "../lib/lit-html/lit-html.js"
+import { html } from "../lib/lit-html/lit-html.js"
 
 export const replyTeplate = (reply, onClick) => html`
 <div class="replyDialogbox"><span><a>${reply.userName}</a></span>
@@ -17,7 +17,7 @@ export const replyTeplate = (reply, onClick) => html`
 </div>
 `;
 
-export const singleComentaryTemplate = (comentary, onClick, createReplyForm) => html`
+export const singleComentaryTemplate = (comentary, onClick, replyForm) => html`
 ${comentary.map(c => html`
 <div class="dialogbox">
     <span><a>${c.userName}</a>
@@ -32,7 +32,7 @@ ${comentary.map(c => html`
                 </button>
                 <button @click=${onClick} name="DislikeComentary" class="btn-danger" type="submit">Dislike
                     ${c.dislikesCount}</button>
-                <a @click=${createReplyForm} .id="replyA">Reply</a>
+                <button @click=${replyForm} class='Reply' .id="replyA">Reply</button>
             </span>
         </div>
     </div>
@@ -48,7 +48,7 @@ export const replyFormTemplate = (SendReply, dismissForm, anchor) => html`
             <p class="comment-form-comment"><label>Reply</label></p><textarea id="reply" name="reply" cols="450" rows="8"
                 maxlength="65525" required="required"></textarea>
             <button @click=${SendReply} type="submit" id="submitReply">Send</button>
-            <button @click=${()=> dismissForm(anchor, "reply-form-form-area")} type = "submit" id = "clearForm" >
+            <button @click=${() => dismissForm(anchor, "reply-form-form-area")} type = "submit" id = "clearForm" >
                 Cancel</button>
         </div>
     </div>

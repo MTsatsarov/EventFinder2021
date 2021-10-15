@@ -34,6 +34,7 @@ async function Start() {
     document.getElementById('GoNotGoAndReportBtns').addEventListener('click', GoingNotGoing);
     document.getElementById('displayComments').addEventListener('click', ShowComments)
     document.getElementById('WriteCommentary').addEventListener('click', WriteCommentary);
+    [...document.getElementsByClassName('Reply')].forEach(r=> r.addEventListener('click',(ev)=>CreateReplyForm()))
     var smth = document.querySelectorAll('li i').forEach(x => x.addEventListener('click', Vote))
     
     var grade = document.getElementById('averageVoteGrade').textContent.split(' / ')[0];
